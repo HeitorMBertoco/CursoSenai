@@ -1,0 +1,55 @@
+
+*{
+    margin: 2px;
+    
+}
+header, nav, main, footer, body, section{
+    border: 2px solid black;
+    box-shadow:  purple 0px 0px 5px;
+    border-radius: 2px;
+    
+}
+body{
+    gap: 5px;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    overflow: hidden;
+    box-sizing: border-box;
+    grid-template-columns: 2fr 8fr;
+    padding: 10px;
+    grid-template-rows: 40px auto 30px;
+    grid-template-areas: 
+    'h h'
+    'n m'
+    'f f'
+    ;
+}
+
+header{
+    grid-area: h;
+
+}
+nav{
+    grid-area: n;
+   
+
+}
+main{
+    grid-area: m;
+    display: grid;
+    padding: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+footer{
+    grid-area: f;
+}
+section{
+    padding: 5px;
+    gap: 5px;
+    margin: 15px;
+}
+img{
+    width: 100%;
+}
