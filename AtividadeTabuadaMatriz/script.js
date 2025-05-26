@@ -1,0 +1,62 @@
+function GerarTabuada() {
+    // Obtemos os valores dos inputs
+    const numero = parseInt(document.getElementById("numero").value);
+    const inicio = parseInt(document.getElementById("inicio").value);
+    const fim = parseInt(document.getElementById("fim").value);
+
+    const resultadoDiv = document.getElementById("resultado");
+    resultadoDiv.innerHTML = ""; // Limpa resultados anteriores
+
+    // Verifica se os dados são válidos
+    if (isNaN(numero) || isNaN(inicio) || isNaN(fim)) {
+        resultadoDiv.innerHTML = "<p style='color:red;'>Por favor, preencha todos os campos com números válidos.</p>";
+        return;
+    }
+
+    if (inicio > fim) {
+        resultadoDiv.innerHTML = "<p style='color:red;'>O valor de início deve ser menor ou igual ao valor de fim.</p>";
+        return;
+    }
+
+    // Criando a matriz da tabuada
+    const matriz = [];
+
+    for (let i = inicio; i <= fim; i++) {
+        matriz.push([numero, i, numero * i]);
+    }
+
+    // Criando a tabela para exibir
+    let tabelaHTML = `
+        <table>
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Fator</th>
+                    <th>Resultado</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    for (const linha of matriz) {
+        tabelaHTML += `
+            <tr>
+                <td>${linha[0]}</td>
+                <td>${linha[1]}</td>
+                <td>${linha[2]}</td>
+            </tr>
+        `;
+    }
+
+    tabelaHTML += `
+            </tbody>
+        </table>
+    `;
+
+    // Mostra a tabela na saída
+    resultadoDiv.innerHTML = tabelaHTML;
+}
+
+function RecarregarPagina() {
+    location.reload();
+}
