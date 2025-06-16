@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="border-1 col-12 justify-content-center display-5 text-center">
+        <nav class="navbar">Atividade - Compras
+            <img src="img/a.svg" alt="">
+        </nav>
+    </header>
+    <main class="border-1 bg-dark col-4 main-content">
+        <article class="card mt-5">
+            <img src="https://images.unsplash.com/photo-1602081593819-65e7a8cee0dd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="card-img-top" alt="">
+            <div class="card-body">
+                <h4 class="card-title">Manga 💀</h4>
+                <p class="card-text">
+                    <span>Manga R$ 180 </span>
+                </p>
+                <input class="Num" type="number" name="" id="valmanga" value="0" min="0">
+                <button class="btn btn-primary mt-2" onclick="addItemToCart('Manga', 180, 'valmanga')">Adicionar ao Carrinho</button>
+            </div>
+        </article>
+        <article class="card mt-5">
+            <img src="https://images.unsplash.com/photo-1490885578174-acda8905c2c6?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="card-img-top" alt="">
+            <div class="card-body">
+                <h4 class="card-title">Abacaxi 🍍</h4>
+                <p class="card-text">
+                    <span>Abacaxi R$ 580 </span>
+                </p>
+                <input class="Num" type="number" name="" id="valabacaxi" value="0" min="0">
+                <button class="btn btn-primary mt-2" onclick="addItemToCart('Abacaxi', 580, 'valabacaxi')">Adicionar ao Carrinho</button>
+            </div>
+        </article>
+
+        <article class="card mt-5">
+            <img src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="card-img-top" alt="">
+            <div class="card-body">
+                <h4 class="card-title">Banana 🍌</h4>
+                <p class="card-text">
+                    <span>Banana R$ 120 </span>
+                </p>
+                <input class="Num" type="number" name="" id="valbanana" value="0" min="0">
+                <button class="btn btn-primary mt-2" onclick="addItemToCart('Banana', 120, 'valbanana')">Adicionar ao Carrinho</button>
+            </div>
+        </article>
+        <article class="card mt-5">
+            <img src="https://images.unsplash.com/photo-1581074817932-af423ba4566e?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="card-img-top">
+            <div class="card-body">
+                <h4 class="card-title">Melancia 🍉</h4>
+                <p class="card-text">
+                    <span>Melancia R$ 700 </span>
+                </p>
+                <input class="Num" type="number" name="" id="valmelancia" value="0" min="0">
+                <button class="btn btn-primary mt-2" onclick="addItemToCart('Melancia', 700, 'valmelancia')">Adicionar ao Carrinho</button>
+            </div>
+        </article>
+        <div class="Desconto mx-5 mt-4">
+            <h3 style="color: white;">Aplicar Desconto</h3>
+            <hr>
+            <h5 style="color: white; ">% de desconto</h5>
+            <hr>
+            <input style="background-color: brown; border: white 1px solid;border-radius: 10px; color: white;" id="desconto" type="number" name="" value="0" min="0" max="100">
+            <button onclick="applyDiscount()" style="border: none; background-color: brown ; color: white; border-radius: 5px; border: white 1px solid;">Aplicar</button>
+        </div>
+    </main>
+    <div id="output" class="output">
+        <h3 style="color: white;">Seu Carrinho</h3>
+        <hr style="background-color: white; width: 90%;">
+        <div id="cart-items"></div>
+        <div class="cart-summary mt-3">
+            <p style="color: white;">Total Bruto: <span id="total-bruto">R$ 0.00</span></p>
+            <p style="color: white;">Desconto: <span id="valor-desconto">R$ 0.00</span></p>
+            <p style="color: white;">Total da Compra: <span id="total-compra">R$ 0.00</span></p>
+        </div>
+    </div>
+
+
+    <footer class="text-center p-1 rodape border-1">
+        Aluno: Heitor
+    </footer>
+</body>
+
+</html>
