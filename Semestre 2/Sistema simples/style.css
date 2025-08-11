@@ -1,0 +1,35 @@
+input{
+    background-color: #ffffff;
+    border: none;
+    padding: 20px;
+    border-radius: 12px;
+
+}
+button{
+    background: #7b2000;
+    padding: 20px;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+
+}
+.container{
+    background: #c6c6c6;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 70px;
+    margin-right: 70px;
+    padding: 20px;
+    gap: 18px;
+    margin-top: 20vh;
+    box-shadow: -50px -50px 0px -50px #c6c6c6;
+
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
