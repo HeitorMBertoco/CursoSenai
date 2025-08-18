@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+  background-color: #eee;
+}
+
+.container {
+  width: 200px;
+  padding: 15px;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.container p {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.container img {
+  max-width: 100px;
+  height: auto;
+}
