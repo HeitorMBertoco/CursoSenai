@@ -1,67 +1,42 @@
 <?php
-$ip = 'localhost';
-$porta = '3306';
-$banco = 'ESCOLA';
-$usr = 'root';
-$snh = 'root';
-
-$stringConn = "mysql:host=$ip;port=$porta;dbname=$banco";
-
-try {
-
-    $cnn = new PDO($stringConn, $usr, $snh);
-} catch (PDOException $e) {
-    echo '' . $e;
-}
+require_once "Conexao.php";
+require_once "entidades/localizacao.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>a</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
+    
     <form action="" method="post">
-        <input type="text" name="nome" id="">
-        <input type="text" name="idade" id="">
-        <input type="submit">
+        <h1>localização</h1>
+
+        <label for="nome">Nome:</label><br>
+        <input type="text" name="nome" id="nome" class='normal'><br>
+        <label for="desc">Descrição:</label><br>
+        <input type="text" name="desc" id="desc" class='normal'><br>
+        <input type="submit" name="" id="" value='Salvar' class='submit'>
 
     </form>
     <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nome = $_POST['nome'];
-    $idade = $_POST['idade'];
-    $query = "insert into aluno (nome, idade) values (:nome, :idade);";
-
-    $stmt = $cnn->prepare($query);
-
-    $stmt->bindValue(":nome", $nome);
-    $stmt->bindValue(":idade", $idade);
-
-    $stmt->execute();
-}
-
+    $connection = Conectar();
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nome = $_POST["nome"];
+            $desc = $_POST["desc"];
+            $loc = new Localizacao($nome, $desc);
+            $loc->addLoc($connection);
+            
+        }
+        
+            
+    
+    
     
     ?>
-
-    <div>
-        <?php
-        $query = 'select * from aluno';
-        foreach ($cnn->query($query) as $valor) {
-            print_r($valor['nome']);
-            echo '<br>';
-            print_r($valor['idade']);
-            echo '<hr style="background-color:blue;">';
-        } ?>
-    </div>
-
-
-
-
 </body>
-
 </html>
