@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && (!isset($_POST['acao']) || $_POST['a
 
 <head>
     <meta charset="UTF-8">
-    <title>Carta <?php echo $CartasEdicao->Getnome(); ?></title>
+    <title>Carta <?php isset($CartasEdicao) ? $CartasEdicao->Getnome() : '' ?></title>
     <link rel="stylesheet" href="exibir_cartas.css">
 </head>
 

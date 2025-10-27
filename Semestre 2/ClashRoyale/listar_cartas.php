@@ -12,8 +12,6 @@ require_once 'dados/cartas.php';
 </head>
 
 <body>
-<img src="imagens/Rei.png" class="rei" alt="">
-<img src="imagens/Rei2.png" class="rei2" alt="">
 
     <div class="container">
         <h1>Deck - Lista de Cartas</h1>
