@@ -15,7 +15,7 @@ else
   exit 1
 fi
 
-for n in $(seq 252 386); do
+for n in $(seq 387 493); do
   id3=$(printf "%03d" "$n")
   out="$DEST/pokemon_${id3}.png"
 

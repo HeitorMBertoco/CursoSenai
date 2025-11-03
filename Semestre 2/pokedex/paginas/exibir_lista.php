@@ -5,11 +5,26 @@ require_once __DIR__ . '/conexao.php';
 $pdo = getPdo();
 
 $busca = isset($_GET['busca']) ? trim((string)$_GET['busca']) : '';
-$geracao = isset($_GET['geracao']) && in_array((int)$_GET['geracao'], [1, 2, 3], true) ? (int)$_GET['geracao'] : 1;
+$geracao = isset($_GET['geracao']) && in_array((int)$_GET['geracao'], [1, 2, 3, 4], true) ? (int)$_GET['geracao'] : 1;
 
 
-$rangeInicio = $geracao === 2 ? 152 : ($geracao === 3 ? 252 : 1);
-$rangeFim = $geracao === 2 ? 251 : ($geracao === 3 ? 386 : 151);
+switch ($geracao) {
+	case 2:
+		$rangeInicio = 152;
+		$rangeFim = 251;
+		break;
+	case 3:
+		$rangeInicio = 252;
+		$rangeFim = 386;
+		break;
+	case 4:
+		$rangeInicio = 387;
+		$rangeFim = 493;
+		break;
+	default:
+		$rangeInicio = 1;
+		$rangeFim = 151;
+}
 
 
 $sql = "
@@ -70,8 +85,8 @@ $lista_pokemons = $stmt->fetchAll();
     <nav>
         <?php
 		$buscaParam = $busca !== '' ? ('&busca=' . urlencode($busca)) : '';
-		$prevGeracao = $geracao === 2 ? 1 : ($geracao === 3 ? 2 : 3);
-		$nextGeracao = $geracao === 1 ? 2 : ($geracao === 2 ? 3 : 2);
+		$prevGeracao = ($geracao > 1) ? ($geracao - 1) : 4;
+		$nextGeracao = ($geracao < 4) ? ($geracao + 1) : 1;
 	?>
         <a href="?geracao=<?= $prevGeracao ?><?= $buscaParam ?>" class="botaoGen Gen2" aria-label="Geração anterior">&#8592;</a>
         <a href="?geracao=<?= $nextGeracao ?><?= $buscaParam ?>" class="botaoGen Gen1" aria-label="Próxima geração">&#8594;</a>
