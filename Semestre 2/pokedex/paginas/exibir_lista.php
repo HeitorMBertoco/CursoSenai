@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+
 require_once __DIR__ . '/conexao.php';
 
 $pdo = getPdo();
@@ -7,11 +7,11 @@ $pdo = getPdo();
 $busca = isset($_GET['busca']) ? trim((string)$_GET['busca']) : '';
 $geracao = isset($_GET['geracao']) && in_array((int)$_GET['geracao'], [1, 2, 3], true) ? (int)$_GET['geracao'] : 1;
 
-// Range por geração
+
 $rangeInicio = $geracao === 2 ? 152 : ($geracao === 3 ? 252 : 1);
 $rangeFim = $geracao === 2 ? 251 : ($geracao === 3 ? 386 : 151);
 
-// Build query with optional filtering by number, name, or type name
+
 $sql = "
     SELECT
         p.NUMERO,
@@ -25,7 +25,7 @@ $sql = "
 ";
 
 $params = [];
-// Sempre aplica filtro por geração
+
 $sql .= " WHERE p.NUMERO BETWEEN :rangeInicio AND :rangeFim";
 $params[':rangeInicio'] = $rangeInicio;
 $params[':rangeFim'] = $rangeFim;
