@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DEST="/c/xampp/htdocs/pokedex/imagens/pokemons"   # ajuste se necessário
+DEST="/c/xampp/htdocs/CursoSenai/Semestre 2/pokedex/imagens/pokemons"   # ajuste se necessário
 mkdir -p "$DEST"
 
 have_cmd() { command -v "$1" >/dev/null 2>&1; }
@@ -15,7 +15,7 @@ else
   exit 1
 fi
 
-for n in $(seq 387 493); do
+for n in $(seq 810 1009); do
   id3=$(printf "%03d" "$n")
   out="$DEST/pokemon_${id3}.png"
 
