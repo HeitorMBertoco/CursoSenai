@@ -1,0 +1,534 @@
+/* ========================================
+   RESET E CONFIGURAÇÕES GLOBAIS
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Cores oficiais SENAI */
+    --senai-red: #E30613;
+    --senai-dark-red: #B30510;
+    --senai-blue: #003DA5;
+    --senai-dark-blue: #002D7A;
+    --senai-gray: #58595B;
+    --senai-light-gray: #E6E7E8;
+    --white: #FFFFFF;
+    --black: #000000;
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.25);
+    
+    /* Transições */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    color: var(--senai-gray);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+/* ========================================
+   PÁGINA DE CADASTRO
+   ======================================== */
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.form-container {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 50px 40px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: var(--shadow-xl);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.logo-senai {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-senai img {
+    max-width: 200px;
+    height: auto;
+}
+
+.form-container h1 {
+    text-align: center;
+    color: var(--senai-red);
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--senai-gray);
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+.form-cracha {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--senai-dark-blue);
+    font-size: 15px;
+}
+
+.form-group label svg {
+    color: var(--senai-red);
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid var(--senai-light-gray);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: var(--transition);
+    font-family: inherit;
+    color: var(--senai-gray);
+}
+
+.form-group input[type="text"]:focus {
+    outline: none;
+    border-color: var(--senai-red);
+    box-shadow: 0 0 0 4px rgba(227, 6, 19, 0.1);
+}
+
+.form-group input[type="file"] {
+    padding: 12px;
+    border: 2px dashed var(--senai-light-gray);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    background: #f9fafb;
+}
+
+.form-group input[type="file"]:hover {
+    border-color: var(--senai-red);
+    background: #fff;
+}
+
+.form-group small {
+    color: var(--senai-gray);
+    font-size: 13px;
+    margin-top: -5px;
+}
+
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.btn-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--senai-red) 0%, var(--senai-dark-red) 100%);
+    color: var(--white);
+    border: none;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--white);
+    color: var(--senai-blue);
+    border: 2px solid var(--senai-blue);
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-secondary:hover {
+    background: var(--senai-blue);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ========================================
+   PÁGINA DE EXIBIÇÃO DOS CRACHÁS
+   ======================================== */
+.container-exibir {
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.header-exibir {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo-senai-small img {
+    max-width: 120px;
+    height: auto;
+}
+
+.header-exibir h1 {
+    color: var(--senai-red);
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--senai-blue);
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-voltar:hover {
+    background: var(--senai-dark-blue);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.alert-success {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #d4edda;
+    border: 2px solid #28a745;
+    color: #155724;
+    padding: 16px 20px;
+    border-radius: 8px;
+    max-width: 1400px;
+    margin: 0 auto 30px;
+    font-weight: 600;
+    animation: slideDown 0.5s ease-out;
+}
+
+/* ========================================
+   GRID DE CRACHÁS
+   ======================================== */
+.crachas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.cracha {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+    animation: fadeInUp 0.6s ease-out backwards;
+    border: 3px solid var(--senai-light-gray);
+}
+
+.cracha:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--senai-red);
+}
+
+.cracha:nth-child(1) { animation-delay: 0.1s; }
+.cracha:nth-child(2) { animation-delay: 0.2s; }
+.cracha:nth-child(3) { animation-delay: 0.3s; }
+.cracha:nth-child(4) { animation-delay: 0.4s; }
+.cracha:nth-child(5) { animation-delay: 0.5s; }
+.cracha:nth-child(6) { animation-delay: 0.6s; }
+
+.cracha-header {
+    background: linear-gradient(135deg, var(--senai-red) 0%, var(--senai-dark-red) 100%);
+    padding: 20px;
+    text-align: center;
+}
+
+.cracha-logo {
+    max-width: 150px;
+    height: auto;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.cracha-foto {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    background: var(--senai-light-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 4px solid var(--senai-blue);
+    border-bottom: 4px solid var(--senai-blue);
+}
+
+.cracha-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cracha-info {
+    padding: 25px 20px;
+    text-align: center;
+    background: linear-gradient(to bottom, #ffffff 0%, #f9fafb 100%);
+}
+
+.cracha-nome {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--senai-dark-blue);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cracha-tipo {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--senai-red);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.cracha-id {
+    font-size: 13px;
+    color: var(--senai-gray);
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+}
+
+.cracha-footer {
+    padding: 15px 20px;
+    background: var(--senai-light-gray);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.cracha-barcode {
+    display: flex;
+    gap: 3px;
+    height: 40px;
+    align-items: flex-end;
+}
+
+.cracha-barcode .bar {
+    width: 3px;
+    background: var(--black);
+    height: 100%;
+}
+
+.cracha-barcode .bar:nth-child(2n) {
+    height: 70%;
+}
+
+.cracha-barcode .bar:nth-child(3n) {
+    height: 85%;
+}
+
+.cracha-data {
+    font-size: 12px;
+    color: var(--senai-gray);
+    font-weight: 600;
+}
+
+/* ========================================
+   ESTADO VAZIO
+   ======================================== */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 20px;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+}
+
+.empty-state svg {
+    color: var(--senai-light-gray);
+    margin-bottom: 20px;
+}
+
+.empty-state h3 {
+    color: var(--senai-dark-blue);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: var(--senai-gray);
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--senai-red);
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    background: var(--senai-dark-red);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ========================================
+   ANIMAÇÕES
+   ======================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 40px 25px;
+    }
+
+    .form-container h1 {
+        font-size: 26px;
+    }
+
+    .header-exibir {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-exibir h1 {
+        font-size: 24px;
+    }
+
+    .crachas-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 10px;
+    }
+
+    .form-container {
+        padding: 30px 20px;
+    }
+
+    .logo-senai img {
+        max-width: 150px;
+    }
+
+    .form-container h1 {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+}
