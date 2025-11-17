@@ -1,131 +1,1028 @@
 USE POKEDEX;
 
 LOCK TABLES `pokemon` WRITE;
-/*!40000 ALTER TABLE `pokemon` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pokemon` DISABLE KEYS */
+;
 
 -- Geração 9 (Paldea): 899–1010
 -- Tipos podem ser ajustados depois; imagens seguem pokemon_XXX.png
-INSERT INTO `pokemon` (`NUMERO`, `NOME`, `DESCRICAO`, `TIPO_1`, `TIPO_2`, `ARQ_IMAGEM`) VALUES
-(899, 'Wyrdeer', '', 7, 12, 'pokemon_899.png'),
-(900, 'Kleavor', '', 13, 6, 'pokemon_900.png'),
-(901, 'Ursaluna', '', 9, 7, 'pokemon_901.png'),
-(902, 'Basculegion', '', 5, 16, 'pokemon_902.png'),
-(903, 'Sneasler', '', 11, 2, 'pokemon_903.png'),
-(904, 'Overqwil', '', 2, 18, 'pokemon_904.png'),
-(905, 'Enamorus', '', 10, 4, 'pokemon_905.png'),
-(906, 'Sprigatito', '', 1, NULL, 'pokemon_906.png'),
-(907, 'Floragato', '', 1, NULL, 'pokemon_907.png'),
-(908, 'Meowscarada', '', 1, 18, 'pokemon_908.png'),
-(909, 'Fuecoco', '', 3, NULL, 'pokemon_909.png'),
-(910, 'Crocalor', '', 3, NULL, 'pokemon_910.png'),
-(911, 'Skeledirge', '', 3, 10, 'pokemon_911.png'),
-(912, 'Quaxly', '', 5, NULL, 'pokemon_912.png'),
-(913, 'Quaxwell', '', 5, NULL, 'pokemon_913.png'),
-(914, 'Quaquaval', '', 5, 11, 'pokemon_914.png'),
-(915, 'Lechonk', '', 7, NULL, 'pokemon_915.png'),
-(916, 'Oinkologne', '', 7, NULL, 'pokemon_916.png'),
-(917, 'Tarountula', '', 6, NULL, 'pokemon_917.png'),
-(918, 'Spidops', '', 6, NULL, 'pokemon_918.png'),
-(919, 'Nymble', '', 6, NULL, 'pokemon_919.png'),
-(920, 'Lokix', '', 6, 18, 'pokemon_920.png'),
-(921, 'Pawmi', '', 8, NULL, 'pokemon_921.png'),
-(922, 'Pawmo', '', 8, 11, 'pokemon_922.png'),
-(923, 'Pawmot', '', 8, 11, 'pokemon_923.png'),
-(924, 'Tandemaus', '', 7, NULL, 'pokemon_924.png'),
-(925, 'Maushold', '', 7, NULL, 'pokemon_925.png'),
-(926, 'Fidough', '', 10, NULL, 'pokemon_926.png'),
-(927, 'Dachsbun', '', 10, NULL, 'pokemon_927.png'),
-(928, 'Smoliv', '', 1, 10, 'pokemon_928.png'),
-(929, 'Dolliv', '', 1, 10, 'pokemon_929.png'),
-(930, 'Arboliva', '', 1, 10, 'pokemon_930.png'),
-(931, 'Squawkabilly', '', 7, 4, 'pokemon_931.png'),
-(932, 'Nacli', '', 13, NULL, 'pokemon_932.png'),
-(933, 'Naclstack', '', 13, NULL, 'pokemon_933.png'),
-(934, 'Garganacl', '', 13, NULL, 'pokemon_934.png'),
-(935, 'Charcadet', '', 3, NULL, 'pokemon_935.png'),
-(936, 'Armarouge', '', 3, 12, 'pokemon_936.png'),
-(937, 'Ceruledge', '', 3, 16, 'pokemon_937.png'),
-(938, 'Tadbulb', '', 8, NULL, 'pokemon_938.png'),
-(939, 'Bellibolt', '', 8, NULL, 'pokemon_939.png'),
-(940, 'Wattrel', '', 8, 4, 'pokemon_940.png'),
-(941, 'Kilowattrel', '', 8, 4, 'pokemon_941.png'),
-(942, 'Maschiff', '', 18, NULL, 'pokemon_942.png'),
-(943, 'Mabosstiff', '', 18, NULL, 'pokemon_943.png'),
-(944, 'Shroodle', '', 2, 7, 'pokemon_944.png'),
-(945, 'Grafaiai', '', 2, 7, 'pokemon_945.png'),
-(946, 'Bramblin', '', 1, 16, 'pokemon_946.png'),
-(947, 'Brambleghast', '', 1, 16, 'pokemon_947.png'),
-(948, 'Toedscool', '', 9, 1, 'pokemon_948.png'),
-(949, 'Toedscruel', '', 9, 1, 'pokemon_949.png'),
-(950, 'Klawf', '', 13, NULL, 'pokemon_950.png'),
-(951, 'Capsakid', '', 1, NULL, 'pokemon_951.png'),
-(952, 'Scovillain', '', 1, 3, 'pokemon_952.png'),
-(953, 'Rellor', '', 6, NULL, 'pokemon_953.png'),
-(954, 'Rabsca', '', 6, 12, 'pokemon_954.png'),
-(955, 'Flittle', '', 12, NULL, 'pokemon_955.png'),
-(956, 'Espathra', '', 12, NULL, 'pokemon_956.png'),
-(957, 'Tinkatink', '', 14, 10, 'pokemon_957.png'),
-(958, 'Tinkatuff', '', 14, 10, 'pokemon_958.png'),
-(959, 'Tinkaton', '', 14, 10, 'pokemon_959.png'),
-(960, 'Wiglett', '', 5, NULL, 'pokemon_960.png'),
-(961, 'Wugtrio', '', 5, NULL, 'pokemon_961.png'),
-(962, 'Bombirdier', '', 7, 4, 'pokemon_962.png'),
-(963, 'Finizen', '', 5, NULL, 'pokemon_963.png'),
-(964, 'Palafin', '', 5, NULL, 'pokemon_964.png'),
-(965, 'Varoom', '', 14, 2, 'pokemon_965.png'),
-(966, 'Revavroom', '', 14, 2, 'pokemon_966.png'),
-(967, 'Cyclizar', '', 7, 17, 'pokemon_967.png'),
-(968, 'Orthworm', '', 14, NULL, 'pokemon_968.png'),
-(969, 'Glimmet', '', 2, 13, 'pokemon_969.png'),
-(970, 'Glimmora', '', 2, 13, 'pokemon_970.png'),
-(971, 'Greavard', '', 16, NULL, 'pokemon_971.png'),
-(972, 'Houndstone', '', 16, NULL, 'pokemon_972.png'),
-(973, 'Flamigo', '', 11, 4, 'pokemon_973.png'),
-(974, 'Cetoddle', '', 15, NULL, 'pokemon_974.png'),
-(975, 'Cetitan', '', 15, NULL, 'pokemon_975.png'),
-(976, 'Veluza', '', 5, 12, 'pokemon_976.png'),
-(977, 'Dondozo', '', 5, NULL, 'pokemon_977.png'),
-(978, 'Tatsugiri', '', 5, 12, 'pokemon_978.png'),
-(979, 'Annihilape', '', 11, 16, 'pokemon_979.png'),
-(980, 'Clodsire', '', 5, 9, 'pokemon_980.png'),
-(981, 'Farigiraf', '', 7, 12, 'pokemon_981.png'),
-(982, 'Dudunsparce', '', 7, NULL, 'pokemon_982.png'),
-(983, 'Kingambit', '', 18, 14, 'pokemon_983.png'),
-(984, 'Great Tusk', '', 9, 11, 'pokemon_984.png'),
-(985, 'Scream Tail', '', 10, 12, 'pokemon_985.png'),
-(986, 'Brute Bonnet', '', 1, 18, 'pokemon_986.png'),
-(987, 'Flutter Mane', '', 16, 10, 'pokemon_987.png'),
-(988, 'Slither Wing', '', 6, 11, 'pokemon_988.png'),
-(989, 'Sandy Shocks', '', 8, 9, 'pokemon_989.png'),
-(990, 'Iron Treads', '', 9, 14, 'pokemon_990.png'),
-(991, 'Iron Bundle', '', 15, 8, 'pokemon_991.png'),
-(992, 'Iron Hands', '', 11, 8, 'pokemon_992.png'),
-(993, 'Iron Jugulis', '', 18, 17, 'pokemon_993.png'),
-(994, 'Iron Moth', '', 3, 2, 'pokemon_994.png'),
-(995, 'Iron Thorns', '', 13, 8, 'pokemon_995.png'),
-(996, 'Frigibax', '', 17, 15, 'pokemon_996.png'),
-(997, 'Arctibax', '', 17, 15, 'pokemon_997.png'),
-(998, 'Baxcalibur', '', 17, 15, 'pokemon_998.png'),
-(999, 'Gimmighoul', '', 16, NULL, 'pokemon_999.png'),
-(1000, 'Gholdengo', '', 14, 16, 'pokemon_1000.png'),
-(1001, 'Wo-Chien', '', 18, 1, 'pokemon_1001.png'),
-(1002, 'Chien-Pao', '', 18, 15, 'pokemon_1002.png'),
-(1003, 'Ting-Lu', '', 18, 9, 'pokemon_1003.png'),
-(1004, 'Chi-Yu', '', 18, 3, 'pokemon_1004.png'),
-(1005, 'Roaring Moon', '', 18, 17, 'pokemon_1005.png'),
-(1006, 'Iron Valiant', '', 11, 10, 'pokemon_1006.png'),
-(1007, 'Koraidon', '', 11, 17, 'pokemon_1007.png'),
-(1008, 'Miraidon', '', 8, 17, 'pokemon_1008.png'),
-(1009, 'Walking Wake', '', 5, 17, 'pokemon_1009.png'),
-(1010, 'Iron Leaves', '', 1, 17, 'pokemon_1010.png')
+INSERT INTO
+    `pokemon` (
+        `NUMERO`,
+        `NOME`,
+        `DESCRICAO`,
+        `TIPO_1`,
+        `TIPO_2`,
+        `ARQ_IMAGEM`
+    )
+VALUES (
+        899,
+        'Wyrdeer',
+        '',
+        7,
+        12,
+        'pokemon_899.png'
+    ),
+    (
+        900,
+        'Kleavor',
+        '',
+        13,
+        6,
+        'pokemon_900.png'
+    ),
+    (
+        901,
+        'Ursaluna',
+        '',
+        9,
+        7,
+        'pokemon_901.png'
+    ),
+    (
+        902,
+        'Basculegion',
+        '',
+        5,
+        16,
+        'pokemon_902.png'
+    ),
+    (
+        903,
+        'Sneasler',
+        '',
+        11,
+        2,
+        'pokemon_903.png'
+    ),
+    (
+        904,
+        'Overqwil',
+        '',
+        2,
+        18,
+        'pokemon_904.png'
+    ),
+    (
+        905,
+        'Enamorus',
+        '',
+        10,
+        4,
+        'pokemon_905.png'
+    ),
+    (
+        906,
+        'Sprigatito',
+        '',
+        1,
+        NULL,
+        'pokemon_906.png'
+    ),
+    (
+        907,
+        'Floragato',
+        '',
+        1,
+        NULL,
+        'pokemon_907.png'
+    ),
+    (
+        908,
+        'Meowscarada',
+        '',
+        1,
+        18,
+        'pokemon_908.png'
+    ),
+    (
+        909,
+        'Fuecoco',
+        '',
+        3,
+        NULL,
+        'pokemon_909.png'
+    ),
+    (
+        910,
+        'Crocalor',
+        '',
+        3,
+        NULL,
+        'pokemon_910.png'
+    ),
+    (
+        911,
+        'Skeledirge',
+        '',
+        3,
+        10,
+        'pokemon_911.png'
+    ),
+    (
+        912,
+        'Quaxly',
+        '',
+        5,
+        NULL,
+        'pokemon_912.png'
+    ),
+    (
+        913,
+        'Quaxwell',
+        '',
+        5,
+        NULL,
+        'pokemon_913.png'
+    ),
+    (
+        914,
+        'Quaquaval',
+        '',
+        5,
+        11,
+        'pokemon_914.png'
+    ),
+    (
+        915,
+        'Lechonk',
+        '',
+        7,
+        NULL,
+        'pokemon_915.png'
+    ),
+    (
+        916,
+        'Oinkologne',
+        '',
+        7,
+        NULL,
+        'pokemon_916.png'
+    ),
+    (
+        917,
+        'Tarountula',
+        '',
+        6,
+        NULL,
+        'pokemon_917.png'
+    ),
+    (
+        918,
+        'Spidops',
+        '',
+        6,
+        NULL,
+        'pokemon_918.png'
+    ),
+    (
+        919,
+        'Nymble',
+        '',
+        6,
+        NULL,
+        'pokemon_919.png'
+    ),
+    (
+        920,
+        'Lokix',
+        '',
+        6,
+        18,
+        'pokemon_920.png'
+    ),
+    (
+        921,
+        'Pawmi',
+        '',
+        8,
+        NULL,
+        'pokemon_921.png'
+    ),
+    (
+        922,
+        'Pawmo',
+        '',
+        8,
+        11,
+        'pokemon_922.png'
+    ),
+    (
+        923,
+        'Pawmot',
+        '',
+        8,
+        11,
+        'pokemon_923.png'
+    ),
+    (
+        924,
+        'Tandemaus',
+        '',
+        7,
+        NULL,
+        'pokemon_924.png'
+    ),
+    (
+        925,
+        'Maushold',
+        '',
+        7,
+        NULL,
+        'pokemon_925.png'
+    ),
+    (
+        926,
+        'Fidough',
+        '',
+        10,
+        NULL,
+        'pokemon_926.png'
+    ),
+    (
+        927,
+        'Dachsbun',
+        '',
+        10,
+        NULL,
+        'pokemon_927.png'
+    ),
+    (
+        928,
+        'Smoliv',
+        '',
+        1,
+        10,
+        'pokemon_928.png'
+    ),
+    (
+        929,
+        'Dolliv',
+        '',
+        1,
+        10,
+        'pokemon_929.png'
+    ),
+    (
+        930,
+        'Arboliva',
+        '',
+        1,
+        10,
+        'pokemon_930.png'
+    ),
+    (
+        931,
+        'Squawkabilly',
+        '',
+        7,
+        4,
+        'pokemon_931.png'
+    ),
+    (
+        932,
+        'Nacli',
+        '',
+        13,
+        NULL,
+        'pokemon_932.png'
+    ),
+    (
+        933,
+        'Naclstack',
+        '',
+        13,
+        NULL,
+        'pokemon_933.png'
+    ),
+    (
+        934,
+        'Garganacl',
+        '',
+        13,
+        NULL,
+        'pokemon_934.png'
+    ),
+    (
+        935,
+        'Charcadet',
+        '',
+        3,
+        NULL,
+        'pokemon_935.png'
+    ),
+    (
+        936,
+        'Armarouge',
+        '',
+        3,
+        12,
+        'pokemon_936.png'
+    ),
+    (
+        937,
+        'Ceruledge',
+        '',
+        3,
+        16,
+        'pokemon_937.png'
+    ),
+    (
+        938,
+        'Tadbulb',
+        '',
+        8,
+        NULL,
+        'pokemon_938.png'
+    ),
+    (
+        939,
+        'Bellibolt',
+        '',
+        8,
+        NULL,
+        'pokemon_939.png'
+    ),
+    (
+        940,
+        'Wattrel',
+        '',
+        8,
+        4,
+        'pokemon_940.png'
+    ),
+    (
+        941,
+        'Kilowattrel',
+        '',
+        8,
+        4,
+        'pokemon_941.png'
+    ),
+    (
+        942,
+        'Maschiff',
+        '',
+        18,
+        NULL,
+        'pokemon_942.png'
+    ),
+    (
+        943,
+        'Mabosstiff',
+        '',
+        18,
+        NULL,
+        'pokemon_943.png'
+    ),
+    (
+        944,
+        'Shroodle',
+        '',
+        2,
+        7,
+        'pokemon_944.png'
+    ),
+    (
+        945,
+        'Grafaiai',
+        '',
+        2,
+        7,
+        'pokemon_945.png'
+    ),
+    (
+        946,
+        'Bramblin',
+        '',
+        1,
+        16,
+        'pokemon_946.png'
+    ),
+    (
+        947,
+        'Brambleghast',
+        '',
+        1,
+        16,
+        'pokemon_947.png'
+    ),
+    (
+        948,
+        'Toedscool',
+        '',
+        9,
+        1,
+        'pokemon_948.png'
+    ),
+    (
+        949,
+        'Toedscruel',
+        '',
+        9,
+        1,
+        'pokemon_949.png'
+    ),
+    (
+        950,
+        'Klawf',
+        '',
+        13,
+        NULL,
+        'pokemon_950.png'
+    ),
+    (
+        951,
+        'Capsakid',
+        '',
+        1,
+        NULL,
+        'pokemon_951.png'
+    ),
+    (
+        952,
+        'Scovillain',
+        '',
+        1,
+        3,
+        'pokemon_952.png'
+    ),
+    (
+        953,
+        'Rellor',
+        '',
+        6,
+        NULL,
+        'pokemon_953.png'
+    ),
+    (
+        954,
+        'Rabsca',
+        '',
+        6,
+        12,
+        'pokemon_954.png'
+    ),
+    (
+        955,
+        'Flittle',
+        '',
+        12,
+        NULL,
+        'pokemon_955.png'
+    ),
+    (
+        956,
+        'Espathra',
+        '',
+        12,
+        NULL,
+        'pokemon_956.png'
+    ),
+    (
+        957,
+        'Tinkatink',
+        '',
+        14,
+        10,
+        'pokemon_957.png'
+    ),
+    (
+        958,
+        'Tinkatuff',
+        '',
+        14,
+        10,
+        'pokemon_958.png'
+    ),
+    (
+        959,
+        'Tinkaton',
+        '',
+        14,
+        10,
+        'pokemon_959.png'
+    ),
+    (
+        960,
+        'Wiglett',
+        '',
+        5,
+        NULL,
+        'pokemon_960.png'
+    ),
+    (
+        961,
+        'Wugtrio',
+        '',
+        5,
+        NULL,
+        'pokemon_961.png'
+    ),
+    (
+        962,
+        'Bombirdier',
+        '',
+        7,
+        4,
+        'pokemon_962.png'
+    ),
+    (
+        963,
+        'Finizen',
+        '',
+        5,
+        NULL,
+        'pokemon_963.png'
+    ),
+    (
+        964,
+        'Palafin',
+        '',
+        5,
+        NULL,
+        'pokemon_964.png'
+    ),
+    (
+        965,
+        'Varoom',
+        '',
+        14,
+        2,
+        'pokemon_965.png'
+    ),
+    (
+        966,
+        'Revavroom',
+        '',
+        14,
+        2,
+        'pokemon_966.png'
+    ),
+    (
+        967,
+        'Cyclizar',
+        '',
+        7,
+        17,
+        'pokemon_967.png'
+    ),
+    (
+        968,
+        'Orthworm',
+        '',
+        14,
+        NULL,
+        'pokemon_968.png'
+    ),
+    (
+        969,
+        'Glimmet',
+        '',
+        2,
+        13,
+        'pokemon_969.png'
+    ),
+    (
+        970,
+        'Glimmora',
+        '',
+        2,
+        13,
+        'pokemon_970.png'
+    ),
+    (
+        971,
+        'Greavard',
+        '',
+        16,
+        NULL,
+        'pokemon_971.png'
+    ),
+    (
+        972,
+        'Houndstone',
+        '',
+        16,
+        NULL,
+        'pokemon_972.png'
+    ),
+    (
+        973,
+        'Flamigo',
+        '',
+        11,
+        4,
+        'pokemon_973.png'
+    ),
+    (
+        974,
+        'Cetoddle',
+        '',
+        15,
+        NULL,
+        'pokemon_974.png'
+    ),
+    (
+        975,
+        'Cetitan',
+        '',
+        15,
+        NULL,
+        'pokemon_975.png'
+    ),
+    (
+        976,
+        'Veluza',
+        '',
+        5,
+        12,
+        'pokemon_976.png'
+    ),
+    (
+        977,
+        'Dondozo',
+        '',
+        5,
+        NULL,
+        'pokemon_977.png'
+    ),
+    (
+        978,
+        'Tatsugiri',
+        '',
+        5,
+        12,
+        'pokemon_978.png'
+    ),
+    (
+        979,
+        'Annihilape',
+        '',
+        11,
+        16,
+        'pokemon_979.png'
+    ),
+    (
+        980,
+        'Clodsire',
+        '',
+        5,
+        9,
+        'pokemon_980.png'
+    ),
+    (
+        981,
+        'Farigiraf',
+        '',
+        7,
+        12,
+        'pokemon_981.png'
+    ),
+    (
+        982,
+        'Dudunsparce',
+        '',
+        7,
+        NULL,
+        'pokemon_982.png'
+    ),
+    (
+        983,
+        'Kingambit',
+        '',
+        18,
+        14,
+        'pokemon_983.png'
+    ),
+    (
+        984,
+        'Great Tusk',
+        '',
+        9,
+        11,
+        'pokemon_984.png'
+    ),
+    (
+        985,
+        'Scream Tail',
+        '',
+        10,
+        12,
+        'pokemon_985.png'
+    ),
+    (
+        986,
+        'Brute Bonnet',
+        '',
+        1,
+        18,
+        'pokemon_986.png'
+    ),
+    (
+        987,
+        'Flutter Mane',
+        '',
+        16,
+        10,
+        'pokemon_987.png'
+    ),
+    (
+        988,
+        'Slither Wing',
+        '',
+        6,
+        11,
+        'pokemon_988.png'
+    ),
+    (
+        989,
+        'Sandy Shocks',
+        '',
+        8,
+        9,
+        'pokemon_989.png'
+    ),
+    (
+        990,
+        'Iron Treads',
+        '',
+        9,
+        14,
+        'pokemon_990.png'
+    ),
+    (
+        991,
+        'Iron Bundle',
+        '',
+        15,
+        8,
+        'pokemon_991.png'
+    ),
+    (
+        992,
+        'Iron Hands',
+        '',
+        11,
+        8,
+        'pokemon_992.png'
+    ),
+    (
+        993,
+        'Iron Jugulis',
+        '',
+        18,
+        17,
+        'pokemon_993.png'
+    ),
+    (
+        994,
+        'Iron Moth',
+        '',
+        3,
+        2,
+        'pokemon_994.png'
+    ),
+    (
+        995,
+        'Iron Thorns',
+        '',
+        13,
+        8,
+        'pokemon_995.png'
+    ),
+    (
+        996,
+        'Frigibax',
+        '',
+        17,
+        15,
+        'pokemon_996.png'
+    ),
+    (
+        997,
+        'Arctibax',
+        '',
+        17,
+        15,
+        'pokemon_997.png'
+    ),
+    (
+        998,
+        'Baxcalibur',
+        '',
+        17,
+        15,
+        'pokemon_998.png'
+    ),
+    (
+        999,
+        'Gimmighoul',
+        '',
+        16,
+        NULL,
+        'pokemon_999.png'
+    ),
+    (
+        1000,
+        'Gholdengo',
+        '',
+        14,
+        16,
+        'pokemon_1000.png'
+    ),
+    (
+        1001,
+        'Wo-Chien',
+        '',
+        18,
+        1,
+        'pokemon_1001.png'
+    ),
+    (
+        1002,
+        'Chien-Pao',
+        '',
+        18,
+        15,
+        'pokemon_1002.png'
+    ),
+    (
+        1003,
+        'Ting-Lu',
+        '',
+        18,
+        9,
+        'pokemon_1003.png'
+    ),
+    (
+        1004,
+        'Chi-Yu',
+        '',
+        18,
+        3,
+        'pokemon_1004.png'
+    ),
+    (
+        1005,
+        'Roaring Moon',
+        '',
+        18,
+        17,
+        'pokemon_1005.png'
+    ),
+    (
+        1006,
+        'Iron Valiant',
+        '',
+        11,
+        10,
+        'pokemon_1006.png'
+    ),
+    (
+        1007,
+        'Koraidon',
+        '',
+        11,
+        17,
+        'pokemon_1007.png'
+    ),
+    (
+        1008,
+        'Miraidon',
+        '',
+        8,
+        17,
+        'pokemon_1008.png'
+    ),
+    (
+        1009,
+        'Walking Wake',
+        '',
+        5,
+        17,
+        'pokemon_1009.png'
+    ),
+    (
+        1010,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1011,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1012,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1013,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1014,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1015,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1016,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1017,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1018,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1019,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1020,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1021,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1022,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1023,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1024,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    ) (
+        1025,
+        'Iron Leaves',
+        '',
+        1,
+        17,
+        'pokemon_1010.png'
+    )
 ON DUPLICATE KEY UPDATE
-`NOME`=VALUES(`NOME`),
-`DESCRICAO`=VALUES(`DESCRICAO`),
-`TIPO_1`=VALUES(`TIPO_1`),
-`TIPO_2`=VALUES(`TIPO_2`),
-`ARQ_IMAGEM`=VALUES(`ARQ_IMAGEM`);
+    `NOME` = VALUES(`NOME`),
+    `DESCRICAO` = VALUES(`DESCRICAO`),
+    `TIPO_1` = VALUES(`TIPO_1`),
+    `TIPO_2` = VALUES(`TIPO_2`),
+    `ARQ_IMAGEM` = VALUES(`ARQ_IMAGEM`);
 
-/*!40000 ALTER TABLE `pokemon` ENABLE KEYS */;
+/*!40000 ALTER TABLE `pokemon` ENABLE KEYS */
+;
 UNLOCK TABLES;
-
-
