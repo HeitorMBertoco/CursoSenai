@@ -39,7 +39,7 @@ switch ($geracao) {
         break;
     case 9:
         $rangeInicio = 906;
-        $rangeFim = 1009;
+        $rangeFim = 1025;
         break;
 	default:
 		$rangeInicio = 1;
@@ -126,14 +126,20 @@ $lista_pokemons = $stmt->fetchAll();
                     <span><?= $pokemon['NOME'] ?></span>
                 </div>
 
-                <img src="../imagens/pokemons/<?= $pokemon['IMG_POKEMON'] ?>" alt="<?= $pokemon['NOME'] ?>">
+                <a href="../../imagens/pokemons/<?= $pokemon['IMG_POKEMON']?>" download>
+                    <img src="../imagens/pokemons/<?= $pokemon['IMG_POKEMON'] ?>" alt="<?= $pokemon['NOME'] ?>">
+                </a>
 
                 <div>
                     <?php if ($pokemon['IMG_TIPO1']): ?>
+                    <a href="../imagens/tipos/<?= $pokemon['IMG_TIPO1']?>" download>
                         <img src="../imagens/tipos/<?= $pokemon['IMG_TIPO1'] ?>" alt="Tipo 1">
+                    </a>
                     <?php endif; ?>
                     <?php if ($pokemon['IMG_TIPO2']): ?>
+                    <a href="../imagens/tipos/<?= $pokemon['IMG_TIPO2'] ?>" download>
                         <img src="../imagens/tipos/<?= $pokemon['IMG_TIPO2'] ?>" alt="Tipo 2">
+                    </a>
                     <?php endif; ?>
                 </div>
             </div>
