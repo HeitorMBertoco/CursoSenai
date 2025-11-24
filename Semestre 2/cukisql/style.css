@@ -1,0 +1,170 @@
+
+    /* ---------------------------------- */
+    /* Definição dos temas (Tema Claro/Escuro) */
+    /* ---------------------------------- */
+    :root {
+        /* Variáveis CSS para facilitar a troca de cor */
+        --cor-primaria-claro: #007bff; /* Azul de destaque */
+        --cor-borda-claro: #ccc;
+        --cor-fundo-claro: #f4f7f6;
+        --cor-fundo-form-claro: white;
+        
+        --cor-primaria-escuro: #4CAF50; /* Verde de destaque */
+        --cor-borda-escuro: #444;
+        --cor-fundo-escuro: #121212;
+        --cor-fundo-form-escuro: #1e1e1e;
+    }
+
+    /* Estilos Globais e Tipografia (aplica-se a ambos os temas) */
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        transition: background-color 0.4s, color 0.4s;
+    }
+
+    h1 {
+        margin-bottom: 25px;
+        font-weight: 600;
+    }
+
+    form {
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    /* Estilos de Formulário */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        font-size: 0.95rem;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: var(--cor-destaque);
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Sombra de foco */
+    }
+
+    /* Estilo dos Botões */
+    .button {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 1.1rem;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.1s;
+    }
+
+    .button:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+    }
+    
+    /* Mensagens de Status */
+    .status-message {
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        max-width: 440px;
+        box-sizing: border-box;
+    }
+
+    .error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+
+    /* ---------------------------------- */
+    /* Tema CLARO: Fundo branco e fonte preta */
+    /* ---------------------------------- */
+    .tema-claro {
+        background-color: var(--cor-fundo-claro);
+        color: black;
+    }
+
+    .tema-claro form {
+        background-color: var(--cor-fundo-form-claro);
+        border: 1px solid var(--cor-borda-claro);
+    }
+
+    .tema-claro .form-group input {
+        border: 1px solid var(--cor-borda-claro);
+    }
+
+    .tema-claro .button {
+        background-color: var(--cor-primaria-claro);
+        color: white;
+    }
+    
+    .tema-claro .form-group input:focus {
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    }
+
+    /* ---------------------------------- */
+    /* Tema ESCURO: Fundo preto e fonte branca */
+    /* ---------------------------------- */
+    .tema-escuro {
+        background-color: var(--cor-fundo-escuro);
+        color: white;
+    }
+
+    .tema-escuro form {
+        background-color: var(--cor-fundo-form-escuro);
+        border: 1px solid var(--cor-borda-escuro);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .tema-escuro .form-group input {
+        background-color: #2c2c2c;
+        border: 1px solid #555;
+        color: white;
+    }
+
+    .tema-escuro .form-group input:focus {
+        border-color: var(--cor-primaria-escuro);
+        box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.4);
+    }
+
+    .tema-escuro .button {
+        background-color: var(--cor-primaria-escuro); /* Verde no tema escuro */
+        color: white;
+    }
+
+    .tema-escuro .error {
+        background-color: #4e1919;
+        color: #ffbaba;
+        border: 1px solid #7c3131;
+    }
+
+    /* Link de Login no tema escuro */
+    .tema-escuro a {
+        color: #bbb;
+    }
