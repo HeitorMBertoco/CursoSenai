@@ -6,7 +6,7 @@ namespace Api_2.Models
         public int Divisor { get; set; }
         public double Resultado { get; set; }
 
-        public Dividir(int dividendo, int divisor)
+        public Divisao(int dividendo, int divisor)
         {
             Dividendo = dividendo;
             Divisor = divisor;

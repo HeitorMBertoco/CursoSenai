@@ -1,4 +1,4 @@
-namespace api_2.Models
+namespace Api_2.Models
 {
     public class Soma
     {
@@ -7,7 +7,7 @@ namespace api_2.Models
         public int Resultado { get; set; }
 
 
-        public Somar(int fator1, int fator2)
+        public Soma(int fator1, int fator2)
         {
             Fator1 = fator1;
             Fator2 = fator2;

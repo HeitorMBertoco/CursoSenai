@@ -1,12 +1,12 @@
-namespace api2.Models
+namespace Api_2.Models
 {
-    public class Subtraçao
+    public class Subtracao
     {
         public int Minuendo { get; set; }
         public int Subtraendo { get; set; }
         public int Resultado { get; set; }
 
-        public Subtrair(int minuendo, int subtraendo)
+        public Subtracao(int minuendo, int subtraendo)
         {
             Minuendo = minuendo;
             Subtraendo = subtraendo;
