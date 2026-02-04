@@ -3,4 +3,5 @@ export interface Weather {
   temperatureC: number;
   temperatureF: number;
   summary: string;
+  city: string;
 }

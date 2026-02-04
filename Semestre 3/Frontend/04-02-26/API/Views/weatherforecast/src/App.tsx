@@ -19,16 +19,17 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="root">
       <h1>Weather Forecast</h1>
 
       {weatherData.map((item, index) => (
-        <div key={index}>
+        <div className="Container" key={index}>
           <h3>{item.date}</h3>
           <p>
             Temperature: {item.temperatureC} °C / {item.temperatureF} °F
           </p>
           <p>Summary: {item.summary}</p>
+          <p>City: {item.city}</p>
         </div>
       ))}
     </div>
