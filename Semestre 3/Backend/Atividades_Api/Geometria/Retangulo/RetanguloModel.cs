@@ -1,5 +1,5 @@
 
-namespace AtividadesAPI.Geometria.Retangulo
+namespace AtividadesApi.Geometria.Retangulo
 {
     public class RetanguloModel
     {
