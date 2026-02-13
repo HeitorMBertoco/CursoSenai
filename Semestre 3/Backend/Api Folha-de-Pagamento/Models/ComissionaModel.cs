@@ -1,21 +1,20 @@
 
 
-using System.Reflection.Metadata.Ecma335;
-
 namespace Api_Folha_de_Pagamento.Models
 {
-    public class ComissionaModel : FuncionarioModel
+    public class ComissionadoModel : FuncionarioModel
     {
-        public double TotalVendas { get; set; }
-        public double TaxaComissao { get; set; }
-        public ComissionaModel(string nome, string foto,  double totalVendas, double taxaComissao) : base(nome, foto)
+        private double TotalVendas { get; set; }
+        private double TaxaComissao { get; set; }
+        public ComissionadoModel(string nome, string foto,  double totalVendas, double taxaComissao) : base(nome, foto)
         {
             TotalVendas = totalVendas;
             TaxaComissao = taxaComissao;
+            Pagamento = CalcularSalario();
         }
         override public double CalcularSalario()
         {
-            return this.Pagamento = TotalVendas * TaxaComissao;
+            return TotalVendas * (TaxaComissao / 100);
         }
     }
 }

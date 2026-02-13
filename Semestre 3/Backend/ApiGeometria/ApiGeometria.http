@@ -1,0 +1,6 @@
+@ApiGeometria_HostAddress = http://localhost:5150
+
+GET {{ApiGeometria_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
