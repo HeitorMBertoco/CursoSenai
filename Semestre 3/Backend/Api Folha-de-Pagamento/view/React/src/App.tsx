@@ -90,7 +90,7 @@ function App() {
               funcionario.nome,
               `Tipo: ${funcionario.tipo}`,
               `A pagar R$ ${funcionario.pagamento}`,
-              `${index + 56}`,
+              `${index + 63}`,
             ),
           )}
         </div>
