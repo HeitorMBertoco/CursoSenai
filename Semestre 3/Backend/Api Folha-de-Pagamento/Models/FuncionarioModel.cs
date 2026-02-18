@@ -5,9 +5,12 @@ namespace Api_Folha_de_Pagamento.Models
         public string Nome { get; set; }
         public string Foto { get; set; } = string.Empty;  // Inicializa como vazio → resolve CS8618
         public double Pagamento { get; set; }
+        
+      public abstract string Tipo { get; }
 
         public FuncionarioModel(string nome, string foto)
         {
+            
             Nome = nome;
             Foto = foto;  // Agora atribui o parâmetro corretamente (resolve CS1717)
         }

@@ -11,6 +11,7 @@ namespace Api_Folha_de_Pagamento.Models
 
         private double Desconto { get; set; }
 
+            public override string Tipo => "Assalariado";   
         public AssalariadoModel(string nome, string foto, double salario, double desconto) : base(nome, foto)
         {
             Salario = salario;
