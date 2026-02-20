@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Aluno\\Desktop\\CursoSenai\\Semestre 3\\Backend\\ApiDocs\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F4E2459F-769A-48A9-B47D-B672C470B1F4}|ApiDocs\\ApiDocs.csproj|c:\\users\\aluno\\desktop\\cursosenai\\semestre 3\\backend\\apidocs\\apidocs\\rg\\rgmodelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4E2459F-769A-48A9-B47D-B672C470B1F4}|ApiDocs\\ApiDocs.csproj|solutionrelative:apidocs\\rg\\rgmodelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4E2459F-769A-48A9-B47D-B672C470B1F4}|ApiDocs\\ApiDocs.csproj|c:\\users\\aluno\\desktop\\cursosenai\\semestre 3\\backend\\apidocs\\apidocs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4E2459F-769A-48A9-B47D-B672C470B1F4}|ApiDocs\\ApiDocs.csproj|solutionrelative:apidocs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4E2459F-769A-48A9-B47D-B672C470B1F4}|ApiDocs\\ApiDocs.csproj|c:\\users\\aluno\\desktop\\cursosenai\\semestre 3\\backend\\apidocs\\apidocs\\rg\\rgmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4E2459F-769A-48A9-B47D-B672C470B1F4}|ApiDocs\\ApiDocs.csproj|solutionrelative:apidocs\\rg\\rgmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4E2459F-769A-48A9-B47D-B672C470B1F4}|ApiDocs\\ApiDocs.csproj|c:\\users\\aluno\\desktop\\cursosenai\\semestre 3\\backend\\apidocs\\apidocs\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F4E2459F-769A-48A9-B47D-B672C470B1F4}|ApiDocs\\ApiDocs.csproj|solutionrelative:apidocs\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4E2459F-769A-48A9-B47D-B672C470B1F4}|ApiDocs\\ApiDocs.csproj|c:\\users\\aluno\\desktop\\cursosenai\\semestre 3\\backend\\apidocs\\apidocs\\apidocs.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{F4E2459F-769A-48A9-B47D-B672C470B1F4}|ApiDocs\\ApiDocs.csproj|solutionrelative:apidocs\\apidocs.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Aluno\\Desktop\\CursoSenai\\Semestre 3\\Backend\\ApiDocs\\ApiDocs\\Program.cs",
+              "RelativeDocumentMoniker": "ApiDocs\\Program.cs",
+              "ToolTip": "C:\\Users\\Aluno\\Desktop\\CursoSenai\\Semestre 3\\Backend\\ApiDocs\\ApiDocs\\Program.cs",
+              "RelativeToolTip": "ApiDocs\\Program.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAcwBIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T14:04:31.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RgModelsController.cs",
+              "DocumentMoniker": "C:\\Users\\Aluno\\Desktop\\CursoSenai\\Semestre 3\\Backend\\ApiDocs\\ApiDocs\\Rg\\RgModelsController.cs",
+              "RelativeDocumentMoniker": "ApiDocs\\Rg\\RgModelsController.cs",
+              "ToolTip": "C:\\Users\\Aluno\\Desktop\\CursoSenai\\Semestre 3\\Backend\\ApiDocs\\ApiDocs\\Rg\\RgModelsController.cs",
+              "RelativeToolTip": "ApiDocs\\Rg\\RgModelsController.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAA1wFEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T13:56:50.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Aluno\\Desktop\\CursoSenai\\Semestre 3\\Backend\\ApiDocs\\ApiDocs\\appsettings.json",
+              "RelativeDocumentMoniker": "ApiDocs\\appsettings.json",
+              "ToolTip": "C:\\Users\\Aluno\\Desktop\\CursoSenai\\Semestre 3\\Backend\\ApiDocs\\ApiDocs\\appsettings.json",
+              "RelativeToolTip": "ApiDocs\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-20T13:24:02.358Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApiDocs.http",
+              "DocumentMoniker": "C:\\Users\\Aluno\\Desktop\\CursoSenai\\Semestre 3\\Backend\\ApiDocs\\ApiDocs\\ApiDocs.http",
+              "RelativeDocumentMoniker": "ApiDocs\\ApiDocs.http",
+              "ToolTip": "C:\\Users\\Aluno\\Desktop\\CursoSenai\\Semestre 3\\Backend\\ApiDocs\\ApiDocs\\ApiDocs.http",
+              "RelativeToolTip": "ApiDocs\\ApiDocs.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-02-20T13:23:58.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RgModel.cs",
+              "DocumentMoniker": "C:\\Users\\Aluno\\Desktop\\CursoSenai\\Semestre 3\\Backend\\ApiDocs\\ApiDocs\\Rg\\RgModel.cs",
+              "RelativeDocumentMoniker": "ApiDocs\\Rg\\RgModel.cs",
+              "ToolTip": "C:\\Users\\Aluno\\Desktop\\CursoSenai\\Semestre 3\\Backend\\ApiDocs\\ApiDocs\\Rg\\RgModel.cs",
+              "RelativeToolTip": "ApiDocs\\Rg\\RgModel.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T13:23:55.151Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

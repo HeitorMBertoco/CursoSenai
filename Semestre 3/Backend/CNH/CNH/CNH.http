@@ -1,0 +1,6 @@
+@CNH_HostAddress = http://localhost:5222
+
+GET {{CNH_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
