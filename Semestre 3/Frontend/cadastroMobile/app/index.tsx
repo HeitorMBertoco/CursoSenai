@@ -6,8 +6,8 @@ export default function App() {
   const router = useRouter();
   return (
     <View style={styles.container}>
-      <Button title="Ir pro Cadastro" onPress={() => router.push("/cadastroScreen")} />
-        <Button title="Ir pro Pesquisa" onPress={() => router.push("/pesquisaScreen")} />
+      <Button title="Ir pro Cadastro" onPress={() => router.push("/cartoes/cadastroScreen")} />
+        <Button title="Ir pro Pesquisa" onPress={() => router.push("/cartoes/pesquisaScreen")} />
     </View>
   );
 }
