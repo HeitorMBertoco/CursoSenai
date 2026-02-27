@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import { View, Text ,TextInput, Pressable, Button } from "react-native";
+import { View, Text, TextInput, Pressable, Button } from "react-native";
 import { ObterCartaoPorId, CriarCartao } from "./cartaoApi";
 import { use, useEffect, useState } from "react";
 import ICartao from "./cartaoInterface";
@@ -11,11 +11,8 @@ export default function Cadastro() {
   const [rm, setRm] = useState<ICartao["rm"]>(0);
   const [unidade, setUnidade] = useState<ICartao["unidade"]>("");
   const [curso, setCurso] = useState<ICartao["curso"]>("");
-  const [nascimento, setNascimento] = useState<ICartao["nascimento"]>(new Date());
+  const [nascimento, setNascimento] = useState<ICartao["nascimento"]>("");
   const [urlFoto, setUrlFoto] = useState<ICartao["urlFoto"]>("");
-
-
-
 
   const params = useLocalSearchParams();
   const id = params.id?.toString();
@@ -28,32 +25,54 @@ export default function Cadastro() {
   }, [id]);
   const Inputs = () => {
     return (
-    <>
-      <Text>Criar Cartao</Text>
-      <TextInput value={nome} onChangeText={setNome} placeholder="nome"></TextInput>
-      <TextInput value={rm.toString()} onChangeText={(text) => setRm(Number(text))} placeholder="rm"></TextInput>
-      <TextInput value={unidade} onChangeText={setUnidade} placeholder="unidade"></TextInput>
-      <TextInput value={curso} onChangeText={setCurso} placeholder="curso"></TextInput>
-      <TextInput value={nascimento.toString()} onChangeText={(text) => setNascimento(new Date(text))} placeholder="nascimento"></TextInput>
-      <TextInput value={urlFoto} onChangeText={setUrlFoto} placeholder="urlFoto"></TextInput>
-      <Button title="Criar Cartao"   onPress={() => {
-        CriarCartao({
-          nome,
-          rm,
-          unidade,
-          curso,
-          nascimento,
-          urlFoto,
-        }).then((cartao) => {
-          setCartao(cartao);
-        });
-
-
-      }}></Button>
-      
-
-      
-    </>
+      <>
+        <Text>Criar Cartao</Text>
+        <TextInput
+          value={nome}
+          onChangeText={setNome}
+          placeholder="nome"
+        ></TextInput>
+        <TextInput
+          value={rm.toString()}
+          onChangeText={(text) => setRm(Number(text))}
+          placeholder="rm"
+        ></TextInput>
+        <TextInput
+          value={unidade}
+          onChangeText={setUnidade}
+          placeholder="unidade"
+        ></TextInput>
+        <TextInput
+          value={curso}
+          onChangeText={setCurso}
+          placeholder="curso"
+        ></TextInput>
+        <TextInput
+          value={nascimento}
+          onChangeText={setNascimento}
+          placeholder="YYYY-MM-DD"
+        />
+        <TextInput
+          value={urlFoto}
+          onChangeText={setUrlFoto}
+          placeholder="urlFoto"
+        ></TextInput>
+        <Button
+          title="Criar Cartao"
+          onPress={() => {
+            CriarCartao({
+              nome,
+              rm,
+              unidade,
+              curso,
+              nascimento,
+              urlFoto,
+            }).then((cartao) => {
+              setCartao(cartao);
+            });
+          }}
+        ></Button>
+      </>
     );
   };
   const texto = () => {
@@ -65,7 +84,6 @@ export default function Cadastro() {
         <Text>{cartao?.curso}</Text>
         <Text>{cartao?.nascimento.toString()}</Text>
         <Text>{cartao?.urlFoto}</Text>
-        
       </>
     );
   };
