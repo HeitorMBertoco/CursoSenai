@@ -1,0 +1,91 @@
+.nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+    gap: 3rem;
+    ;
+    
+    height: 100vh;
+}
+.nav a{
+    font-size: 1.5rem;
+    padding: 3px;
+    color: white;
+    margin-top: 10px;
+    text-decoration: none;
+    background-color: black;
+    border-radius: 5px;
+
+}
+.img{
+    width: 90vh;
+    height: 60vh;
+    border-radius: 5px;
+    background-image: url(../../public/image.jpg);
+    background-size: cover;
+    background-color: black;
+    
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    gap: 1rem;
+    background-color: aliceblue;
+    color: black;
+    /* height auto to grow with content */
+    /*height: 100vh*/
+}
+body{
+    /* allow body to expand with content rather than fixed 100vh */
+    min-height: 100vh;
+    width: 100vw;
+
+    display: grid;
+    grid-template-columns:
+
+    35vw 65vw;
+    grid-template-areas: 
+    "nav" "main";
+}
+
+/* ensure images do not sit side by side or overflow */
+.main img,
+.main .next-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+.inputForm{
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+.inputForm  {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+.buttonForm{
+    border: none;
+    padding: 10px;
+    width: 200px;
+    border-radius: 5px;
+
+}
+.buttonForm:hover{
+    transition: 0.3s;
+    background-color: black;
+    
+
+}
+.inputForm::placeholder{
+    color: white;
+}
