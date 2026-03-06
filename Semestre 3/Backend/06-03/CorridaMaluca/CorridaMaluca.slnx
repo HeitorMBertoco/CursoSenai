@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../Equipe Domain/Equipe Domain.csproj" />
+  <Project Path="../PilotoDomain/PilotoDomain.csproj" />
+  <Project Path="../Venda Domain/Venda Domain.csproj" />
+  <Project Path="CorridaMaluca.csproj" />
+</Solution>
