@@ -1,6 +1,5 @@
 'use client';
 import Link from "next/link";
-import Image from "next/image";
 import "../main.css";
 import ICartao from "../InterfaceCartao";
 import { useEffect, useState } from "react";
@@ -47,18 +46,40 @@ export default function Pesquisar() {
                 className="inputForm"
             />
             
-            {filteredDados.map((cartao) => (
-                <div key={cartao.id} style={{ marginBottom: '20px', textAlign: 'center' }}>
-                    <img
-                        src={cartao.urlFoto}
-                        alt="Imagem"
-                        style={{ display: 'block', margin: '0 auto', maxWidth: '100%', height: 'auto' }}
-                    />
-                    <Link href={`/cadastrar?id=${cartao.id}`} style={{}}>
-                        <h2>{cartao.nome}</h2>
-                    </Link>
-                </div>
-            ))}
+            {filteredDados.map((cartao) => {
+                const isGif = cartao.urlFoto.toLowerCase().endsWith('.gif');
+                return (
+                    <div
+                        key={cartao.id}
+                        style={{
+                            marginBottom: '20px',
+                            textAlign: 'center',
+                            padding: '16px',
+                            border: '1px solid rgba(0,0,0,0.2)',
+                            borderRadius: '12px',
+                            background: 'rgba(255,255,255,0.85)',
+                            boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
+                        }}
+                    >
+                        <img
+                            src={cartao.urlFoto}
+                            alt="Imagem"
+                            style={{
+                                display: 'block',
+                                margin: '0 auto 12px',
+                                maxWidth: isGif ? '200px' : '100%',
+                                maxHeight: isGif ? '200px' : 'auto',
+                                width: isGif ? '200px' : 'auto',
+                                height: isGif ? '200px' : 'auto',
+                                objectFit: isGif ? 'contain' : 'unset',
+                            }}
+                        />
+                        <Link href={`/cadastrar?id=${cartao.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <h2 style={{ margin: 0 }}>{cartao.nome}</h2>
+                        </Link>
+                    </div>
+                );
+            })}
             
                 
         </div>
