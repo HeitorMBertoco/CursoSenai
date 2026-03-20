@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ProdutoDomain\ProdutoDomain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="./OperacaoEstoqueDetalhe.cs" Link="OperacaoEstoqueDetalhe.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.5" />
+	</ItemGroup>
+
+</Project>

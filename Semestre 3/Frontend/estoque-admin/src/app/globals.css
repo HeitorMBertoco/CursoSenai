@@ -1,0 +1,47 @@
+body {
+  display: grid;
+  grid-template-rows: 8vh 4vh 78vh 10vh;
+
+  grid-template-areas:
+    "h"
+    "m"
+    "main"
+    "f";
+    height: 100vh;
+    width: 100vw;
+}
+
+.header {
+  grid-area: h;
+  background-color: rgb(209, 58, 58);
+  display: flex;
+  justify-content: center;
+}
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: m;
+  background-color: rgb(209, 58, 58);
+  color: black;
+  gap: 60px;
+  text-align: center;
+}
+.menu a{
+  text-decoration: none;
+  color: black;
+  
+  margin-left: -40px
+}
+.main {
+  grid-area: main;
+  background-color: white;
+}
+.footer{
+  grid-area: f;
+  background-color: grey;
+}
+*{
+  margin: 0;
+
+}

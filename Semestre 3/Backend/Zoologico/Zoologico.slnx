@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="AnimalDomain/AnimalDomain.csproj" />
+  <Project Path="zoologico/zoologico.csproj" />
+</Solution>
