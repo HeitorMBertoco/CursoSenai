@@ -41,6 +41,40 @@ namespace zoologico.Controllers
 
             return genero;
         }
+        // PATCH: api/Generoes/5
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchGenero(Guid id, Genero genero)
+        {
+            if (id != genero.Id)
+            {
+                return BadRequest();
+            }
+
+            var existente = await _context.Genero.FindAsync(id);
+
+            if (existente == null)
+            {
+                return NotFound();
+            }
+
+            if (!string.IsNullOrEmpty(genero.Nome))
+                existente.Nome = genero.Nome;
+
+            if (!string.IsNullOrEmpty(genero.Desc))
+                existente.Desc = genero.Desc;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!GeneroExists(id)) return NotFound();
+                else throw;
+            }
+
+            return NoContent();
+        }
 
         // PUT: api/Generoes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

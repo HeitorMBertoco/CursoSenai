@@ -41,6 +41,53 @@ namespace zoologico.Controllers
 
             return especie;
         }
+        // PATCH: api/Especies/5
+        // PATCH: api/Especies/5
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchEspecie(Guid id, Especie especie)
+        {
+            if (id != especie.Id)
+            {
+                return BadRequest();
+            }
+
+            var existente = await _context.Especie.FindAsync(id);
+
+            if (existente == null)
+            {
+                return NotFound();
+            }
+
+            // Atualiza apenas as propriedades que foram enviadas
+            if (!string.IsNullOrEmpty(especie.Nome))
+                existente.Nome = especie.Nome;
+
+            if (!string.IsNullOrEmpty(especie.Desc))
+                existente.Desc = especie.Desc;
+
+            if (especie.Quantidade.HasValue)
+                existente.Quantidade = especie.Quantidade;
+
+            if (!string.IsNullOrEmpty(especie.Arquivo_imagem))
+                existente.Arquivo_imagem = especie.Arquivo_imagem;
+
+            // Nota: Geralmente não se altera o objeto Genero inteiro via Patch de Especie, 
+            // mas se precisar alterar a referência, faria algo como:
+            if (especie.Genero != null)
+                existente.Genero = especie.Genero;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EspecieExists(id)) return NotFound();
+                else throw;
+            }
+
+            return NoContent();
+        }
 
         // PUT: api/Especies/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
