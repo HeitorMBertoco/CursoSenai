@@ -1,0 +1,14 @@
+.botaodobem{
+    background-color: greenyellow;
+    border: none;
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+}
+.botaodomal{
+    background-color: red;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    padding: 20px;
+}

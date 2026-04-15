@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ControleEstoque.Contracts;
 using ControleEstoque.Data;
 using ProdutoDomain;
 
@@ -76,12 +73,57 @@ namespace ControleEstoque.Controllers
         // POST: api/ProdutoModels
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ProdutoModel>> PostProdutoModel(ProdutoModel produtoModel)
+        public async Task<ActionResult<ProdutoModel>> PostProdutoModel(PostProdutoModelRequest request
+            )
         {
+            var produtoModel= new ProdutoModel(
+                true,
+                request.CategoriaId,
+                request.UnidadeMedidaId,
+                request.Nome,
+                request.Descricao,
+                request.QuantidadeAtual ?? 0
+                );
+
+
             _context.ProdutoModel.Add(produtoModel);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetProdutoModel", new { id = produtoModel.id }, produtoModel);
+        }
+
+        [HttpPatch("/imagem/{id}")]
+
+        public async Task<IActionResult> PacthProdutoImagem(Guid id, IFormFile arquivo)
+        {
+            var produto = await _context.ProdutoModel.FindAsync(id);
+
+            if (produto == null)
+            {
+                return NotFound("Produto não encontrado"); 
+            }
+            var extensao = Path.GetExtension(arquivo.FileName).ToLower();
+
+            var diretorio = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagens");
+
+            var dirarq = Path.Combine(diretorio, $"{id}{extensao}");
+
+            var stream = new FileStream(dirarq, FileMode.Create);
+            await arquivo.CopyToAsync(stream);
+
+            
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch(DbUpdateConcurrencyException)
+            {
+                return BadRequest();
+            }
+
+
+            return NoContent();
         }
 
         // DELETE: api/ProdutoModels/5

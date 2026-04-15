@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mapster" Version="10.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.2">
@@ -20,6 +21,10 @@
 	<ItemGroup>
 		<ProjectReference Include="..\ProdutoDomain\ProdutoDomain.csproj" />
 		<ProjectReference Include="..\OperacionalDomain\OperacionalDomain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\imagens\" />
 	</ItemGroup>
 
 </Project>

@@ -4,6 +4,7 @@ using ControleEstoque.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleEstoque.Migrations
 {
     [DbContext(typeof(ControleEstoqueContext))]
-    partial class ControleEstoqueContextModelSnapshot : ModelSnapshot
+    [Migration("20260410191433_Tudo")]
+    partial class Tudo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,14 +119,17 @@ namespace ControleEstoque.Migrations
                     b.Property<decimal>("QuantidadeAtual")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("UnidadeMedidaId")
+                    b.Property<Guid>("UnidadeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UnidadeMedidaid")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("id");
 
                     b.HasIndex("CategoriaId");
 
-                    b.HasIndex("UnidadeMedidaId");
+                    b.HasIndex("UnidadeMedidaid");
 
                     b.ToTable("ProdutoModel");
                 });
@@ -177,7 +183,7 @@ namespace ControleEstoque.Migrations
 
                     b.HasOne("ProdutoDomain.UnidadeMedida", "UnidadeMedida")
                         .WithMany()
-                        .HasForeignKey("UnidadeMedidaId")
+                        .HasForeignKey("UnidadeMedidaid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

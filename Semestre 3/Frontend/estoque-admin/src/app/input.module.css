@@ -1,0 +1,14 @@
+.containerPesquisa{
+    height: 80px;
+    gap: 10px;
+    margin-left: 10px;
+    
+}
+.select{
+    height: 30px;
+    width: 150px;
+    border:none;
+    border-radius: 12px;
+
+    margin-right: 10px;
+}

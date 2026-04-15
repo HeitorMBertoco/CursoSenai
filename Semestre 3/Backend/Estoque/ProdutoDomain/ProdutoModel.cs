@@ -8,14 +8,15 @@ namespace ProdutoDomain
 
      
 
-        public ProdutoModel(bool habilitado, CategoriaProduto categoria, string nome, string nomeArquivoFoto, string descricao, Decimal quantidadeAtual, UnidadeMedida unidadeMedida)
+        public ProdutoModel(bool habilitado, Guid CategoriaId,Guid UnidadeMedidaId, string nome, string descricao, Decimal quantidadeAtual)
         {
             
             Habilitado = habilitado;
-            this.unidadeMedida = unidadeMedida;
-            Categoria = categoria;
+            this.UnidadeMedidaId = UnidadeMedidaId;
+            this.CategoriaId = CategoriaId;
+            
             Nome = nome;
-            NomeArquivoFoto = nomeArquivoFoto;
+            
             Descricao = descricao;
             if (quantidadeAtual >= 0)
             {
@@ -29,16 +30,15 @@ namespace ProdutoDomain
         public Guid CategoriaId { get; set; }
 
 
-        public Guid UnidadeId { get; set; }
+        public Guid UnidadeMedidaId { get; set; }
 
         public Boolean Habilitado { get; set; } = false;
 
-        public UnidadeMedida unidadeMedida { get; set; }
+        public UnidadeMedida UnidadeMedida { get; set; }
         public CategoriaProduto? Categoria { get; set; }
         [StringLength(20)]
         public String Nome { get; set; }
-        [StringLength(12)]
-        public String NomeArquivoFoto { get; set; }
+        
         [StringLength(50)]
         public String Descricao { get; set; }
         [Column(TypeName = "decimal(18,2)")]
