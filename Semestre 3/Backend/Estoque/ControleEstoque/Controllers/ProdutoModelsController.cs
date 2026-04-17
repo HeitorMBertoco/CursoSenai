@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using ControleEstoque.Contracts;
 using ControleEstoque.Data;
 using ProdutoDomain;
-
+using System.IO;
 namespace ControleEstoque.Controllers
 {
     [Route("api/[controller]")]
@@ -108,6 +108,12 @@ namespace ControleEstoque.Controllers
 
             var dirarq = Path.Combine(diretorio, $"{id}{extensao}");
 
+
+            if (!string.IsNullOrEmpty(produto.NomeArquivoFoto) && System.IO.File.Exists(Path.Combine(diretorio, produto.NomeArquivoFoto))) {
+
+                System.IO.File.Delete(Path.Combine(diretorio, produto.NomeArquivoFoto));
+            
+            }
             var stream = new FileStream(dirarq, FileMode.Create);
             await arquivo.CopyToAsync(stream);
 
@@ -135,7 +141,17 @@ namespace ControleEstoque.Controllers
             {
                 return NotFound();
             }
+            if (!string.IsNullOrEmpty(produtoModel.NomeArquivoFoto))
+            {
+                var diretorio = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagens");
 
+                var dirArquivo = Path.Combine(diretorio, produtoModel.NomeArquivoFoto);
+
+                if (System.IO.File.Exists(dirArquivo))
+                {
+                    System.IO.File.Delete(dirArquivo);
+                }
+            }
             _context.ProdutoModel.Remove(produtoModel);
             await _context.SaveChangesAsync();
 

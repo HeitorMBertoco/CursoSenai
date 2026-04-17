@@ -29,6 +29,8 @@ namespace ProdutoDomain
 
         public Guid CategoriaId { get; set; }
 
+        public string? NomeArquivoFoto {  get; set; } = null;
+
 
         public Guid UnidadeMedidaId { get; set; }
 
@@ -47,3 +49,62 @@ namespace ProdutoDomain
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
