@@ -12,8 +12,23 @@ namespace ControleEstoque
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<ControleEstoqueContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ControleEstoqueContext") ?? throw new InvalidOperationException("Connection string 'ControleEstoqueContext' not found.")));
-            
+
             // Add services to the container.
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    policy =>
+                    {
+                        policy
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
+
+          
+
+            
             builder.Services.AddSwaggerGen();
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -34,7 +49,7 @@ namespace ControleEstoque
             app.UseSwaggerUI();
             app.UseAuthorization();
 
-
+            app.UseCors("AllowAll");
             app.MapControllers();
 
             app.Run();
