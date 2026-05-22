@@ -43,8 +43,8 @@ namespace ControleEstoque
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
-            
             app.UseSwagger();
             app.UseSwaggerUI();
             app.UseAuthorization();

@@ -12,6 +12,6 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>ControleEstoque.Data.ControleEstoqueContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
-    <NameOfLastUsedPublishProfile>C:\Users\Aluno\Desktop\CursoSenai\Semestre 3\Backend\Estoque\ControleEstoque\Properties\PublishProfiles\site53645-WebDeploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\.bondia\CursoSenai\CursoSenai\Semestre 3\Backend\Estoque\ControleEstoque\Properties\PublishProfiles\site53645-WebDeploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

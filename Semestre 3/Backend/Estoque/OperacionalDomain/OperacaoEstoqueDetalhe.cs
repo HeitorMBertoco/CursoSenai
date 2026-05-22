@@ -19,7 +19,7 @@ namespace OperacionalDomain
             }
             else
             {
-                new ArgumentException("Produto nao esta Habilitado");
+                throw new ArgumentException("Produto não está habilitado.", nameof(produto));
             }
             
             
