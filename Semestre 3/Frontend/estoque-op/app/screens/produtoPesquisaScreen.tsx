@@ -26,10 +26,10 @@ export default function Pesquisa(){
             <View style={styles.input}>
 
                 {produtos.map((produto) => (
-                    <>
+                    <View key={produto.id}>
                     <Text>{produto.nome}</Text>
                     <Text>{produto.quantidadeAtual}</Text>
-                    </>
+                    </View>
                 ))}
 
 
