@@ -1,37 +1,36 @@
-import { IProduto, ICategoriaProduto, IUnidadeMedida } from "./interfaces";
 
-/* =========================
-   API GENÉRICA (FETCH)
-========================= */
+const BASE_URL = "http://clona-debito2026.runasp.net/api";
 
-function api<T>(endpoint: string) {
+export function Listar<T>(endpoint: string) {
   return {
     listar: async (): Promise<T[]> => {
-      const response = await fetch(
-        `https://clona-debito2026.runasp.net/api/${endpoint}`
-      );
+      const res = await fetch(`${BASE_URL}/${endpoint}`);
 
-      if (!response.ok) {
-        throw new Error(
-          `Erro ao buscar ${endpoint}: ${response.status}`
-        );
+      if (!res.ok) {
+        throw new Error(`Erro ao listar ${endpoint}`);
       }
 
-      const data: T[] = await response.json();
-      return data;
+      return res.json();
     },
   };
 }
 
-/* =========================
-   APIS
-========================= */
+export function Criar<T, D = unknown>(endpoint: string) {
+  return {
+    criar: async (dados: D): Promise<T> => {
+      const res = await fetch(`${BASE_URL}/${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dados),
+      });
 
-export const ProdutoApi =
-  api<IProduto>("ProdutoModels");
+      if (!res.ok) {
+        throw new Error(`Erro ao criar ${endpoint}`);
+      }
 
-export const CategoriaApi =
-  api<ICategoriaProduto>("CategoriaProdutoes");
-
-export const UnidadeApi =
-  api<IUnidadeMedida>("UnidadeMedidas");
+      return res.json();
+    },
+  };
+}

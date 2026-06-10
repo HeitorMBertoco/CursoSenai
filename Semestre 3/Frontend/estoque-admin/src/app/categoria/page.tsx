@@ -1,38 +1,38 @@
-'use client'
+'use client';
 
 import { useEffect, useState } from "react";
+import { CategoriaService } from "@/app/services";
+import { ICategoriaProduto } from "@/app/interfaces";
 
-import { CategoriaApi } from "../api";
-import { ICategoriaProduto } from "../interfaces" ;
-
-export default function ListaCat() {
-  const [categorias, setCategorias] = useState<
-    ICategoriaProduto[]
-  >([]);
+export default function ListaCategorias() {
+  const [categorias, setCategorias] = useState<ICategoriaProduto[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  async function carregar() {
-    try {
-      const response =
-        await CategoriaApi.listar();
-
-      console.log(response);
-    } catch (error) {
-      console.error(error);
+    async function load() {
+      try {
+        const data = await CategoriaService.listar();
+        setCategorias(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
     }
-  }
 
-  carregar();
-}, []);
+    load();
+  }, []);
+
+  if (loading) return <p>Carregando...</p>;
 
   return (
-    <>
-      {categorias.map((categoria) => (
-        <div key={categoria.id}>
-          <h1>{categoria.nome}</h1>
-          <p>{categoria.descricao}</p>
+    <div>
+      {categorias.map((cat) => (
+        <div key={cat.id}>
+          <h3>{cat.nome}</h3>
+          <p>{cat.descricao}</p>
         </div>
       ))}
-    </>
+    </div>
   );
 }

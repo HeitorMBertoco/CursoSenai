@@ -31,3 +31,12 @@ export interface IUnidadeMedida {
 
   
 }
+// src/interfaces/IProdutoCriar.ts
+
+export interface IProdutoCriar {
+  unidadeMedidaId: string;
+  categoriaId: string;
+  nome: string;
+  descricao: string;
+  quantidadeAtual: number;
+}

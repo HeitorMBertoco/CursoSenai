@@ -1,21 +1,38 @@
-'use client'
+'use client';
 
-import { useRouter } from "next/navigation";
-import cardecontainers from "../../card.module.css"
-import botao from "../../botao.module.css"
+import { useEffect, useState } from "react";
+import { CategoriaService } from "@/app/services";
+import { ICategoriaProduto } from "@/app/interfaces";
 
-export default function criarCat() {
-  const router = useRouter();
+export default function ListaCategorias() {
+  const [categorias, setCategorias] = useState<ICategoriaProduto[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const data = await CategoriaService.listar();
+        setCategorias(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    load();
+  }, []);
+
+  if (loading) return <p>Carregando...</p>;
+
   return (
-    < div className={cardecontainers.rootElement}>
-      <div className={cardecontainers.container2}>
-        <h1>Cadastro de Categoria</h1>
-        <input type="text" name="" id="" placeholder="Digite o nome da categoria:"/>
-        <textarea rows={4} cols={40} placeholder="digite a descrição da categoria:"/>
-        <button className={botao.botaodobem}>Botão do bem</button>
-        <button className={botao.botaodomal}>Botão do mal</button>
-    
-      </div>
+    <div>
+      {categorias.map((cat) => (
+        <div key={cat.id}>
+          <h3>{cat.nome}</h3>
+          <p>{cat.descricao}</p>
+        </div>
+      ))}
     </div>
   );
 }
