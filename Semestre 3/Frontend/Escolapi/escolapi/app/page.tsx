@@ -8,14 +8,11 @@ const ptSans = PT_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 
 export default function Home() {
   const [alunos, setAlunos] = useState<IAluno[]>([]);
-  
-  // ESTADOS SEPARADOS: Um para cada parâmetro da sua API
   const [buscaNome, setBuscaNome] = useState<string>(""); 
   const [buscaGenero, setBuscaGenero] = useState<string>(""); 
-  
   const [carregando, setCarregando] = useState<boolean>(false);
 
-  // Busca os dados enviando os valores diretamente para o Service
+  // Envia os filtros limpos e exatos para a função do Service
   const carregarAlunosFiltrados = async (nome: string, genero: string) => {
     setCarregando(true);
     try {
@@ -32,10 +29,8 @@ export default function Home() {
     carregarAlunosFiltrados("", "");
   }, []);
 
-  // Disparado ao clicar no botão de submit
   const handlePesquisar = (e: FormEvent) => {
     e.preventDefault();
-    // Passa os valores exatos dos inputs para a API
     carregarAlunosFiltrados(buscaNome, buscaGenero);
   };
 
@@ -52,10 +47,7 @@ export default function Home() {
       <h1 className="text-3xl text-black font-extrabold">Escola Senai</h1>
       <br />
       
-      {/* Formulário com Campos Separados */}
       <form onSubmit={handlePesquisar} className="w-full max-w-2xl flex flex-col sm:flex-row gap-3 items-end bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm">
-        
-        {/* Campo de Nome */}
         <div className="flex-1 w-full">
           <label htmlFor="name" className="block text-xs font-semibold text-gray-700 uppercase mb-1">Nome</label>
           <div className="relative rounded-md shadow-sm">
@@ -75,7 +67,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Campo de Gênero (Select Dropdown) */}
         <div className="w-full sm:w-48">
           <label htmlFor="genero" className="block text-xs font-semibold text-gray-700 uppercase mb-1">Gênero</label>
           <select
@@ -85,15 +76,13 @@ export default function Home() {
             className="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm bg-white"
           >
             <option value="">Todos</option>
-            <option value="masculino">Masculino</option>
-            <option value="feminino">Feminino</option>
-            <option value="terian">Terian</option>
-            <option value="fraaco">Fraaco</option>
-            <option value="judeu">Judeu</option>
+            {/* Como seu backend usa strings exatas (findMany com equals), passamos os valores capitulares corretos aqui */}
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+            
           </select>
         </div>
 
-        {/* Botão de Submit */}
         <button
           type="submit"
           disabled={carregando}
