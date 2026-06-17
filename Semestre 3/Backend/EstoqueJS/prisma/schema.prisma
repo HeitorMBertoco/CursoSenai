@@ -1,45 +1,72 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js" // Ajustado para o provider padrão do JS/TS
+  output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
-  
 }
 
 model ProdutoModel {
-  id              Int       @id @default(autoincrement())
-  nome            String 
-  habilitado      Boolean   @default(true)
+  id              Int     @id @default(autoincrement())
+  nome            String
+  habilitado      Boolean @default(true)
   nomearquivofoto String
   descricao       String
-  quantidadeAtual Int       @default(0)
+  quantidadeAtual Int     @default(0)
 
   // ---- RELACIONAMENTO COM CATEGORIA ----
-  categoria       CategoriaProduto @relation(fields: [categoriaId], references: [id])
-  categoriaId     Int
+  categoria   CategoriaProduto @relation(fields: [categoriaId], references: [id])
+  categoriaId Int
 
   // ---- RELACIONAMENTO COM UNIDADE DE MEDIDA ----
-  unidadeMedida   UnidadeMedida    @relation(fields: [unidadeMedidaId], references: [id])
+  unidadeMedida   UnidadeMedida @relation(fields: [unidadeMedidaId], references: [id])
   unidadeMedidaId Int
+
+  // ---- RELAÇÃO 1:1 COM OPERAÇÃO ESTOQUE DETALHE ----
+  // Retiramos as chaves daqui e deixamos apenas a propriedade opcional (com a interrogação "?") 
+  // que representa a relação inversa do tipo 1 para 1.
+  operacaoEstoqueDetalhe OperacaoEstoqueDetalhe?
 }
 
 model CategoriaProduto {
-  id        Int            @id @default(autoincrement())
+  id        Int    @id @default(autoincrement())
   nome      String
   descricao String
-  
-  // Relação inversa: Uma categoria pode estar em muitos produtos
-  produtos  ProdutoModel[]
+
+  produtos ProdutoModel[]
 }
 
 model UnidadeMedida {
-  id          Int            @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   sigla       String
   descricao   String
-  fracionavel Boolean        @default(false)
-  
-  // Relação inversa: Uma unidade de medida pode estar em muitos produtos
-  produtos    ProdutoModel[]
+  fracionavel Boolean @default(false)
+
+  produtos ProdutoModel[]
+}
+
+model OperacaoEstoque {
+  id           Int      @id @default(autoincrement())
+  hora         DateTime @default(now())
+  motivo       String
+  entradasaida String
+
+  operacaoestoquedetalhes OperacaoEstoqueDetalhe[]
+}
+
+model OperacaoEstoqueDetalhe {
+  id         Int   @id @default(autoincrement())
+  quantidade Int
+  precoCusto Float
+
+  // Relação com o cabeçalho da Operação (Muitos para 1)
+  operacaoEstoque   OperacaoEstoque @relation(fields: [operacaoEstoqueId], references: [id], onDelete: Cascade)
+  operacaoEstoqueId Int
+
+  // ---- CONFIGURAÇÃO DA RELAÇÃO ONE-TO-ONE ----
+  // Definimos as chaves aqui e adicionamos o @unique no campo produtoId.
+  // Isso impede que mais de um detalhe aponte para o mesmo produto.
+  produto   ProdutoModel @relation(fields: [produtoId], references: [id])
+  produtoId Int          @unique
 }
