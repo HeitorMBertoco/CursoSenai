@@ -1,0 +1,463 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1781699197665
+  modified: 1781699197665
+  description: ""
+collection:
+  - name: Post
+    meta:
+      id: fld_dc7dafedb5fd494889c0424163e8cfe6
+      created: 1781713862421
+      modified: 1781713862421
+      sortKey: -1781713862421
+      description: ""
+    children:
+      - url: http://localhost:3000/produtos
+        name: CriarProduto
+        meta:
+          id: req_07fe31312df74d3a8c426b9ffdefcdb8
+          created: 1781705901290
+          modified: 1781723045824
+          isPrivate: false
+          description: ""
+          sortKey: -1781713864673
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "nome": "Refrigerante de Cola 350ml",
+              "nomearquivofoto": "refrigerante.png",
+              "descricao": "Lata de alumínio",
+              "quantidadeAtual": 50,
+              "categoriaId": 2,      
+              "unidadeMedidaId": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/categorias
+        name: CriarCategoria
+        meta:
+          id: req_2c3dbfaeaebf431eb8c867532ab1d791
+          created: 1781705934203
+          modified: 1781722955499
+          isPrivate: false
+          description: ""
+          sortKey: -1781713864773
+        method: POST
+        body:
+          mimeType: application/json
+          text: >
+            {
+              "nome": "Eletronicos",
+              "descricao": "Produtos eletronicos, eletrodomesticos, computadores"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/unidades
+        name: CriarUni
+        meta:
+          id: req_6c509ae56112459e8eec8ad918748eee
+          created: 1781705941779
+          modified: 1781722988223
+          isPrivate: false
+          description: ""
+          sortKey: -1781713864723
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "sigla": "KG",
+              "fracionavel": false,
+              "descricao": "Kilogramas - Peso"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Get
+    meta:
+      id: fld_68b22c51e09d4374a849fce627b1fd9f
+      created: 1781713875118
+      modified: 1781713875118
+      sortKey: -1781713875118
+      description: ""
+    children:
+      - url: http://localhost:3000/produtos
+        name: GetAllProdutos
+        meta:
+          id: req_fc5b4ee971da4ed68c50d8266b0dae05
+          created: 1781699402320
+          modified: 1781713877513
+          isPrivate: false
+          description: ""
+          sortKey: -1781713877477
+        method: GET
+        parameters:
+          - name: nome
+            value: ""
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/categorias
+        name: GetAllCategoriias
+        meta:
+          id: req_e6a855c9250e496e9983b7d9fc90d985
+          created: 1781705719366
+          modified: 1781713917696
+          isPrivate: false
+          description: ""
+          sortKey: -1781713877577
+        method: GET
+        parameters:
+          - name: nome
+            value: ""
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/unidades
+        name: GetAllUnidade
+        meta:
+          id: req_a345cc5ea6044c7dad3453c4ba6cd75f
+          created: 1781705727199
+          modified: 1781713880281
+          isPrivate: false
+          description: ""
+          sortKey: -1781713877527
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/operacoes
+        name: GetAllOperacoes
+        meta:
+          id: req_a0ede085b8d944909b1b2c03c4124444
+          created: 1781725040875
+          modified: 1781725079005
+          isPrivate: false
+          description: ""
+          sortKey: -1781713877502
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - name: Get +  Filter
+        meta:
+          id: fld_f5bdfafd49464230a9933f3c9999430a
+          created: 1781713906119
+          modified: 1781713908795
+          sortKey: -1781713877677
+          description: ""
+        children:
+          - url: http://localhost:3000/categorias
+            name: GetCategoriaFilter
+            meta:
+              id: req_57c77893c77d4a78b6ec6facd25fc764
+              created: 1781715175712
+              modified: 1781715178531
+              isPrivate: false
+              description: ""
+              sortKey: -1781715178505
+            method: GET
+            parameters:
+              - name: nome
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/produtos
+            name: GetProdutoFilter
+            meta:
+              id: req_72d3e9cf734c4a9a8653e1c84c3a54d5
+              created: 1781715191058
+              modified: 1781723205233
+              isPrivate: false
+              description: ""
+              sortKey: -1781715077332.5
+            method: GET
+            parameters:
+              - name: nome
+                value: r
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/operacoes
+            name: GetOperacaoFiltro
+            meta:
+              id: req_4827d54c505246338dbe0d28e49a084f
+              created: 1781725142027
+              modified: 1781725144989
+              isPrivate: false
+              description: ""
+              sortKey: -1781715178605
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+  - name: Patch
+    meta:
+      id: fld_28b2930d51e54ec78d3c62ec7aa8cc8f
+      created: 1781714970859
+      modified: 1781714970859
+      sortKey: -1781714970859
+      description: ""
+    children:
+      - url: http://localhost:3000/categorias?
+        name: PatchCategoria
+        meta:
+          id: req_78f41c29a5cf48e48cac279a19b84d46
+          created: 1781714976160
+          modified: 1781715135761
+          isPrivate: false
+          description: ""
+          sortKey: -1781714976160
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            		"id": 1,
+            		"nome": "Eletrônicos e Eletrodomesticos",
+            		"descricao": "Produtos eletrodomésticos, gadgets e componentes de informática"
+            	}
+        parameters:
+          - name: id
+            value: "1"
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/produtos?
+        name: PatchProduto
+        meta:
+          id: req_afe4be51ff864bae8750dee4bc9a8f24
+          created: 1781715880944
+          modified: 1781715889337
+          isPrivate: false
+          description: ""
+          sortKey: -1781714426868.5
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            		"id": 1,
+            		"nome": "Eletrônicos e Eletrodomesticos",
+            		"descricao": "Produtos eletrodomésticos, gadgets e componentes de informática"
+            	}
+        parameters:
+          - name: id
+            value: "1"
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/unidades?
+        name: PatchUnidade
+        meta:
+          id: req_20665eaed06145b79f8b5e3267b40b1d
+          created: 1781715913721
+          modified: 1781715926289
+          isPrivate: false
+          description: ""
+          sortKey: -1781714152222.75
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            		"id": 1,
+            		"nome": "Eletrônicos e Eletrodomesticos",
+            		"descricao": "Produtos eletrodomésticos, gadgets e componentes de informática"
+            	}
+        parameters:
+          - name: id
+            value: "1"
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Delete
+    meta:
+      id: fld_921d624854a74a4797e676594e91a62c
+      created: 1781718115651
+      modified: 1781718115651
+      sortKey: -1781718115651
+      description: ""
+    children:
+      - url: http://localhost:3000/produtos/?id=3
+        name: DeleteProduto
+        meta:
+          id: req_1678460257ff4ba9b70fede5627d957e
+          created: 1781718118934
+          modified: 1781718746410
+          isPrivate: false
+          description: ""
+          sortKey: -1781718118934
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/categorias
+        name: DeleteCategoria
+        meta:
+          id: req_7219b7eea4bf4dffb9a0e0403dd51329
+          created: 1781718184837
+          modified: 1781719049422
+          isPrivate: false
+          description: ""
+          sortKey: -1781716648719.5
+        method: DELETE
+        parameters:
+          - name: id
+            value: "2"
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/unidades
+        name: DeleteUnidade
+        meta:
+          id: req_2909f3f1ca644e86a39918212238337f
+          created: 1781718194518
+          modified: 1781718204572
+          isPrivate: false
+          description: ""
+          sortKey: -1781717383826.75
+        method: DELETE
+        parameters:
+          - name: id
+            value: ""
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1781699394886
+    modified: 1781699394886
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1781699394881
+    modified: 1781699394881
+    isPrivate: false
