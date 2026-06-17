@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  
+}
+
+model ProdutoModel {
+  id              Int       @id @default(autoincrement())
+  nome            String 
+  habilitado      Boolean   @default(true)
+  nomearquivofoto String
+  descricao       String
+  quantidadeAtual Int       @default(0)
+
+  // ---- RELACIONAMENTO COM CATEGORIA ----
+  categoria       CategoriaProduto @relation(fields: [categoriaId], references: [id])
+  categoriaId     Int
+
+  // ---- RELACIONAMENTO COM UNIDADE DE MEDIDA ----
+  unidadeMedida   UnidadeMedida    @relation(fields: [unidadeMedidaId], references: [id])
+  unidadeMedidaId Int
+}
+
+model CategoriaProduto {
+  id        Int            @id @default(autoincrement())
+  nome      String
+  descricao String
+  
+  // Relação inversa: Uma categoria pode estar em muitos produtos
+  produtos  ProdutoModel[]
+}
+
+model UnidadeMedida {
+  id          Int            @id @default(autoincrement())
+  sigla       String
+  descricao   String
+  fracionavel Boolean        @default(false)
+  
+  // Relação inversa: Uma unidade de medida pode estar em muitos produtos
+  produtos    ProdutoModel[]
+}
