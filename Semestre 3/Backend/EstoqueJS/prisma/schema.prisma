@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js" // Ajustado para o provider padrão do JS/TS
+  provider = "prisma-client-js" 
   output   = "../generated/prisma"
 }
 
@@ -15,17 +15,13 @@ model ProdutoModel {
   descricao       String
   quantidadeAtual Int     @default(0)
 
-  // ---- RELACIONAMENTO COM CATEGORIA ----
   categoria   CategoriaProduto @relation(fields: [categoriaId], references: [id])
   categoriaId Int
 
-  // ---- RELACIONAMENTO COM UNIDADE DE MEDIDA ----
   unidadeMedida   UnidadeMedida @relation(fields: [unidadeMedidaId], references: [id])
   unidadeMedidaId Int
 
-  // ---- RELAÇÃO 1:1 COM OPERAÇÃO ESTOQUE DETALHE ----
-  // Retiramos as chaves daqui e deixamos apenas a propriedade opcional (com a interrogação "?") 
-  // que representa a relação inversa do tipo 1 para 1.
+
   operacaoEstoqueDetalhe OperacaoEstoqueDetalhe?
 }
 
@@ -60,13 +56,10 @@ model OperacaoEstoqueDetalhe {
   quantidade Int
   precoCusto Float
 
-  // Relação com o cabeçalho da Operação (Muitos para 1)
   operacaoEstoque   OperacaoEstoque @relation(fields: [operacaoEstoqueId], references: [id], onDelete: Cascade)
   operacaoEstoqueId Int
 
-  // ---- CONFIGURAÇÃO DA RELAÇÃO ONE-TO-ONE ----
-  // Definimos as chaves aqui e adicionamos o @unique no campo produtoId.
-  // Isso impede que mais de um detalhe aponte para o mesmo produto.
+
   produto   ProdutoModel @relation(fields: [produtoId], references: [id])
   produtoId Int          @unique
 }
