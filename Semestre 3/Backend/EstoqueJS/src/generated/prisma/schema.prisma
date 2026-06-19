@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js" // Ajustado para o provider padrão do JS/TS
+  provider = "prisma-client-js"
   output   = "../generated/prisma"
 }
 
@@ -7,43 +7,44 @@ datasource db {
   provider = "postgresql"
 }
 
+model ImagemProduto {
+  id        Int          @id @default(autoincrement())
+  url       String
+  produto   ProdutoModel @relation(fields: [produtoId], references: [id], onDelete: Cascade)
+  produtoId Int
+}
+
 model ProdutoModel {
-  id              Int     @id @default(autoincrement())
+  id              Int              @id @default(autoincrement())
   nome            String
-  habilitado      Boolean @default(true)
+  habilitado      Boolean          @default(true)
   nomearquivofoto String
   descricao       String
-  quantidadeAtual Int     @default(0)
-
-  // ---- RELACIONAMENTO COM CATEGORIA ----
-  categoria   CategoriaProduto @relation(fields: [categoriaId], references: [id])
-  categoriaId Int
-
-  // ---- RELACIONAMENTO COM UNIDADE DE MEDIDA ----
-  unidadeMedida   UnidadeMedida @relation(fields: [unidadeMedidaId], references: [id])
+  quantidadeAtual Int              @default(0)
+  categoria       CategoriaProduto @relation(fields: [categoriaId], references: [id])
+  categoriaId     Int
+  unidadeMedida   UnidadeMedida    @relation(fields: [unidadeMedidaId], references: [id])
   unidadeMedidaId Int
 
-  // ---- RELAÇÃO 1:1 COM OPERAÇÃO ESTOQUE DETALHE ----
-  // Retiramos as chaves daqui e deixamos apenas a propriedade opcional (com a interrogação "?") 
-  // que representa a relação inversa do tipo 1 para 1.
-  operacaoEstoqueDetalhe OperacaoEstoqueDetalhe?
+  imagens ImagemProduto[]
+
+  // Many-to-many com OperacaoEstoqueDetalhe
+  operacaoEstoqueDetalhes OperacaoEstoqueDetalheItem[]
 }
 
 model CategoriaProduto {
-  id        Int    @id @default(autoincrement())
+  id        Int            @id @default(autoincrement())
   nome      String
   descricao String
-
-  produtos ProdutoModel[]
+  produtos  ProdutoModel[]
 }
 
 model UnidadeMedida {
-  id          Int     @id @default(autoincrement())
+  id          Int            @id @default(autoincrement())
   sigla       String
   descricao   String
-  fracionavel Boolean @default(false)
-
-  produtos ProdutoModel[]
+  fracionavel Boolean        @default(false)
+  produtos    ProdutoModel[]
 }
 
 model OperacaoEstoque {
@@ -52,21 +53,30 @@ model OperacaoEstoque {
   motivo       String
   entradasaida String
 
-  operacaoestoquedetalhes OperacaoEstoqueDetalhe[]
+  // One-to-one com OperacaoEstoqueDetalhe
+  operacaoEstoqueDetalhe OperacaoEstoqueDetalhe?
 }
 
 model OperacaoEstoqueDetalhe {
+  id                Int             @id @default(autoincrement())
+  operacaoEstoque   OperacaoEstoque @relation(fields: [operacaoEstoqueId], references: [id], onDelete: Cascade)
+  operacaoEstoqueId Int             @unique // Garante one-to-one
+
+  // Many-to-many com Produto
+  itens OperacaoEstoqueDetalheItem[]
+}
+
+// Junction table para many-to-many
+model OperacaoEstoqueDetalheItem {
   id         Int   @id @default(autoincrement())
   quantidade Int
   precoCusto Float
 
-  // Relação com o cabeçalho da Operação (Muitos para 1)
-  operacaoEstoque   OperacaoEstoque @relation(fields: [operacaoEstoqueId], references: [id], onDelete: Cascade)
-  operacaoEstoqueId Int
+  operacaoEstoqueDetalhe   OperacaoEstoqueDetalhe @relation(fields: [operacaoEstoqueDetalheId], references: [id], onDelete: Cascade)
+  operacaoEstoqueDetalheId Int
 
-  // ---- CONFIGURAÇÃO DA RELAÇÃO ONE-TO-ONE ----
-  // Definimos as chaves aqui e adicionamos o @unique no campo produtoId.
-  // Isso impede que mais de um detalhe aponte para o mesmo produto.
   produto   ProdutoModel @relation(fields: [produtoId], references: [id])
-  produtoId Int          @unique
+  produtoId Int
+
+  @@unique([operacaoEstoqueDetalheId, produtoId]) // Evita duplicatas
 }

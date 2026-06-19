@@ -3,53 +3,50 @@ import prisma from "../db";
 
 export const ListAllDetalhe = async function (req: Request, res: Response): Promise<void> {
     try {
-        const { motivo } = req.query;
-        let filtro: any = {};
-
-        if (motivo && typeof motivo === 'string' && motivo.trim() !== '') {
-            filtro.motivo = {
-                contains: motivo.trim(),
-                mode: "insensitive"
-            };
-        }
-
-        const operacoes = await prisma.operacaoEstoqueDetalhe.findMany({
-            where: filtro,
+        const { id } = req.query;
+        
+        const where = id ? { id: Number(id) } : {};
+        
+        const detalhes = await prisma.operacaoEstoqueDetalhe.findMany({
+            where,
             include: {
-                produto: true
-                    
-                
+                itens: {
+                    include: {
+                        produto: true
+                    }
+                },
+                operacaoEstoque: true
             }
         });
 
         const responseData = JSON.parse(
-            JSON.stringify(operacoes, (key, value) =>
+            JSON.stringify(detalhes, (key, value) =>
                 typeof value === 'bigint' ? value.toString() : value
             )
         );
-
         res.json(responseData);
     }
     catch (err: any) {
         console.error("Erro na busca:\n", err.stack || err.message);
-        res.status(500).json({ error: "Falha ao buscar operacao estoque" });
+        res.status(500).json({ error: "Falha ao buscar detalhe" });
     }
 };
 
-export const CriarOperacaoEstoque = async function (req: Request, res: Response): Promise<void> {
+export const CriarDetalheComItem = async function (req: Request, res: Response): Promise<void> {
     try {
-        const { motivo, entradasaida, quantidade, precoCusto, produtoId } = req.body;
+         console.log("Body recebido:", req.body);
+        const { operacaoEstoqueId, quantidade, precoCusto, produtoId } = req.body;
 
-        if (!motivo || !entradasaida || !quantidade || !precoCusto || !produtoId) {
-             res.status(400).json({ error: "Campos obrigatórios ausentes" });
-             return;
+        if (!operacaoEstoqueId || !quantidade || !precoCusto || !produtoId) {
+            console.log("Validação falhou!");
+            res.status(400).json({ error: "Campos obrigatórios ausentes" });
+            return;
         }
 
-        const NewOperacao = await prisma.operacaoEstoqueDetalhe.create({
+        const newDetalhe = await prisma.operacaoEstoqueDetalhe.create({
             data: {
-                motivo: motivo,
-                entradasaida: entradasaida,
-                operacaoestoquedetalhes: {
+                operacaoEstoqueId: Number(operacaoEstoqueId),
+                itens: {
                     create: {
                         quantidade: Number(quantidade),
                         precoCusto: Number(precoCusto),
@@ -58,64 +55,108 @@ export const CriarOperacaoEstoque = async function (req: Request, res: Response)
                 }
             },
             include: {
-                operacaoestoquedetalhes: true
+                itens: {
+                    include: {
+                        produto: true
+                    }
+                },
+                operacaoEstoque: true
             }
         });
 
-        res.status(201).json(NewOperacao);
+        res.status(201).json(newDetalhe);
     }
     catch (err: any) {
-        console.error("Erro ao criar operacao estoque:\n", err.stack || err.message);
-        if (err.code === "P2002") {
-             res.status(400).json({ error: "Este produto já está associado a outro detalhe de operação (Relação 1:1 violada)." });
-             return;
-        }
-        res.status(500).json({ error: "Falha ao Criar operacao estoque" });
+        console.error("Erro ao criar detalhe:\n", err.stack || err.message);
+        res.status(500).json({ error: "Falha ao criar detalhe" });
     }
 };
 
-export const AlterarOperacaoEstoque = async function (req: Request, res: Response): Promise<void> {
-    const { id } = req.query;
-    const { motivo, entradasaida } = req.body;
-    
+export const AdicionarProdutoAoDetalhe = async function (req: Request, res: Response): Promise<void> {
     try {
-        if (!id) {
-             res.status(400).json({ error: "ID não fornecido na query" });
-             return;
+        const { operacaoEstoqueDetalheId, quantidade, precoCusto, produtoId } = req.body;
+
+        if (!operacaoEstoqueDetalheId || !quantidade || !precoCusto || !produtoId) {
+            res.status(400).json({ error: "Campos obrigatórios ausentes" });
+            return;
         }
 
-        const updatedOperacao = await prisma.operacaoEstoqueDetalhe.update({
+        const novoItem = await prisma.operacaoEstoqueDetalheItem.create({
+            data: {
+                operacaoEstoqueDetalheId: Number(operacaoEstoqueDetalheId),
+                quantidade: Number(quantidade),
+                precoCusto: Number(precoCusto),
+                produtoId: Number(produtoId)
+            },
+            include: {
+                produto: true
+            }
+        });
+
+        res.status(201).json(novoItem);
+    }
+    catch (err: any) {
+        console.error("Erro ao adicionar produto:\n", err.stack || err.message);
+        if (err.code === "P2002") {
+            res.status(400).json({ error: "Produto já adicionado a este detalhe" });
+            return;
+        }
+        res.status(500).json({ error: "Falha ao adicionar produto" });
+    }
+};
+
+export const AlterarDetalhe = async function (req: Request, res: Response): Promise<void> {
+    const { id } = req.query;
+    const { quantidade, precoCusto } = req.body;
+
+    try {
+        if (!id) {
+            res.status(400).json({ error: "ID não fornecido na query" });
+            return;
+        }
+
+        if (!quantidade && !precoCusto) {
+            res.status(400).json({ error: "Nenhum campo para atualizar" });
+            return;
+        }
+
+        const updatedDetalhe = await prisma.operacaoEstoqueDetalheItem.update({
             where: { id: Number(id) },
             data: {
-                ...(motivo && { motivo }), 
-                ...(entradasaida && { entradasaida }),
+                ...(quantidade && { quantidade: Number(quantidade) }),
+                ...(precoCusto && { precoCusto: Number(precoCusto) })
+            },
+            include: {
+                produto: true
             }
         });
-        res.json(updatedOperacao);
+
+        res.json(updatedDetalhe);
     }
     catch (err: any) {
-        console.error("Erro Ao Aplicar Atualização: \n", err.stack || err.message);
-        res.status(500).json({ error: "erro ao aplicar atualização" });
+        console.error("Erro ao atualizar detalhe:\n", err.stack || err.message);
+        res.status(500).json({ error: "Falha ao atualizar detalhe" });
     }
 };
 
-export const DeletarOperacaoEstoque = async function(req: Request, res: Response): Promise<void> {
+export const DeletarDetalhe = async function (req: Request, res: Response): Promise<void> {
     const query = req.query || {};
     const id = query.id;
-    
+
     try {
         if (!id) {
-             res.status(400).json({ error: "ID não fornecido na query" });
-             return;
+            res.status(400).json({ error: "ID não fornecido na query" });
+            return;
         }
 
-        const deletedOperacao = await prisma.operacaoEstoqueDetalhe.delete({
+        const deletedDetalhe = await prisma.operacaoEstoqueDetalheItem.delete({
             where: { id: Number(id) }
         });
-        res.status(204).json(deletedOperacao);
+
+        res.status(204).json(deletedDetalhe);
     }
-    catch(err: any){
-        console.error("Erro ao deletar Objeto: \n", err.stack || err.message);
-        res.status(500).json({ error: "Erro ao Deletar objeto" });
+    catch (err: any) {
+        console.error("Erro ao deletar detalhe:\n", err.stack || err.message);
+        res.status(500).json({ error: "Falha ao deletar detalhe" });
     }
 };

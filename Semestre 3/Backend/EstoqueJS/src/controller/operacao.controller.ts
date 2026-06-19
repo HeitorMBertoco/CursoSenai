@@ -3,22 +3,31 @@ import prisma from "../db";
 
 export const ListAllOperacaoEstoque = async function (req: Request, res: Response): Promise<void> {
     try {
-        const { motivo } = req.query;
-        let filtro: any = {};
+        const { id } = req.query;
 
-        if (motivo && typeof motivo === 'string' && motivo.trim() !== '') {
-            filtro.motivo = {
-                contains: motivo.trim(),
-                mode: "insensitive"
-            };
-        }
+        const where = id ? { id: Number(id) } : {};
 
         const operacoes = await prisma.operacaoEstoque.findMany({
-            where: filtro,
+            where,
             include: {
-                operacaoestoquedetalhes: {
+                operacaoEstoqueDetalhe: {
                     include: {
-                        produto: true
+                        itens: {
+                            include: {
+                                produto: {
+
+                                    include: {
+
+                                        unidadeMedida: {
+                                            select: {
+                                                id: true,
+                                                sigla: true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -29,7 +38,6 @@ export const ListAllOperacaoEstoque = async function (req: Request, res: Respons
                 typeof value === 'bigint' ? value.toString() : value
             )
         );
-
         res.json(responseData);
     }
     catch (err: any) {
@@ -40,27 +48,28 @@ export const ListAllOperacaoEstoque = async function (req: Request, res: Respons
 
 export const CriarOperacaoEstoque = async function (req: Request, res: Response): Promise<void> {
     try {
-        const { motivo, entradasaida, quantidade, precoCusto, produtoId } = req.body;
+        const { motivo, entradasaida } = req.body;
 
-        if (!motivo || !entradasaida || !quantidade || !precoCusto || !produtoId) {
-             res.status(400).json({ error: "Campos obrigatórios ausentes" });
-             return;
+        if (!motivo || !entradasaida) {
+            res.status(400).json({ error: "Campos obrigatórios ausentes" });
+            return;
         }
 
         const NewOperacao = await prisma.operacaoEstoque.create({
             data: {
-                motivo: motivo,
-                entradasaida: entradasaida,
-                operacaoestoquedetalhes: {
-                    create: {
-                        quantidade: Number(quantidade),
-                        precoCusto: Number(precoCusto),
-                        produtoId: Number(produtoId)
-                    }
-                }
+                motivo,
+                entradasaida
             },
             include: {
-                operacaoestoquedetalhes: true
+                operacaoEstoqueDetalhe: {
+                    include: {
+                        itens: {
+                            include: {
+                                produto: true
+                            }
+                        }
+                    }
+                }
             }
         });
 
@@ -68,10 +77,6 @@ export const CriarOperacaoEstoque = async function (req: Request, res: Response)
     }
     catch (err: any) {
         console.error("Erro ao criar operacao estoque:\n", err.stack || err.message);
-        if (err.code === "P2002") {
-             res.status(400).json({ error: "Este produto já está associado a outro detalhe de operação (Relação 1:1 violada)." });
-             return;
-        }
         res.status(500).json({ error: "Falha ao Criar operacao estoque" });
     }
 };
@@ -79,20 +84,32 @@ export const CriarOperacaoEstoque = async function (req: Request, res: Response)
 export const AlterarOperacaoEstoque = async function (req: Request, res: Response): Promise<void> {
     const { id } = req.query;
     const { motivo, entradasaida } = req.body;
-    
+
     try {
         if (!id) {
-             res.status(400).json({ error: "ID não fornecido na query" });
-             return;
+            res.status(400).json({ error: "ID não fornecido na query" });
+            return;
         }
 
         const updatedOperacao = await prisma.operacaoEstoque.update({
             where: { id: Number(id) },
             data: {
-                ...(motivo && { motivo }), 
-                ...(entradasaida && { entradasaida }),
+                ...(motivo && { motivo }),
+                ...(entradasaida && { entradasaida })
+            },
+            include: {
+                operacaoEstoqueDetalhe: {
+                    include: {
+                        itens: {
+                            include: {
+                                produto: true
+                            }
+                        }
+                    }
+                }
             }
         });
+
         res.json(updatedOperacao);
     }
     catch (err: any) {
@@ -101,22 +118,23 @@ export const AlterarOperacaoEstoque = async function (req: Request, res: Respons
     }
 };
 
-export const DeletarOperacaoEstoque = async function(req: Request, res: Response): Promise<void> {
+export const DeletarOperacaoEstoque = async function (req: Request, res: Response): Promise<void> {
     const query = req.query || {};
     const id = query.id;
-    
+
     try {
         if (!id) {
-             res.status(400).json({ error: "ID não fornecido na query" });
-             return;
+            res.status(400).json({ error: "ID não fornecido na query" });
+            return;
         }
 
         const deletedOperacao = await prisma.operacaoEstoque.delete({
             where: { id: Number(id) }
         });
+
         res.status(204).json(deletedOperacao);
     }
-    catch(err: any){
+    catch (err: any) {
         console.error("Erro ao deletar Objeto: \n", err.stack || err.message);
         res.status(500).json({ error: "Erro ao Deletar objeto" });
     }

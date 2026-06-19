@@ -120,6 +120,12 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.ImagemProdutoScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  produtoId: 'produtoId'
+};
+
 exports.Prisma.ProdutoModelScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
@@ -153,9 +159,14 @@ exports.Prisma.OperacaoEstoqueScalarFieldEnum = {
 
 exports.Prisma.OperacaoEstoqueDetalheScalarFieldEnum = {
   id: 'id',
+  operacaoEstoqueId: 'operacaoEstoqueId'
+};
+
+exports.Prisma.OperacaoEstoqueDetalheItemScalarFieldEnum = {
+  id: 'id',
   quantidade: 'quantidade',
   precoCusto: 'precoCusto',
-  operacaoEstoqueId: 'operacaoEstoqueId',
+  operacaoEstoqueDetalheId: 'operacaoEstoqueDetalheId',
   produtoId: 'produtoId'
 };
 
@@ -171,11 +182,13 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
+  ImagemProduto: 'ImagemProduto',
   ProdutoModel: 'ProdutoModel',
   CategoriaProduto: 'CategoriaProduto',
   UnidadeMedida: 'UnidadeMedida',
   OperacaoEstoque: 'OperacaoEstoque',
-  OperacaoEstoqueDetalhe: 'OperacaoEstoqueDetalhe'
+  OperacaoEstoqueDetalhe: 'OperacaoEstoqueDetalhe',
+  OperacaoEstoqueDetalheItem: 'OperacaoEstoqueDetalheItem'
 };
 
 /**

@@ -14,6 +14,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
+ * Model ImagemProduto
+ * 
+ */
+export type ImagemProduto = $Result.DefaultSelection<Prisma.$ImagemProdutoPayload>
+/**
  * Model ProdutoModel
  * 
  */
@@ -38,6 +43,11 @@ export type OperacaoEstoque = $Result.DefaultSelection<Prisma.$OperacaoEstoquePa
  * 
  */
 export type OperacaoEstoqueDetalhe = $Result.DefaultSelection<Prisma.$OperacaoEstoqueDetalhePayload>
+/**
+ * Model OperacaoEstoqueDetalheItem
+ * 
+ */
+export type OperacaoEstoqueDetalheItem = $Result.DefaultSelection<Prisma.$OperacaoEstoqueDetalheItemPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -48,8 +58,8 @@ export type OperacaoEstoqueDetalhe = $Result.DefaultSelection<Prisma.$OperacaoEs
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more ProdutoModels
- * const produtoModels = await prisma.produtoModel.findMany()
+ * // Fetch zero or more ImagemProdutos
+ * const imagemProdutos = await prisma.imagemProduto.findMany()
  * ```
  *
  *
@@ -71,8 +81,8 @@ export class PrismaClient<
    * const prisma = new PrismaClient({
    *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
    * })
-   * // Fetch zero or more ProdutoModels
-   * const produtoModels = await prisma.produtoModel.findMany()
+   * // Fetch zero or more ImagemProdutos
+   * const imagemProdutos = await prisma.imagemProduto.findMany()
    * ```
    *
    *
@@ -161,6 +171,16 @@ export class PrismaClient<
   }>>
 
       /**
+   * `prisma.imagemProduto`: Exposes CRUD operations for the **ImagemProduto** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ImagemProdutos
+    * const imagemProdutos = await prisma.imagemProduto.findMany()
+    * ```
+    */
+  get imagemProduto(): Prisma.ImagemProdutoDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.produtoModel`: Exposes CRUD operations for the **ProdutoModel** model.
     * Example usage:
     * ```ts
@@ -209,6 +229,16 @@ export class PrismaClient<
     * ```
     */
   get operacaoEstoqueDetalhe(): Prisma.OperacaoEstoqueDetalheDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.operacaoEstoqueDetalheItem`: Exposes CRUD operations for the **OperacaoEstoqueDetalheItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OperacaoEstoqueDetalheItems
+    * const operacaoEstoqueDetalheItems = await prisma.operacaoEstoqueDetalheItem.findMany()
+    * ```
+    */
+  get operacaoEstoqueDetalheItem(): Prisma.OperacaoEstoqueDetalheItemDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -643,11 +673,13 @@ export namespace Prisma {
 
 
   export const ModelName: {
+    ImagemProduto: 'ImagemProduto',
     ProdutoModel: 'ProdutoModel',
     CategoriaProduto: 'CategoriaProduto',
     UnidadeMedida: 'UnidadeMedida',
     OperacaoEstoque: 'OperacaoEstoque',
-    OperacaoEstoqueDetalhe: 'OperacaoEstoqueDetalhe'
+    OperacaoEstoqueDetalhe: 'OperacaoEstoqueDetalhe',
+    OperacaoEstoqueDetalheItem: 'OperacaoEstoqueDetalheItem'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -663,10 +695,84 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "produtoModel" | "categoriaProduto" | "unidadeMedida" | "operacaoEstoque" | "operacaoEstoqueDetalhe"
+      modelProps: "imagemProduto" | "produtoModel" | "categoriaProduto" | "unidadeMedida" | "operacaoEstoque" | "operacaoEstoqueDetalhe" | "operacaoEstoqueDetalheItem"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
+      ImagemProduto: {
+        payload: Prisma.$ImagemProdutoPayload<ExtArgs>
+        fields: Prisma.ImagemProdutoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ImagemProdutoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagemProdutoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ImagemProdutoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagemProdutoPayload>
+          }
+          findFirst: {
+            args: Prisma.ImagemProdutoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagemProdutoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ImagemProdutoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagemProdutoPayload>
+          }
+          findMany: {
+            args: Prisma.ImagemProdutoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagemProdutoPayload>[]
+          }
+          create: {
+            args: Prisma.ImagemProdutoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagemProdutoPayload>
+          }
+          createMany: {
+            args: Prisma.ImagemProdutoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ImagemProdutoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagemProdutoPayload>[]
+          }
+          delete: {
+            args: Prisma.ImagemProdutoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagemProdutoPayload>
+          }
+          update: {
+            args: Prisma.ImagemProdutoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagemProdutoPayload>
+          }
+          deleteMany: {
+            args: Prisma.ImagemProdutoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ImagemProdutoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ImagemProdutoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagemProdutoPayload>[]
+          }
+          upsert: {
+            args: Prisma.ImagemProdutoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagemProdutoPayload>
+          }
+          aggregate: {
+            args: Prisma.ImagemProdutoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateImagemProduto>
+          }
+          groupBy: {
+            args: Prisma.ImagemProdutoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ImagemProdutoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ImagemProdutoCountArgs<ExtArgs>
+            result: $Utils.Optional<ImagemProdutoCountAggregateOutputType> | number
+          }
+        }
+      }
       ProdutoModel: {
         payload: Prisma.$ProdutoModelPayload<ExtArgs>
         fields: Prisma.ProdutoModelFieldRefs
@@ -1037,6 +1143,80 @@ export namespace Prisma {
           }
         }
       }
+      OperacaoEstoqueDetalheItem: {
+        payload: Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>
+        fields: Prisma.OperacaoEstoqueDetalheItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OperacaoEstoqueDetalheItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacaoEstoqueDetalheItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OperacaoEstoqueDetalheItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacaoEstoqueDetalheItemPayload>
+          }
+          findFirst: {
+            args: Prisma.OperacaoEstoqueDetalheItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacaoEstoqueDetalheItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OperacaoEstoqueDetalheItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacaoEstoqueDetalheItemPayload>
+          }
+          findMany: {
+            args: Prisma.OperacaoEstoqueDetalheItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacaoEstoqueDetalheItemPayload>[]
+          }
+          create: {
+            args: Prisma.OperacaoEstoqueDetalheItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacaoEstoqueDetalheItemPayload>
+          }
+          createMany: {
+            args: Prisma.OperacaoEstoqueDetalheItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OperacaoEstoqueDetalheItemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacaoEstoqueDetalheItemPayload>[]
+          }
+          delete: {
+            args: Prisma.OperacaoEstoqueDetalheItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacaoEstoqueDetalheItemPayload>
+          }
+          update: {
+            args: Prisma.OperacaoEstoqueDetalheItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacaoEstoqueDetalheItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.OperacaoEstoqueDetalheItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OperacaoEstoqueDetalheItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OperacaoEstoqueDetalheItemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacaoEstoqueDetalheItemPayload>[]
+          }
+          upsert: {
+            args: Prisma.OperacaoEstoqueDetalheItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperacaoEstoqueDetalheItemPayload>
+          }
+          aggregate: {
+            args: Prisma.OperacaoEstoqueDetalheItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOperacaoEstoqueDetalheItem>
+          }
+          groupBy: {
+            args: Prisma.OperacaoEstoqueDetalheItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OperacaoEstoqueDetalheItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OperacaoEstoqueDetalheItemCountArgs<ExtArgs>
+            result: $Utils.Optional<OperacaoEstoqueDetalheItemCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1145,11 +1325,13 @@ export namespace Prisma {
     comments?: runtime.SqlCommenterPlugin[]
   }
   export type GlobalOmitConfig = {
+    imagemProduto?: ImagemProdutoOmit
     produtoModel?: ProdutoModelOmit
     categoriaProduto?: CategoriaProdutoOmit
     unidadeMedida?: UnidadeMedidaOmit
     operacaoEstoque?: OperacaoEstoqueOmit
     operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheOmit
+    operacaoEstoqueDetalheItem?: OperacaoEstoqueDetalheItemOmit
   }
 
   /* Types for Logging */
@@ -1226,6 +1408,46 @@ export namespace Prisma {
 
 
   /**
+   * Count Type ProdutoModelCountOutputType
+   */
+
+  export type ProdutoModelCountOutputType = {
+    imagens: number
+    operacaoEstoqueDetalhes: number
+  }
+
+  export type ProdutoModelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    imagens?: boolean | ProdutoModelCountOutputTypeCountImagensArgs
+    operacaoEstoqueDetalhes?: boolean | ProdutoModelCountOutputTypeCountOperacaoEstoqueDetalhesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ProdutoModelCountOutputType without action
+   */
+  export type ProdutoModelCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProdutoModelCountOutputType
+     */
+    select?: ProdutoModelCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProdutoModelCountOutputType without action
+   */
+  export type ProdutoModelCountOutputTypeCountImagensArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImagemProdutoWhereInput
+  }
+
+  /**
+   * ProdutoModelCountOutputType without action
+   */
+  export type ProdutoModelCountOutputTypeCountOperacaoEstoqueDetalhesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OperacaoEstoqueDetalheItemWhereInput
+  }
+
+
+  /**
    * Count Type CategoriaProdutoCountOutputType
    */
 
@@ -1288,39 +1510,1114 @@ export namespace Prisma {
 
 
   /**
-   * Count Type OperacaoEstoqueCountOutputType
+   * Count Type OperacaoEstoqueDetalheCountOutputType
    */
 
-  export type OperacaoEstoqueCountOutputType = {
-    operacaoestoquedetalhes: number
+  export type OperacaoEstoqueDetalheCountOutputType = {
+    itens: number
   }
 
-  export type OperacaoEstoqueCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    operacaoestoquedetalhes?: boolean | OperacaoEstoqueCountOutputTypeCountOperacaoestoquedetalhesArgs
+  export type OperacaoEstoqueDetalheCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    itens?: boolean | OperacaoEstoqueDetalheCountOutputTypeCountItensArgs
   }
 
   // Custom InputTypes
   /**
-   * OperacaoEstoqueCountOutputType without action
+   * OperacaoEstoqueDetalheCountOutputType without action
    */
-  export type OperacaoEstoqueCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OperacaoEstoqueDetalheCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OperacaoEstoqueCountOutputType
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheCountOutputType
      */
-    select?: OperacaoEstoqueCountOutputTypeSelect<ExtArgs> | null
+    select?: OperacaoEstoqueDetalheCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * OperacaoEstoqueCountOutputType without action
+   * OperacaoEstoqueDetalheCountOutputType without action
    */
-  export type OperacaoEstoqueCountOutputTypeCountOperacaoestoquedetalhesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: OperacaoEstoqueDetalheWhereInput
+  export type OperacaoEstoqueDetalheCountOutputTypeCountItensArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OperacaoEstoqueDetalheItemWhereInput
   }
 
 
   /**
    * Models
    */
+
+  /**
+   * Model ImagemProduto
+   */
+
+  export type AggregateImagemProduto = {
+    _count: ImagemProdutoCountAggregateOutputType | null
+    _avg: ImagemProdutoAvgAggregateOutputType | null
+    _sum: ImagemProdutoSumAggregateOutputType | null
+    _min: ImagemProdutoMinAggregateOutputType | null
+    _max: ImagemProdutoMaxAggregateOutputType | null
+  }
+
+  export type ImagemProdutoAvgAggregateOutputType = {
+    id: number | null
+    produtoId: number | null
+  }
+
+  export type ImagemProdutoSumAggregateOutputType = {
+    id: number | null
+    produtoId: number | null
+  }
+
+  export type ImagemProdutoMinAggregateOutputType = {
+    id: number | null
+    url: string | null
+    produtoId: number | null
+  }
+
+  export type ImagemProdutoMaxAggregateOutputType = {
+    id: number | null
+    url: string | null
+    produtoId: number | null
+  }
+
+  export type ImagemProdutoCountAggregateOutputType = {
+    id: number
+    url: number
+    produtoId: number
+    _all: number
+  }
+
+
+  export type ImagemProdutoAvgAggregateInputType = {
+    id?: true
+    produtoId?: true
+  }
+
+  export type ImagemProdutoSumAggregateInputType = {
+    id?: true
+    produtoId?: true
+  }
+
+  export type ImagemProdutoMinAggregateInputType = {
+    id?: true
+    url?: true
+    produtoId?: true
+  }
+
+  export type ImagemProdutoMaxAggregateInputType = {
+    id?: true
+    url?: true
+    produtoId?: true
+  }
+
+  export type ImagemProdutoCountAggregateInputType = {
+    id?: true
+    url?: true
+    produtoId?: true
+    _all?: true
+  }
+
+  export type ImagemProdutoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ImagemProduto to aggregate.
+     */
+    where?: ImagemProdutoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ImagemProdutos to fetch.
+     */
+    orderBy?: ImagemProdutoOrderByWithRelationInput | ImagemProdutoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ImagemProdutoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ImagemProdutos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ImagemProdutos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ImagemProdutos
+    **/
+    _count?: true | ImagemProdutoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ImagemProdutoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ImagemProdutoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ImagemProdutoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ImagemProdutoMaxAggregateInputType
+  }
+
+  export type GetImagemProdutoAggregateType<T extends ImagemProdutoAggregateArgs> = {
+        [P in keyof T & keyof AggregateImagemProduto]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateImagemProduto[P]>
+      : GetScalarType<T[P], AggregateImagemProduto[P]>
+  }
+
+
+
+
+  export type ImagemProdutoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImagemProdutoWhereInput
+    orderBy?: ImagemProdutoOrderByWithAggregationInput | ImagemProdutoOrderByWithAggregationInput[]
+    by: ImagemProdutoScalarFieldEnum[] | ImagemProdutoScalarFieldEnum
+    having?: ImagemProdutoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ImagemProdutoCountAggregateInputType | true
+    _avg?: ImagemProdutoAvgAggregateInputType
+    _sum?: ImagemProdutoSumAggregateInputType
+    _min?: ImagemProdutoMinAggregateInputType
+    _max?: ImagemProdutoMaxAggregateInputType
+  }
+
+  export type ImagemProdutoGroupByOutputType = {
+    id: number
+    url: string
+    produtoId: number
+    _count: ImagemProdutoCountAggregateOutputType | null
+    _avg: ImagemProdutoAvgAggregateOutputType | null
+    _sum: ImagemProdutoSumAggregateOutputType | null
+    _min: ImagemProdutoMinAggregateOutputType | null
+    _max: ImagemProdutoMaxAggregateOutputType | null
+  }
+
+  type GetImagemProdutoGroupByPayload<T extends ImagemProdutoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ImagemProdutoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ImagemProdutoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ImagemProdutoGroupByOutputType[P]>
+            : GetScalarType<T[P], ImagemProdutoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ImagemProdutoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    produtoId?: boolean
+    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["imagemProduto"]>
+
+  export type ImagemProdutoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    produtoId?: boolean
+    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["imagemProduto"]>
+
+  export type ImagemProdutoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    produtoId?: boolean
+    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["imagemProduto"]>
+
+  export type ImagemProdutoSelectScalar = {
+    id?: boolean
+    url?: boolean
+    produtoId?: boolean
+  }
+
+  export type ImagemProdutoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "produtoId", ExtArgs["result"]["imagemProduto"]>
+  export type ImagemProdutoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+  }
+  export type ImagemProdutoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+  }
+  export type ImagemProdutoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+  }
+
+  export type $ImagemProdutoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ImagemProduto"
+    objects: {
+      produto: Prisma.$ProdutoModelPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      url: string
+      produtoId: number
+    }, ExtArgs["result"]["imagemProduto"]>
+    composites: {}
+  }
+
+  type ImagemProdutoGetPayload<S extends boolean | null | undefined | ImagemProdutoDefaultArgs> = $Result.GetResult<Prisma.$ImagemProdutoPayload, S>
+
+  type ImagemProdutoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ImagemProdutoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ImagemProdutoCountAggregateInputType | true
+    }
+
+  export interface ImagemProdutoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ImagemProduto'], meta: { name: 'ImagemProduto' } }
+    /**
+     * Find zero or one ImagemProduto that matches the filter.
+     * @param {ImagemProdutoFindUniqueArgs} args - Arguments to find a ImagemProduto
+     * @example
+     * // Get one ImagemProduto
+     * const imagemProduto = await prisma.imagemProduto.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ImagemProdutoFindUniqueArgs>(args: SelectSubset<T, ImagemProdutoFindUniqueArgs<ExtArgs>>): Prisma__ImagemProdutoClient<$Result.GetResult<Prisma.$ImagemProdutoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ImagemProduto that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ImagemProdutoFindUniqueOrThrowArgs} args - Arguments to find a ImagemProduto
+     * @example
+     * // Get one ImagemProduto
+     * const imagemProduto = await prisma.imagemProduto.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ImagemProdutoFindUniqueOrThrowArgs>(args: SelectSubset<T, ImagemProdutoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ImagemProdutoClient<$Result.GetResult<Prisma.$ImagemProdutoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ImagemProduto that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagemProdutoFindFirstArgs} args - Arguments to find a ImagemProduto
+     * @example
+     * // Get one ImagemProduto
+     * const imagemProduto = await prisma.imagemProduto.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ImagemProdutoFindFirstArgs>(args?: SelectSubset<T, ImagemProdutoFindFirstArgs<ExtArgs>>): Prisma__ImagemProdutoClient<$Result.GetResult<Prisma.$ImagemProdutoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ImagemProduto that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagemProdutoFindFirstOrThrowArgs} args - Arguments to find a ImagemProduto
+     * @example
+     * // Get one ImagemProduto
+     * const imagemProduto = await prisma.imagemProduto.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ImagemProdutoFindFirstOrThrowArgs>(args?: SelectSubset<T, ImagemProdutoFindFirstOrThrowArgs<ExtArgs>>): Prisma__ImagemProdutoClient<$Result.GetResult<Prisma.$ImagemProdutoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ImagemProdutos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagemProdutoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ImagemProdutos
+     * const imagemProdutos = await prisma.imagemProduto.findMany()
+     * 
+     * // Get first 10 ImagemProdutos
+     * const imagemProdutos = await prisma.imagemProduto.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const imagemProdutoWithIdOnly = await prisma.imagemProduto.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ImagemProdutoFindManyArgs>(args?: SelectSubset<T, ImagemProdutoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagemProdutoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ImagemProduto.
+     * @param {ImagemProdutoCreateArgs} args - Arguments to create a ImagemProduto.
+     * @example
+     * // Create one ImagemProduto
+     * const ImagemProduto = await prisma.imagemProduto.create({
+     *   data: {
+     *     // ... data to create a ImagemProduto
+     *   }
+     * })
+     * 
+     */
+    create<T extends ImagemProdutoCreateArgs>(args: SelectSubset<T, ImagemProdutoCreateArgs<ExtArgs>>): Prisma__ImagemProdutoClient<$Result.GetResult<Prisma.$ImagemProdutoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ImagemProdutos.
+     * @param {ImagemProdutoCreateManyArgs} args - Arguments to create many ImagemProdutos.
+     * @example
+     * // Create many ImagemProdutos
+     * const imagemProduto = await prisma.imagemProduto.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ImagemProdutoCreateManyArgs>(args?: SelectSubset<T, ImagemProdutoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ImagemProdutos and returns the data saved in the database.
+     * @param {ImagemProdutoCreateManyAndReturnArgs} args - Arguments to create many ImagemProdutos.
+     * @example
+     * // Create many ImagemProdutos
+     * const imagemProduto = await prisma.imagemProduto.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ImagemProdutos and only return the `id`
+     * const imagemProdutoWithIdOnly = await prisma.imagemProduto.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ImagemProdutoCreateManyAndReturnArgs>(args?: SelectSubset<T, ImagemProdutoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagemProdutoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ImagemProduto.
+     * @param {ImagemProdutoDeleteArgs} args - Arguments to delete one ImagemProduto.
+     * @example
+     * // Delete one ImagemProduto
+     * const ImagemProduto = await prisma.imagemProduto.delete({
+     *   where: {
+     *     // ... filter to delete one ImagemProduto
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ImagemProdutoDeleteArgs>(args: SelectSubset<T, ImagemProdutoDeleteArgs<ExtArgs>>): Prisma__ImagemProdutoClient<$Result.GetResult<Prisma.$ImagemProdutoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ImagemProduto.
+     * @param {ImagemProdutoUpdateArgs} args - Arguments to update one ImagemProduto.
+     * @example
+     * // Update one ImagemProduto
+     * const imagemProduto = await prisma.imagemProduto.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ImagemProdutoUpdateArgs>(args: SelectSubset<T, ImagemProdutoUpdateArgs<ExtArgs>>): Prisma__ImagemProdutoClient<$Result.GetResult<Prisma.$ImagemProdutoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ImagemProdutos.
+     * @param {ImagemProdutoDeleteManyArgs} args - Arguments to filter ImagemProdutos to delete.
+     * @example
+     * // Delete a few ImagemProdutos
+     * const { count } = await prisma.imagemProduto.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ImagemProdutoDeleteManyArgs>(args?: SelectSubset<T, ImagemProdutoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ImagemProdutos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagemProdutoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ImagemProdutos
+     * const imagemProduto = await prisma.imagemProduto.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ImagemProdutoUpdateManyArgs>(args: SelectSubset<T, ImagemProdutoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ImagemProdutos and returns the data updated in the database.
+     * @param {ImagemProdutoUpdateManyAndReturnArgs} args - Arguments to update many ImagemProdutos.
+     * @example
+     * // Update many ImagemProdutos
+     * const imagemProduto = await prisma.imagemProduto.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ImagemProdutos and only return the `id`
+     * const imagemProdutoWithIdOnly = await prisma.imagemProduto.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ImagemProdutoUpdateManyAndReturnArgs>(args: SelectSubset<T, ImagemProdutoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagemProdutoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ImagemProduto.
+     * @param {ImagemProdutoUpsertArgs} args - Arguments to update or create a ImagemProduto.
+     * @example
+     * // Update or create a ImagemProduto
+     * const imagemProduto = await prisma.imagemProduto.upsert({
+     *   create: {
+     *     // ... data to create a ImagemProduto
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ImagemProduto we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ImagemProdutoUpsertArgs>(args: SelectSubset<T, ImagemProdutoUpsertArgs<ExtArgs>>): Prisma__ImagemProdutoClient<$Result.GetResult<Prisma.$ImagemProdutoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ImagemProdutos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagemProdutoCountArgs} args - Arguments to filter ImagemProdutos to count.
+     * @example
+     * // Count the number of ImagemProdutos
+     * const count = await prisma.imagemProduto.count({
+     *   where: {
+     *     // ... the filter for the ImagemProdutos we want to count
+     *   }
+     * })
+    **/
+    count<T extends ImagemProdutoCountArgs>(
+      args?: Subset<T, ImagemProdutoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ImagemProdutoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ImagemProduto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagemProdutoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ImagemProdutoAggregateArgs>(args: Subset<T, ImagemProdutoAggregateArgs>): Prisma.PrismaPromise<GetImagemProdutoAggregateType<T>>
+
+    /**
+     * Group by ImagemProduto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagemProdutoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ImagemProdutoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ImagemProdutoGroupByArgs['orderBy'] }
+        : { orderBy?: ImagemProdutoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ImagemProdutoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetImagemProdutoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ImagemProduto model
+   */
+  readonly fields: ImagemProdutoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ImagemProduto.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ImagemProdutoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    produto<T extends ProdutoModelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProdutoModelDefaultArgs<ExtArgs>>): Prisma__ProdutoModelClient<$Result.GetResult<Prisma.$ProdutoModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ImagemProduto model
+   */
+  interface ImagemProdutoFieldRefs {
+    readonly id: FieldRef<"ImagemProduto", 'Int'>
+    readonly url: FieldRef<"ImagemProduto", 'String'>
+    readonly produtoId: FieldRef<"ImagemProduto", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ImagemProduto findUnique
+   */
+  export type ImagemProdutoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImagemProduto
+     */
+    select?: ImagemProdutoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImagemProduto
+     */
+    omit?: ImagemProdutoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagemProdutoInclude<ExtArgs> | null
+    /**
+     * Filter, which ImagemProduto to fetch.
+     */
+    where: ImagemProdutoWhereUniqueInput
+  }
+
+  /**
+   * ImagemProduto findUniqueOrThrow
+   */
+  export type ImagemProdutoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImagemProduto
+     */
+    select?: ImagemProdutoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImagemProduto
+     */
+    omit?: ImagemProdutoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagemProdutoInclude<ExtArgs> | null
+    /**
+     * Filter, which ImagemProduto to fetch.
+     */
+    where: ImagemProdutoWhereUniqueInput
+  }
+
+  /**
+   * ImagemProduto findFirst
+   */
+  export type ImagemProdutoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImagemProduto
+     */
+    select?: ImagemProdutoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImagemProduto
+     */
+    omit?: ImagemProdutoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagemProdutoInclude<ExtArgs> | null
+    /**
+     * Filter, which ImagemProduto to fetch.
+     */
+    where?: ImagemProdutoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ImagemProdutos to fetch.
+     */
+    orderBy?: ImagemProdutoOrderByWithRelationInput | ImagemProdutoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ImagemProdutos.
+     */
+    cursor?: ImagemProdutoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ImagemProdutos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ImagemProdutos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ImagemProdutos.
+     */
+    distinct?: ImagemProdutoScalarFieldEnum | ImagemProdutoScalarFieldEnum[]
+  }
+
+  /**
+   * ImagemProduto findFirstOrThrow
+   */
+  export type ImagemProdutoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImagemProduto
+     */
+    select?: ImagemProdutoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImagemProduto
+     */
+    omit?: ImagemProdutoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagemProdutoInclude<ExtArgs> | null
+    /**
+     * Filter, which ImagemProduto to fetch.
+     */
+    where?: ImagemProdutoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ImagemProdutos to fetch.
+     */
+    orderBy?: ImagemProdutoOrderByWithRelationInput | ImagemProdutoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ImagemProdutos.
+     */
+    cursor?: ImagemProdutoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ImagemProdutos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ImagemProdutos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ImagemProdutos.
+     */
+    distinct?: ImagemProdutoScalarFieldEnum | ImagemProdutoScalarFieldEnum[]
+  }
+
+  /**
+   * ImagemProduto findMany
+   */
+  export type ImagemProdutoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImagemProduto
+     */
+    select?: ImagemProdutoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImagemProduto
+     */
+    omit?: ImagemProdutoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagemProdutoInclude<ExtArgs> | null
+    /**
+     * Filter, which ImagemProdutos to fetch.
+     */
+    where?: ImagemProdutoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ImagemProdutos to fetch.
+     */
+    orderBy?: ImagemProdutoOrderByWithRelationInput | ImagemProdutoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ImagemProdutos.
+     */
+    cursor?: ImagemProdutoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ImagemProdutos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ImagemProdutos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ImagemProdutos.
+     */
+    distinct?: ImagemProdutoScalarFieldEnum | ImagemProdutoScalarFieldEnum[]
+  }
+
+  /**
+   * ImagemProduto create
+   */
+  export type ImagemProdutoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImagemProduto
+     */
+    select?: ImagemProdutoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImagemProduto
+     */
+    omit?: ImagemProdutoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagemProdutoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ImagemProduto.
+     */
+    data: XOR<ImagemProdutoCreateInput, ImagemProdutoUncheckedCreateInput>
+  }
+
+  /**
+   * ImagemProduto createMany
+   */
+  export type ImagemProdutoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ImagemProdutos.
+     */
+    data: ImagemProdutoCreateManyInput | ImagemProdutoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ImagemProduto createManyAndReturn
+   */
+  export type ImagemProdutoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImagemProduto
+     */
+    select?: ImagemProdutoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImagemProduto
+     */
+    omit?: ImagemProdutoOmit<ExtArgs> | null
+    /**
+     * The data used to create many ImagemProdutos.
+     */
+    data: ImagemProdutoCreateManyInput | ImagemProdutoCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagemProdutoIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ImagemProduto update
+   */
+  export type ImagemProdutoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImagemProduto
+     */
+    select?: ImagemProdutoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImagemProduto
+     */
+    omit?: ImagemProdutoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagemProdutoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ImagemProduto.
+     */
+    data: XOR<ImagemProdutoUpdateInput, ImagemProdutoUncheckedUpdateInput>
+    /**
+     * Choose, which ImagemProduto to update.
+     */
+    where: ImagemProdutoWhereUniqueInput
+  }
+
+  /**
+   * ImagemProduto updateMany
+   */
+  export type ImagemProdutoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ImagemProdutos.
+     */
+    data: XOR<ImagemProdutoUpdateManyMutationInput, ImagemProdutoUncheckedUpdateManyInput>
+    /**
+     * Filter which ImagemProdutos to update
+     */
+    where?: ImagemProdutoWhereInput
+    /**
+     * Limit how many ImagemProdutos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ImagemProduto updateManyAndReturn
+   */
+  export type ImagemProdutoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImagemProduto
+     */
+    select?: ImagemProdutoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImagemProduto
+     */
+    omit?: ImagemProdutoOmit<ExtArgs> | null
+    /**
+     * The data used to update ImagemProdutos.
+     */
+    data: XOR<ImagemProdutoUpdateManyMutationInput, ImagemProdutoUncheckedUpdateManyInput>
+    /**
+     * Filter which ImagemProdutos to update
+     */
+    where?: ImagemProdutoWhereInput
+    /**
+     * Limit how many ImagemProdutos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagemProdutoIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ImagemProduto upsert
+   */
+  export type ImagemProdutoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImagemProduto
+     */
+    select?: ImagemProdutoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImagemProduto
+     */
+    omit?: ImagemProdutoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagemProdutoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ImagemProduto to update in case it exists.
+     */
+    where: ImagemProdutoWhereUniqueInput
+    /**
+     * In case the ImagemProduto found by the `where` argument doesn't exist, create a new ImagemProduto with this data.
+     */
+    create: XOR<ImagemProdutoCreateInput, ImagemProdutoUncheckedCreateInput>
+    /**
+     * In case the ImagemProduto was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ImagemProdutoUpdateInput, ImagemProdutoUncheckedUpdateInput>
+  }
+
+  /**
+   * ImagemProduto delete
+   */
+  export type ImagemProdutoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImagemProduto
+     */
+    select?: ImagemProdutoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImagemProduto
+     */
+    omit?: ImagemProdutoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagemProdutoInclude<ExtArgs> | null
+    /**
+     * Filter which ImagemProduto to delete.
+     */
+    where: ImagemProdutoWhereUniqueInput
+  }
+
+  /**
+   * ImagemProduto deleteMany
+   */
+  export type ImagemProdutoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ImagemProdutos to delete
+     */
+    where?: ImagemProdutoWhereInput
+    /**
+     * Limit how many ImagemProdutos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ImagemProduto without action
+   */
+  export type ImagemProdutoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImagemProduto
+     */
+    select?: ImagemProdutoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImagemProduto
+     */
+    omit?: ImagemProdutoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagemProdutoInclude<ExtArgs> | null
+  }
+
 
   /**
    * Model ProdutoModel
@@ -1558,7 +2855,9 @@ export namespace Prisma {
     unidadeMedidaId?: boolean
     categoria?: boolean | CategoriaProdutoDefaultArgs<ExtArgs>
     unidadeMedida?: boolean | UnidadeMedidaDefaultArgs<ExtArgs>
-    operacaoEstoqueDetalhe?: boolean | ProdutoModel$operacaoEstoqueDetalheArgs<ExtArgs>
+    imagens?: boolean | ProdutoModel$imagensArgs<ExtArgs>
+    operacaoEstoqueDetalhes?: boolean | ProdutoModel$operacaoEstoqueDetalhesArgs<ExtArgs>
+    _count?: boolean | ProdutoModelCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["produtoModel"]>
 
   export type ProdutoModelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1602,7 +2901,9 @@ export namespace Prisma {
   export type ProdutoModelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     categoria?: boolean | CategoriaProdutoDefaultArgs<ExtArgs>
     unidadeMedida?: boolean | UnidadeMedidaDefaultArgs<ExtArgs>
-    operacaoEstoqueDetalhe?: boolean | ProdutoModel$operacaoEstoqueDetalheArgs<ExtArgs>
+    imagens?: boolean | ProdutoModel$imagensArgs<ExtArgs>
+    operacaoEstoqueDetalhes?: boolean | ProdutoModel$operacaoEstoqueDetalhesArgs<ExtArgs>
+    _count?: boolean | ProdutoModelCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProdutoModelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     categoria?: boolean | CategoriaProdutoDefaultArgs<ExtArgs>
@@ -1618,7 +2919,8 @@ export namespace Prisma {
     objects: {
       categoria: Prisma.$CategoriaProdutoPayload<ExtArgs>
       unidadeMedida: Prisma.$UnidadeMedidaPayload<ExtArgs>
-      operacaoEstoqueDetalhe: Prisma.$OperacaoEstoqueDetalhePayload<ExtArgs> | null
+      imagens: Prisma.$ImagemProdutoPayload<ExtArgs>[]
+      operacaoEstoqueDetalhes: Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2025,7 +3327,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     categoria<T extends CategoriaProdutoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoriaProdutoDefaultArgs<ExtArgs>>): Prisma__CategoriaProdutoClient<$Result.GetResult<Prisma.$CategoriaProdutoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     unidadeMedida<T extends UnidadeMedidaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UnidadeMedidaDefaultArgs<ExtArgs>>): Prisma__UnidadeMedidaClient<$Result.GetResult<Prisma.$UnidadeMedidaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    operacaoEstoqueDetalhe<T extends ProdutoModel$operacaoEstoqueDetalheArgs<ExtArgs> = {}>(args?: Subset<T, ProdutoModel$operacaoEstoqueDetalheArgs<ExtArgs>>): Prisma__OperacaoEstoqueDetalheClient<$Result.GetResult<Prisma.$OperacaoEstoqueDetalhePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    imagens<T extends ProdutoModel$imagensArgs<ExtArgs> = {}>(args?: Subset<T, ProdutoModel$imagensArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagemProdutoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    operacaoEstoqueDetalhes<T extends ProdutoModel$operacaoEstoqueDetalhesArgs<ExtArgs> = {}>(args?: Subset<T, ProdutoModel$operacaoEstoqueDetalhesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2464,22 +3767,51 @@ export namespace Prisma {
   }
 
   /**
-   * ProdutoModel.operacaoEstoqueDetalhe
+   * ProdutoModel.imagens
    */
-  export type ProdutoModel$operacaoEstoqueDetalheArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProdutoModel$imagensArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the OperacaoEstoqueDetalhe
+     * Select specific fields to fetch from the ImagemProduto
      */
-    select?: OperacaoEstoqueDetalheSelect<ExtArgs> | null
+    select?: ImagemProdutoSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the OperacaoEstoqueDetalhe
+     * Omit specific fields from the ImagemProduto
      */
-    omit?: OperacaoEstoqueDetalheOmit<ExtArgs> | null
+    omit?: ImagemProdutoOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: OperacaoEstoqueDetalheInclude<ExtArgs> | null
-    where?: OperacaoEstoqueDetalheWhereInput
+    include?: ImagemProdutoInclude<ExtArgs> | null
+    where?: ImagemProdutoWhereInput
+    orderBy?: ImagemProdutoOrderByWithRelationInput | ImagemProdutoOrderByWithRelationInput[]
+    cursor?: ImagemProdutoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ImagemProdutoScalarFieldEnum | ImagemProdutoScalarFieldEnum[]
+  }
+
+  /**
+   * ProdutoModel.operacaoEstoqueDetalhes
+   */
+  export type ProdutoModel$operacaoEstoqueDetalhesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemInclude<ExtArgs> | null
+    where?: OperacaoEstoqueDetalheItemWhereInput
+    orderBy?: OperacaoEstoqueDetalheItemOrderByWithRelationInput | OperacaoEstoqueDetalheItemOrderByWithRelationInput[]
+    cursor?: OperacaoEstoqueDetalheItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OperacaoEstoqueDetalheItemScalarFieldEnum | OperacaoEstoqueDetalheItemScalarFieldEnum[]
   }
 
   /**
@@ -4870,8 +6202,7 @@ export namespace Prisma {
     hora?: boolean
     motivo?: boolean
     entradasaida?: boolean
-    operacaoestoquedetalhes?: boolean | OperacaoEstoque$operacaoestoquedetalhesArgs<ExtArgs>
-    _count?: boolean | OperacaoEstoqueCountOutputTypeDefaultArgs<ExtArgs>
+    operacaoEstoqueDetalhe?: boolean | OperacaoEstoque$operacaoEstoqueDetalheArgs<ExtArgs>
   }, ExtArgs["result"]["operacaoEstoque"]>
 
   export type OperacaoEstoqueSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4897,8 +6228,7 @@ export namespace Prisma {
 
   export type OperacaoEstoqueOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "hora" | "motivo" | "entradasaida", ExtArgs["result"]["operacaoEstoque"]>
   export type OperacaoEstoqueInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    operacaoestoquedetalhes?: boolean | OperacaoEstoque$operacaoestoquedetalhesArgs<ExtArgs>
-    _count?: boolean | OperacaoEstoqueCountOutputTypeDefaultArgs<ExtArgs>
+    operacaoEstoqueDetalhe?: boolean | OperacaoEstoque$operacaoEstoqueDetalheArgs<ExtArgs>
   }
   export type OperacaoEstoqueIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
   export type OperacaoEstoqueIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -4906,7 +6236,7 @@ export namespace Prisma {
   export type $OperacaoEstoquePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "OperacaoEstoque"
     objects: {
-      operacaoestoquedetalhes: Prisma.$OperacaoEstoqueDetalhePayload<ExtArgs>[]
+      operacaoEstoqueDetalhe: Prisma.$OperacaoEstoqueDetalhePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5307,7 +6637,7 @@ export namespace Prisma {
    */
   export interface Prisma__OperacaoEstoqueClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    operacaoestoquedetalhes<T extends OperacaoEstoque$operacaoestoquedetalhesArgs<ExtArgs> = {}>(args?: Subset<T, OperacaoEstoque$operacaoestoquedetalhesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperacaoEstoqueDetalhePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    operacaoEstoqueDetalhe<T extends OperacaoEstoque$operacaoEstoqueDetalheArgs<ExtArgs> = {}>(args?: Subset<T, OperacaoEstoque$operacaoEstoqueDetalheArgs<ExtArgs>>): Prisma__OperacaoEstoqueDetalheClient<$Result.GetResult<Prisma.$OperacaoEstoqueDetalhePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5734,9 +7064,9 @@ export namespace Prisma {
   }
 
   /**
-   * OperacaoEstoque.operacaoestoquedetalhes
+   * OperacaoEstoque.operacaoEstoqueDetalhe
    */
-  export type OperacaoEstoque$operacaoestoquedetalhesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type OperacaoEstoque$operacaoEstoqueDetalheArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the OperacaoEstoqueDetalhe
      */
@@ -5750,11 +7080,6 @@ export namespace Prisma {
      */
     include?: OperacaoEstoqueDetalheInclude<ExtArgs> | null
     where?: OperacaoEstoqueDetalheWhereInput
-    orderBy?: OperacaoEstoqueDetalheOrderByWithRelationInput | OperacaoEstoqueDetalheOrderByWithRelationInput[]
-    cursor?: OperacaoEstoqueDetalheWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: OperacaoEstoqueDetalheScalarFieldEnum | OperacaoEstoqueDetalheScalarFieldEnum[]
   }
 
   /**
@@ -5790,84 +7115,54 @@ export namespace Prisma {
 
   export type OperacaoEstoqueDetalheAvgAggregateOutputType = {
     id: number | null
-    quantidade: number | null
-    precoCusto: number | null
     operacaoEstoqueId: number | null
-    produtoId: number | null
   }
 
   export type OperacaoEstoqueDetalheSumAggregateOutputType = {
     id: number | null
-    quantidade: number | null
-    precoCusto: number | null
     operacaoEstoqueId: number | null
-    produtoId: number | null
   }
 
   export type OperacaoEstoqueDetalheMinAggregateOutputType = {
     id: number | null
-    quantidade: number | null
-    precoCusto: number | null
     operacaoEstoqueId: number | null
-    produtoId: number | null
   }
 
   export type OperacaoEstoqueDetalheMaxAggregateOutputType = {
     id: number | null
-    quantidade: number | null
-    precoCusto: number | null
     operacaoEstoqueId: number | null
-    produtoId: number | null
   }
 
   export type OperacaoEstoqueDetalheCountAggregateOutputType = {
     id: number
-    quantidade: number
-    precoCusto: number
     operacaoEstoqueId: number
-    produtoId: number
     _all: number
   }
 
 
   export type OperacaoEstoqueDetalheAvgAggregateInputType = {
     id?: true
-    quantidade?: true
-    precoCusto?: true
     operacaoEstoqueId?: true
-    produtoId?: true
   }
 
   export type OperacaoEstoqueDetalheSumAggregateInputType = {
     id?: true
-    quantidade?: true
-    precoCusto?: true
     operacaoEstoqueId?: true
-    produtoId?: true
   }
 
   export type OperacaoEstoqueDetalheMinAggregateInputType = {
     id?: true
-    quantidade?: true
-    precoCusto?: true
     operacaoEstoqueId?: true
-    produtoId?: true
   }
 
   export type OperacaoEstoqueDetalheMaxAggregateInputType = {
     id?: true
-    quantidade?: true
-    precoCusto?: true
     operacaoEstoqueId?: true
-    produtoId?: true
   }
 
   export type OperacaoEstoqueDetalheCountAggregateInputType = {
     id?: true
-    quantidade?: true
-    precoCusto?: true
     operacaoEstoqueId?: true
-    produtoId?: true
     _all?: true
   }
 
@@ -5959,10 +7254,7 @@ export namespace Prisma {
 
   export type OperacaoEstoqueDetalheGroupByOutputType = {
     id: number
-    quantidade: number
-    precoCusto: number
     operacaoEstoqueId: number
-    produtoId: number
     _count: OperacaoEstoqueDetalheCountAggregateOutputType | null
     _avg: OperacaoEstoqueDetalheAvgAggregateOutputType | null
     _sum: OperacaoEstoqueDetalheSumAggregateOutputType | null
@@ -5986,68 +7278,51 @@ export namespace Prisma {
 
   export type OperacaoEstoqueDetalheSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    quantidade?: boolean
-    precoCusto?: boolean
     operacaoEstoqueId?: boolean
-    produtoId?: boolean
     operacaoEstoque?: boolean | OperacaoEstoqueDefaultArgs<ExtArgs>
-    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+    itens?: boolean | OperacaoEstoqueDetalhe$itensArgs<ExtArgs>
+    _count?: boolean | OperacaoEstoqueDetalheCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["operacaoEstoqueDetalhe"]>
 
   export type OperacaoEstoqueDetalheSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    quantidade?: boolean
-    precoCusto?: boolean
     operacaoEstoqueId?: boolean
-    produtoId?: boolean
     operacaoEstoque?: boolean | OperacaoEstoqueDefaultArgs<ExtArgs>
-    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["operacaoEstoqueDetalhe"]>
 
   export type OperacaoEstoqueDetalheSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    quantidade?: boolean
-    precoCusto?: boolean
     operacaoEstoqueId?: boolean
-    produtoId?: boolean
     operacaoEstoque?: boolean | OperacaoEstoqueDefaultArgs<ExtArgs>
-    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["operacaoEstoqueDetalhe"]>
 
   export type OperacaoEstoqueDetalheSelectScalar = {
     id?: boolean
-    quantidade?: boolean
-    precoCusto?: boolean
     operacaoEstoqueId?: boolean
-    produtoId?: boolean
   }
 
-  export type OperacaoEstoqueDetalheOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "quantidade" | "precoCusto" | "operacaoEstoqueId" | "produtoId", ExtArgs["result"]["operacaoEstoqueDetalhe"]>
+  export type OperacaoEstoqueDetalheOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "operacaoEstoqueId", ExtArgs["result"]["operacaoEstoqueDetalhe"]>
   export type OperacaoEstoqueDetalheInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     operacaoEstoque?: boolean | OperacaoEstoqueDefaultArgs<ExtArgs>
-    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+    itens?: boolean | OperacaoEstoqueDetalhe$itensArgs<ExtArgs>
+    _count?: boolean | OperacaoEstoqueDetalheCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type OperacaoEstoqueDetalheIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     operacaoEstoque?: boolean | OperacaoEstoqueDefaultArgs<ExtArgs>
-    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
   }
   export type OperacaoEstoqueDetalheIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     operacaoEstoque?: boolean | OperacaoEstoqueDefaultArgs<ExtArgs>
-    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
   }
 
   export type $OperacaoEstoqueDetalhePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "OperacaoEstoqueDetalhe"
     objects: {
       operacaoEstoque: Prisma.$OperacaoEstoquePayload<ExtArgs>
-      produto: Prisma.$ProdutoModelPayload<ExtArgs>
+      itens: Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      quantidade: number
-      precoCusto: number
       operacaoEstoqueId: number
-      produtoId: number
     }, ExtArgs["result"]["operacaoEstoqueDetalhe"]>
     composites: {}
   }
@@ -6443,7 +7718,7 @@ export namespace Prisma {
   export interface Prisma__OperacaoEstoqueDetalheClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     operacaoEstoque<T extends OperacaoEstoqueDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OperacaoEstoqueDefaultArgs<ExtArgs>>): Prisma__OperacaoEstoqueClient<$Result.GetResult<Prisma.$OperacaoEstoquePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    produto<T extends ProdutoModelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProdutoModelDefaultArgs<ExtArgs>>): Prisma__ProdutoModelClient<$Result.GetResult<Prisma.$ProdutoModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    itens<T extends OperacaoEstoqueDetalhe$itensArgs<ExtArgs> = {}>(args?: Subset<T, OperacaoEstoqueDetalhe$itensArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6474,10 +7749,7 @@ export namespace Prisma {
    */
   interface OperacaoEstoqueDetalheFieldRefs {
     readonly id: FieldRef<"OperacaoEstoqueDetalhe", 'Int'>
-    readonly quantidade: FieldRef<"OperacaoEstoqueDetalhe", 'Int'>
-    readonly precoCusto: FieldRef<"OperacaoEstoqueDetalhe", 'Float'>
     readonly operacaoEstoqueId: FieldRef<"OperacaoEstoqueDetalhe", 'Int'>
-    readonly produtoId: FieldRef<"OperacaoEstoqueDetalhe", 'Int'>
   }
     
 
@@ -6879,6 +8151,30 @@ export namespace Prisma {
   }
 
   /**
+   * OperacaoEstoqueDetalhe.itens
+   */
+  export type OperacaoEstoqueDetalhe$itensArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemInclude<ExtArgs> | null
+    where?: OperacaoEstoqueDetalheItemWhereInput
+    orderBy?: OperacaoEstoqueDetalheItemOrderByWithRelationInput | OperacaoEstoqueDetalheItemOrderByWithRelationInput[]
+    cursor?: OperacaoEstoqueDetalheItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OperacaoEstoqueDetalheItemScalarFieldEnum | OperacaoEstoqueDetalheItemScalarFieldEnum[]
+  }
+
+  /**
    * OperacaoEstoqueDetalhe without action
    */
   export type OperacaoEstoqueDetalheDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6898,6 +8194,1127 @@ export namespace Prisma {
 
 
   /**
+   * Model OperacaoEstoqueDetalheItem
+   */
+
+  export type AggregateOperacaoEstoqueDetalheItem = {
+    _count: OperacaoEstoqueDetalheItemCountAggregateOutputType | null
+    _avg: OperacaoEstoqueDetalheItemAvgAggregateOutputType | null
+    _sum: OperacaoEstoqueDetalheItemSumAggregateOutputType | null
+    _min: OperacaoEstoqueDetalheItemMinAggregateOutputType | null
+    _max: OperacaoEstoqueDetalheItemMaxAggregateOutputType | null
+  }
+
+  export type OperacaoEstoqueDetalheItemAvgAggregateOutputType = {
+    id: number | null
+    quantidade: number | null
+    precoCusto: number | null
+    operacaoEstoqueDetalheId: number | null
+    produtoId: number | null
+  }
+
+  export type OperacaoEstoqueDetalheItemSumAggregateOutputType = {
+    id: number | null
+    quantidade: number | null
+    precoCusto: number | null
+    operacaoEstoqueDetalheId: number | null
+    produtoId: number | null
+  }
+
+  export type OperacaoEstoqueDetalheItemMinAggregateOutputType = {
+    id: number | null
+    quantidade: number | null
+    precoCusto: number | null
+    operacaoEstoqueDetalheId: number | null
+    produtoId: number | null
+  }
+
+  export type OperacaoEstoqueDetalheItemMaxAggregateOutputType = {
+    id: number | null
+    quantidade: number | null
+    precoCusto: number | null
+    operacaoEstoqueDetalheId: number | null
+    produtoId: number | null
+  }
+
+  export type OperacaoEstoqueDetalheItemCountAggregateOutputType = {
+    id: number
+    quantidade: number
+    precoCusto: number
+    operacaoEstoqueDetalheId: number
+    produtoId: number
+    _all: number
+  }
+
+
+  export type OperacaoEstoqueDetalheItemAvgAggregateInputType = {
+    id?: true
+    quantidade?: true
+    precoCusto?: true
+    operacaoEstoqueDetalheId?: true
+    produtoId?: true
+  }
+
+  export type OperacaoEstoqueDetalheItemSumAggregateInputType = {
+    id?: true
+    quantidade?: true
+    precoCusto?: true
+    operacaoEstoqueDetalheId?: true
+    produtoId?: true
+  }
+
+  export type OperacaoEstoqueDetalheItemMinAggregateInputType = {
+    id?: true
+    quantidade?: true
+    precoCusto?: true
+    operacaoEstoqueDetalheId?: true
+    produtoId?: true
+  }
+
+  export type OperacaoEstoqueDetalheItemMaxAggregateInputType = {
+    id?: true
+    quantidade?: true
+    precoCusto?: true
+    operacaoEstoqueDetalheId?: true
+    produtoId?: true
+  }
+
+  export type OperacaoEstoqueDetalheItemCountAggregateInputType = {
+    id?: true
+    quantidade?: true
+    precoCusto?: true
+    operacaoEstoqueDetalheId?: true
+    produtoId?: true
+    _all?: true
+  }
+
+  export type OperacaoEstoqueDetalheItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OperacaoEstoqueDetalheItem to aggregate.
+     */
+    where?: OperacaoEstoqueDetalheItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperacaoEstoqueDetalheItems to fetch.
+     */
+    orderBy?: OperacaoEstoqueDetalheItemOrderByWithRelationInput | OperacaoEstoqueDetalheItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OperacaoEstoqueDetalheItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperacaoEstoqueDetalheItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperacaoEstoqueDetalheItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OperacaoEstoqueDetalheItems
+    **/
+    _count?: true | OperacaoEstoqueDetalheItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: OperacaoEstoqueDetalheItemAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: OperacaoEstoqueDetalheItemSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OperacaoEstoqueDetalheItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OperacaoEstoqueDetalheItemMaxAggregateInputType
+  }
+
+  export type GetOperacaoEstoqueDetalheItemAggregateType<T extends OperacaoEstoqueDetalheItemAggregateArgs> = {
+        [P in keyof T & keyof AggregateOperacaoEstoqueDetalheItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOperacaoEstoqueDetalheItem[P]>
+      : GetScalarType<T[P], AggregateOperacaoEstoqueDetalheItem[P]>
+  }
+
+
+
+
+  export type OperacaoEstoqueDetalheItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OperacaoEstoqueDetalheItemWhereInput
+    orderBy?: OperacaoEstoqueDetalheItemOrderByWithAggregationInput | OperacaoEstoqueDetalheItemOrderByWithAggregationInput[]
+    by: OperacaoEstoqueDetalheItemScalarFieldEnum[] | OperacaoEstoqueDetalheItemScalarFieldEnum
+    having?: OperacaoEstoqueDetalheItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OperacaoEstoqueDetalheItemCountAggregateInputType | true
+    _avg?: OperacaoEstoqueDetalheItemAvgAggregateInputType
+    _sum?: OperacaoEstoqueDetalheItemSumAggregateInputType
+    _min?: OperacaoEstoqueDetalheItemMinAggregateInputType
+    _max?: OperacaoEstoqueDetalheItemMaxAggregateInputType
+  }
+
+  export type OperacaoEstoqueDetalheItemGroupByOutputType = {
+    id: number
+    quantidade: number
+    precoCusto: number
+    operacaoEstoqueDetalheId: number
+    produtoId: number
+    _count: OperacaoEstoqueDetalheItemCountAggregateOutputType | null
+    _avg: OperacaoEstoqueDetalheItemAvgAggregateOutputType | null
+    _sum: OperacaoEstoqueDetalheItemSumAggregateOutputType | null
+    _min: OperacaoEstoqueDetalheItemMinAggregateOutputType | null
+    _max: OperacaoEstoqueDetalheItemMaxAggregateOutputType | null
+  }
+
+  type GetOperacaoEstoqueDetalheItemGroupByPayload<T extends OperacaoEstoqueDetalheItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OperacaoEstoqueDetalheItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OperacaoEstoqueDetalheItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OperacaoEstoqueDetalheItemGroupByOutputType[P]>
+            : GetScalarType<T[P], OperacaoEstoqueDetalheItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OperacaoEstoqueDetalheItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    quantidade?: boolean
+    precoCusto?: boolean
+    operacaoEstoqueDetalheId?: boolean
+    produtoId?: boolean
+    operacaoEstoqueDetalhe?: boolean | OperacaoEstoqueDetalheDefaultArgs<ExtArgs>
+    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["operacaoEstoqueDetalheItem"]>
+
+  export type OperacaoEstoqueDetalheItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    quantidade?: boolean
+    precoCusto?: boolean
+    operacaoEstoqueDetalheId?: boolean
+    produtoId?: boolean
+    operacaoEstoqueDetalhe?: boolean | OperacaoEstoqueDetalheDefaultArgs<ExtArgs>
+    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["operacaoEstoqueDetalheItem"]>
+
+  export type OperacaoEstoqueDetalheItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    quantidade?: boolean
+    precoCusto?: boolean
+    operacaoEstoqueDetalheId?: boolean
+    produtoId?: boolean
+    operacaoEstoqueDetalhe?: boolean | OperacaoEstoqueDetalheDefaultArgs<ExtArgs>
+    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["operacaoEstoqueDetalheItem"]>
+
+  export type OperacaoEstoqueDetalheItemSelectScalar = {
+    id?: boolean
+    quantidade?: boolean
+    precoCusto?: boolean
+    operacaoEstoqueDetalheId?: boolean
+    produtoId?: boolean
+  }
+
+  export type OperacaoEstoqueDetalheItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "quantidade" | "precoCusto" | "operacaoEstoqueDetalheId" | "produtoId", ExtArgs["result"]["operacaoEstoqueDetalheItem"]>
+  export type OperacaoEstoqueDetalheItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    operacaoEstoqueDetalhe?: boolean | OperacaoEstoqueDetalheDefaultArgs<ExtArgs>
+    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+  }
+  export type OperacaoEstoqueDetalheItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    operacaoEstoqueDetalhe?: boolean | OperacaoEstoqueDetalheDefaultArgs<ExtArgs>
+    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+  }
+  export type OperacaoEstoqueDetalheItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    operacaoEstoqueDetalhe?: boolean | OperacaoEstoqueDetalheDefaultArgs<ExtArgs>
+    produto?: boolean | ProdutoModelDefaultArgs<ExtArgs>
+  }
+
+  export type $OperacaoEstoqueDetalheItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OperacaoEstoqueDetalheItem"
+    objects: {
+      operacaoEstoqueDetalhe: Prisma.$OperacaoEstoqueDetalhePayload<ExtArgs>
+      produto: Prisma.$ProdutoModelPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      quantidade: number
+      precoCusto: number
+      operacaoEstoqueDetalheId: number
+      produtoId: number
+    }, ExtArgs["result"]["operacaoEstoqueDetalheItem"]>
+    composites: {}
+  }
+
+  type OperacaoEstoqueDetalheItemGetPayload<S extends boolean | null | undefined | OperacaoEstoqueDetalheItemDefaultArgs> = $Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload, S>
+
+  type OperacaoEstoqueDetalheItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OperacaoEstoqueDetalheItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OperacaoEstoqueDetalheItemCountAggregateInputType | true
+    }
+
+  export interface OperacaoEstoqueDetalheItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OperacaoEstoqueDetalheItem'], meta: { name: 'OperacaoEstoqueDetalheItem' } }
+    /**
+     * Find zero or one OperacaoEstoqueDetalheItem that matches the filter.
+     * @param {OperacaoEstoqueDetalheItemFindUniqueArgs} args - Arguments to find a OperacaoEstoqueDetalheItem
+     * @example
+     * // Get one OperacaoEstoqueDetalheItem
+     * const operacaoEstoqueDetalheItem = await prisma.operacaoEstoqueDetalheItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OperacaoEstoqueDetalheItemFindUniqueArgs>(args: SelectSubset<T, OperacaoEstoqueDetalheItemFindUniqueArgs<ExtArgs>>): Prisma__OperacaoEstoqueDetalheItemClient<$Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OperacaoEstoqueDetalheItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OperacaoEstoqueDetalheItemFindUniqueOrThrowArgs} args - Arguments to find a OperacaoEstoqueDetalheItem
+     * @example
+     * // Get one OperacaoEstoqueDetalheItem
+     * const operacaoEstoqueDetalheItem = await prisma.operacaoEstoqueDetalheItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OperacaoEstoqueDetalheItemFindUniqueOrThrowArgs>(args: SelectSubset<T, OperacaoEstoqueDetalheItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OperacaoEstoqueDetalheItemClient<$Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OperacaoEstoqueDetalheItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacaoEstoqueDetalheItemFindFirstArgs} args - Arguments to find a OperacaoEstoqueDetalheItem
+     * @example
+     * // Get one OperacaoEstoqueDetalheItem
+     * const operacaoEstoqueDetalheItem = await prisma.operacaoEstoqueDetalheItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OperacaoEstoqueDetalheItemFindFirstArgs>(args?: SelectSubset<T, OperacaoEstoqueDetalheItemFindFirstArgs<ExtArgs>>): Prisma__OperacaoEstoqueDetalheItemClient<$Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OperacaoEstoqueDetalheItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacaoEstoqueDetalheItemFindFirstOrThrowArgs} args - Arguments to find a OperacaoEstoqueDetalheItem
+     * @example
+     * // Get one OperacaoEstoqueDetalheItem
+     * const operacaoEstoqueDetalheItem = await prisma.operacaoEstoqueDetalheItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OperacaoEstoqueDetalheItemFindFirstOrThrowArgs>(args?: SelectSubset<T, OperacaoEstoqueDetalheItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__OperacaoEstoqueDetalheItemClient<$Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OperacaoEstoqueDetalheItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacaoEstoqueDetalheItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OperacaoEstoqueDetalheItems
+     * const operacaoEstoqueDetalheItems = await prisma.operacaoEstoqueDetalheItem.findMany()
+     * 
+     * // Get first 10 OperacaoEstoqueDetalheItems
+     * const operacaoEstoqueDetalheItems = await prisma.operacaoEstoqueDetalheItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const operacaoEstoqueDetalheItemWithIdOnly = await prisma.operacaoEstoqueDetalheItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OperacaoEstoqueDetalheItemFindManyArgs>(args?: SelectSubset<T, OperacaoEstoqueDetalheItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OperacaoEstoqueDetalheItem.
+     * @param {OperacaoEstoqueDetalheItemCreateArgs} args - Arguments to create a OperacaoEstoqueDetalheItem.
+     * @example
+     * // Create one OperacaoEstoqueDetalheItem
+     * const OperacaoEstoqueDetalheItem = await prisma.operacaoEstoqueDetalheItem.create({
+     *   data: {
+     *     // ... data to create a OperacaoEstoqueDetalheItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends OperacaoEstoqueDetalheItemCreateArgs>(args: SelectSubset<T, OperacaoEstoqueDetalheItemCreateArgs<ExtArgs>>): Prisma__OperacaoEstoqueDetalheItemClient<$Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OperacaoEstoqueDetalheItems.
+     * @param {OperacaoEstoqueDetalheItemCreateManyArgs} args - Arguments to create many OperacaoEstoqueDetalheItems.
+     * @example
+     * // Create many OperacaoEstoqueDetalheItems
+     * const operacaoEstoqueDetalheItem = await prisma.operacaoEstoqueDetalheItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OperacaoEstoqueDetalheItemCreateManyArgs>(args?: SelectSubset<T, OperacaoEstoqueDetalheItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OperacaoEstoqueDetalheItems and returns the data saved in the database.
+     * @param {OperacaoEstoqueDetalheItemCreateManyAndReturnArgs} args - Arguments to create many OperacaoEstoqueDetalheItems.
+     * @example
+     * // Create many OperacaoEstoqueDetalheItems
+     * const operacaoEstoqueDetalheItem = await prisma.operacaoEstoqueDetalheItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OperacaoEstoqueDetalheItems and only return the `id`
+     * const operacaoEstoqueDetalheItemWithIdOnly = await prisma.operacaoEstoqueDetalheItem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OperacaoEstoqueDetalheItemCreateManyAndReturnArgs>(args?: SelectSubset<T, OperacaoEstoqueDetalheItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OperacaoEstoqueDetalheItem.
+     * @param {OperacaoEstoqueDetalheItemDeleteArgs} args - Arguments to delete one OperacaoEstoqueDetalheItem.
+     * @example
+     * // Delete one OperacaoEstoqueDetalheItem
+     * const OperacaoEstoqueDetalheItem = await prisma.operacaoEstoqueDetalheItem.delete({
+     *   where: {
+     *     // ... filter to delete one OperacaoEstoqueDetalheItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OperacaoEstoqueDetalheItemDeleteArgs>(args: SelectSubset<T, OperacaoEstoqueDetalheItemDeleteArgs<ExtArgs>>): Prisma__OperacaoEstoqueDetalheItemClient<$Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OperacaoEstoqueDetalheItem.
+     * @param {OperacaoEstoqueDetalheItemUpdateArgs} args - Arguments to update one OperacaoEstoqueDetalheItem.
+     * @example
+     * // Update one OperacaoEstoqueDetalheItem
+     * const operacaoEstoqueDetalheItem = await prisma.operacaoEstoqueDetalheItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OperacaoEstoqueDetalheItemUpdateArgs>(args: SelectSubset<T, OperacaoEstoqueDetalheItemUpdateArgs<ExtArgs>>): Prisma__OperacaoEstoqueDetalheItemClient<$Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OperacaoEstoqueDetalheItems.
+     * @param {OperacaoEstoqueDetalheItemDeleteManyArgs} args - Arguments to filter OperacaoEstoqueDetalheItems to delete.
+     * @example
+     * // Delete a few OperacaoEstoqueDetalheItems
+     * const { count } = await prisma.operacaoEstoqueDetalheItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OperacaoEstoqueDetalheItemDeleteManyArgs>(args?: SelectSubset<T, OperacaoEstoqueDetalheItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OperacaoEstoqueDetalheItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacaoEstoqueDetalheItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OperacaoEstoqueDetalheItems
+     * const operacaoEstoqueDetalheItem = await prisma.operacaoEstoqueDetalheItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OperacaoEstoqueDetalheItemUpdateManyArgs>(args: SelectSubset<T, OperacaoEstoqueDetalheItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OperacaoEstoqueDetalheItems and returns the data updated in the database.
+     * @param {OperacaoEstoqueDetalheItemUpdateManyAndReturnArgs} args - Arguments to update many OperacaoEstoqueDetalheItems.
+     * @example
+     * // Update many OperacaoEstoqueDetalheItems
+     * const operacaoEstoqueDetalheItem = await prisma.operacaoEstoqueDetalheItem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OperacaoEstoqueDetalheItems and only return the `id`
+     * const operacaoEstoqueDetalheItemWithIdOnly = await prisma.operacaoEstoqueDetalheItem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OperacaoEstoqueDetalheItemUpdateManyAndReturnArgs>(args: SelectSubset<T, OperacaoEstoqueDetalheItemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OperacaoEstoqueDetalheItem.
+     * @param {OperacaoEstoqueDetalheItemUpsertArgs} args - Arguments to update or create a OperacaoEstoqueDetalheItem.
+     * @example
+     * // Update or create a OperacaoEstoqueDetalheItem
+     * const operacaoEstoqueDetalheItem = await prisma.operacaoEstoqueDetalheItem.upsert({
+     *   create: {
+     *     // ... data to create a OperacaoEstoqueDetalheItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OperacaoEstoqueDetalheItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OperacaoEstoqueDetalheItemUpsertArgs>(args: SelectSubset<T, OperacaoEstoqueDetalheItemUpsertArgs<ExtArgs>>): Prisma__OperacaoEstoqueDetalheItemClient<$Result.GetResult<Prisma.$OperacaoEstoqueDetalheItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OperacaoEstoqueDetalheItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacaoEstoqueDetalheItemCountArgs} args - Arguments to filter OperacaoEstoqueDetalheItems to count.
+     * @example
+     * // Count the number of OperacaoEstoqueDetalheItems
+     * const count = await prisma.operacaoEstoqueDetalheItem.count({
+     *   where: {
+     *     // ... the filter for the OperacaoEstoqueDetalheItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends OperacaoEstoqueDetalheItemCountArgs>(
+      args?: Subset<T, OperacaoEstoqueDetalheItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OperacaoEstoqueDetalheItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OperacaoEstoqueDetalheItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacaoEstoqueDetalheItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OperacaoEstoqueDetalheItemAggregateArgs>(args: Subset<T, OperacaoEstoqueDetalheItemAggregateArgs>): Prisma.PrismaPromise<GetOperacaoEstoqueDetalheItemAggregateType<T>>
+
+    /**
+     * Group by OperacaoEstoqueDetalheItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperacaoEstoqueDetalheItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OperacaoEstoqueDetalheItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OperacaoEstoqueDetalheItemGroupByArgs['orderBy'] }
+        : { orderBy?: OperacaoEstoqueDetalheItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OperacaoEstoqueDetalheItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOperacaoEstoqueDetalheItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OperacaoEstoqueDetalheItem model
+   */
+  readonly fields: OperacaoEstoqueDetalheItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OperacaoEstoqueDetalheItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OperacaoEstoqueDetalheItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    operacaoEstoqueDetalhe<T extends OperacaoEstoqueDetalheDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OperacaoEstoqueDetalheDefaultArgs<ExtArgs>>): Prisma__OperacaoEstoqueDetalheClient<$Result.GetResult<Prisma.$OperacaoEstoqueDetalhePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    produto<T extends ProdutoModelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProdutoModelDefaultArgs<ExtArgs>>): Prisma__ProdutoModelClient<$Result.GetResult<Prisma.$ProdutoModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OperacaoEstoqueDetalheItem model
+   */
+  interface OperacaoEstoqueDetalheItemFieldRefs {
+    readonly id: FieldRef<"OperacaoEstoqueDetalheItem", 'Int'>
+    readonly quantidade: FieldRef<"OperacaoEstoqueDetalheItem", 'Int'>
+    readonly precoCusto: FieldRef<"OperacaoEstoqueDetalheItem", 'Float'>
+    readonly operacaoEstoqueDetalheId: FieldRef<"OperacaoEstoqueDetalheItem", 'Int'>
+    readonly produtoId: FieldRef<"OperacaoEstoqueDetalheItem", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OperacaoEstoqueDetalheItem findUnique
+   */
+  export type OperacaoEstoqueDetalheItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemInclude<ExtArgs> | null
+    /**
+     * Filter, which OperacaoEstoqueDetalheItem to fetch.
+     */
+    where: OperacaoEstoqueDetalheItemWhereUniqueInput
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem findUniqueOrThrow
+   */
+  export type OperacaoEstoqueDetalheItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemInclude<ExtArgs> | null
+    /**
+     * Filter, which OperacaoEstoqueDetalheItem to fetch.
+     */
+    where: OperacaoEstoqueDetalheItemWhereUniqueInput
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem findFirst
+   */
+  export type OperacaoEstoqueDetalheItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemInclude<ExtArgs> | null
+    /**
+     * Filter, which OperacaoEstoqueDetalheItem to fetch.
+     */
+    where?: OperacaoEstoqueDetalheItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperacaoEstoqueDetalheItems to fetch.
+     */
+    orderBy?: OperacaoEstoqueDetalheItemOrderByWithRelationInput | OperacaoEstoqueDetalheItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OperacaoEstoqueDetalheItems.
+     */
+    cursor?: OperacaoEstoqueDetalheItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperacaoEstoqueDetalheItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperacaoEstoqueDetalheItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OperacaoEstoqueDetalheItems.
+     */
+    distinct?: OperacaoEstoqueDetalheItemScalarFieldEnum | OperacaoEstoqueDetalheItemScalarFieldEnum[]
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem findFirstOrThrow
+   */
+  export type OperacaoEstoqueDetalheItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemInclude<ExtArgs> | null
+    /**
+     * Filter, which OperacaoEstoqueDetalheItem to fetch.
+     */
+    where?: OperacaoEstoqueDetalheItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperacaoEstoqueDetalheItems to fetch.
+     */
+    orderBy?: OperacaoEstoqueDetalheItemOrderByWithRelationInput | OperacaoEstoqueDetalheItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OperacaoEstoqueDetalheItems.
+     */
+    cursor?: OperacaoEstoqueDetalheItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperacaoEstoqueDetalheItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperacaoEstoqueDetalheItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OperacaoEstoqueDetalheItems.
+     */
+    distinct?: OperacaoEstoqueDetalheItemScalarFieldEnum | OperacaoEstoqueDetalheItemScalarFieldEnum[]
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem findMany
+   */
+  export type OperacaoEstoqueDetalheItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemInclude<ExtArgs> | null
+    /**
+     * Filter, which OperacaoEstoqueDetalheItems to fetch.
+     */
+    where?: OperacaoEstoqueDetalheItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperacaoEstoqueDetalheItems to fetch.
+     */
+    orderBy?: OperacaoEstoqueDetalheItemOrderByWithRelationInput | OperacaoEstoqueDetalheItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OperacaoEstoqueDetalheItems.
+     */
+    cursor?: OperacaoEstoqueDetalheItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperacaoEstoqueDetalheItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperacaoEstoqueDetalheItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OperacaoEstoqueDetalheItems.
+     */
+    distinct?: OperacaoEstoqueDetalheItemScalarFieldEnum | OperacaoEstoqueDetalheItemScalarFieldEnum[]
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem create
+   */
+  export type OperacaoEstoqueDetalheItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OperacaoEstoqueDetalheItem.
+     */
+    data: XOR<OperacaoEstoqueDetalheItemCreateInput, OperacaoEstoqueDetalheItemUncheckedCreateInput>
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem createMany
+   */
+  export type OperacaoEstoqueDetalheItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OperacaoEstoqueDetalheItems.
+     */
+    data: OperacaoEstoqueDetalheItemCreateManyInput | OperacaoEstoqueDetalheItemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem createManyAndReturn
+   */
+  export type OperacaoEstoqueDetalheItemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * The data used to create many OperacaoEstoqueDetalheItems.
+     */
+    data: OperacaoEstoqueDetalheItemCreateManyInput | OperacaoEstoqueDetalheItemCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem update
+   */
+  export type OperacaoEstoqueDetalheItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OperacaoEstoqueDetalheItem.
+     */
+    data: XOR<OperacaoEstoqueDetalheItemUpdateInput, OperacaoEstoqueDetalheItemUncheckedUpdateInput>
+    /**
+     * Choose, which OperacaoEstoqueDetalheItem to update.
+     */
+    where: OperacaoEstoqueDetalheItemWhereUniqueInput
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem updateMany
+   */
+  export type OperacaoEstoqueDetalheItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OperacaoEstoqueDetalheItems.
+     */
+    data: XOR<OperacaoEstoqueDetalheItemUpdateManyMutationInput, OperacaoEstoqueDetalheItemUncheckedUpdateManyInput>
+    /**
+     * Filter which OperacaoEstoqueDetalheItems to update
+     */
+    where?: OperacaoEstoqueDetalheItemWhereInput
+    /**
+     * Limit how many OperacaoEstoqueDetalheItems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem updateManyAndReturn
+   */
+  export type OperacaoEstoqueDetalheItemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * The data used to update OperacaoEstoqueDetalheItems.
+     */
+    data: XOR<OperacaoEstoqueDetalheItemUpdateManyMutationInput, OperacaoEstoqueDetalheItemUncheckedUpdateManyInput>
+    /**
+     * Filter which OperacaoEstoqueDetalheItems to update
+     */
+    where?: OperacaoEstoqueDetalheItemWhereInput
+    /**
+     * Limit how many OperacaoEstoqueDetalheItems to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem upsert
+   */
+  export type OperacaoEstoqueDetalheItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OperacaoEstoqueDetalheItem to update in case it exists.
+     */
+    where: OperacaoEstoqueDetalheItemWhereUniqueInput
+    /**
+     * In case the OperacaoEstoqueDetalheItem found by the `where` argument doesn't exist, create a new OperacaoEstoqueDetalheItem with this data.
+     */
+    create: XOR<OperacaoEstoqueDetalheItemCreateInput, OperacaoEstoqueDetalheItemUncheckedCreateInput>
+    /**
+     * In case the OperacaoEstoqueDetalheItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OperacaoEstoqueDetalheItemUpdateInput, OperacaoEstoqueDetalheItemUncheckedUpdateInput>
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem delete
+   */
+  export type OperacaoEstoqueDetalheItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemInclude<ExtArgs> | null
+    /**
+     * Filter which OperacaoEstoqueDetalheItem to delete.
+     */
+    where: OperacaoEstoqueDetalheItemWhereUniqueInput
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem deleteMany
+   */
+  export type OperacaoEstoqueDetalheItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OperacaoEstoqueDetalheItems to delete
+     */
+    where?: OperacaoEstoqueDetalheItemWhereInput
+    /**
+     * Limit how many OperacaoEstoqueDetalheItems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OperacaoEstoqueDetalheItem without action
+   */
+  export type OperacaoEstoqueDetalheItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperacaoEstoqueDetalheItem
+     */
+    select?: OperacaoEstoqueDetalheItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperacaoEstoqueDetalheItem
+     */
+    omit?: OperacaoEstoqueDetalheItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperacaoEstoqueDetalheItemInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6909,6 +9326,15 @@ export namespace Prisma {
   };
 
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+  export const ImagemProdutoScalarFieldEnum: {
+    id: 'id',
+    url: 'url',
+    produtoId: 'produtoId'
+  };
+
+  export type ImagemProdutoScalarFieldEnum = (typeof ImagemProdutoScalarFieldEnum)[keyof typeof ImagemProdutoScalarFieldEnum]
 
 
   export const ProdutoModelScalarFieldEnum: {
@@ -6956,13 +9382,21 @@ export namespace Prisma {
 
   export const OperacaoEstoqueDetalheScalarFieldEnum: {
     id: 'id',
-    quantidade: 'quantidade',
-    precoCusto: 'precoCusto',
-    operacaoEstoqueId: 'operacaoEstoqueId',
-    produtoId: 'produtoId'
+    operacaoEstoqueId: 'operacaoEstoqueId'
   };
 
   export type OperacaoEstoqueDetalheScalarFieldEnum = (typeof OperacaoEstoqueDetalheScalarFieldEnum)[keyof typeof OperacaoEstoqueDetalheScalarFieldEnum]
+
+
+  export const OperacaoEstoqueDetalheItemScalarFieldEnum: {
+    id: 'id',
+    quantidade: 'quantidade',
+    precoCusto: 'precoCusto',
+    operacaoEstoqueDetalheId: 'operacaoEstoqueDetalheId',
+    produtoId: 'produtoId'
+  };
+
+  export type OperacaoEstoqueDetalheItemScalarFieldEnum = (typeof OperacaoEstoqueDetalheItemScalarFieldEnum)[keyof typeof OperacaoEstoqueDetalheItemScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7052,6 +9486,53 @@ export namespace Prisma {
    */
 
 
+  export type ImagemProdutoWhereInput = {
+    AND?: ImagemProdutoWhereInput | ImagemProdutoWhereInput[]
+    OR?: ImagemProdutoWhereInput[]
+    NOT?: ImagemProdutoWhereInput | ImagemProdutoWhereInput[]
+    id?: IntFilter<"ImagemProduto"> | number
+    url?: StringFilter<"ImagemProduto"> | string
+    produtoId?: IntFilter<"ImagemProduto"> | number
+    produto?: XOR<ProdutoModelScalarRelationFilter, ProdutoModelWhereInput>
+  }
+
+  export type ImagemProdutoOrderByWithRelationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    produtoId?: SortOrder
+    produto?: ProdutoModelOrderByWithRelationInput
+  }
+
+  export type ImagemProdutoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ImagemProdutoWhereInput | ImagemProdutoWhereInput[]
+    OR?: ImagemProdutoWhereInput[]
+    NOT?: ImagemProdutoWhereInput | ImagemProdutoWhereInput[]
+    url?: StringFilter<"ImagemProduto"> | string
+    produtoId?: IntFilter<"ImagemProduto"> | number
+    produto?: XOR<ProdutoModelScalarRelationFilter, ProdutoModelWhereInput>
+  }, "id">
+
+  export type ImagemProdutoOrderByWithAggregationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    produtoId?: SortOrder
+    _count?: ImagemProdutoCountOrderByAggregateInput
+    _avg?: ImagemProdutoAvgOrderByAggregateInput
+    _max?: ImagemProdutoMaxOrderByAggregateInput
+    _min?: ImagemProdutoMinOrderByAggregateInput
+    _sum?: ImagemProdutoSumOrderByAggregateInput
+  }
+
+  export type ImagemProdutoScalarWhereWithAggregatesInput = {
+    AND?: ImagemProdutoScalarWhereWithAggregatesInput | ImagemProdutoScalarWhereWithAggregatesInput[]
+    OR?: ImagemProdutoScalarWhereWithAggregatesInput[]
+    NOT?: ImagemProdutoScalarWhereWithAggregatesInput | ImagemProdutoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ImagemProduto"> | number
+    url?: StringWithAggregatesFilter<"ImagemProduto"> | string
+    produtoId?: IntWithAggregatesFilter<"ImagemProduto"> | number
+  }
+
   export type ProdutoModelWhereInput = {
     AND?: ProdutoModelWhereInput | ProdutoModelWhereInput[]
     OR?: ProdutoModelWhereInput[]
@@ -7066,7 +9547,8 @@ export namespace Prisma {
     unidadeMedidaId?: IntFilter<"ProdutoModel"> | number
     categoria?: XOR<CategoriaProdutoScalarRelationFilter, CategoriaProdutoWhereInput>
     unidadeMedida?: XOR<UnidadeMedidaScalarRelationFilter, UnidadeMedidaWhereInput>
-    operacaoEstoqueDetalhe?: XOR<OperacaoEstoqueDetalheNullableScalarRelationFilter, OperacaoEstoqueDetalheWhereInput> | null
+    imagens?: ImagemProdutoListRelationFilter
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemListRelationFilter
   }
 
   export type ProdutoModelOrderByWithRelationInput = {
@@ -7080,7 +9562,8 @@ export namespace Prisma {
     unidadeMedidaId?: SortOrder
     categoria?: CategoriaProdutoOrderByWithRelationInput
     unidadeMedida?: UnidadeMedidaOrderByWithRelationInput
-    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheOrderByWithRelationInput
+    imagens?: ImagemProdutoOrderByRelationAggregateInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemOrderByRelationAggregateInput
   }
 
   export type ProdutoModelWhereUniqueInput = Prisma.AtLeast<{
@@ -7097,7 +9580,8 @@ export namespace Prisma {
     unidadeMedidaId?: IntFilter<"ProdutoModel"> | number
     categoria?: XOR<CategoriaProdutoScalarRelationFilter, CategoriaProdutoWhereInput>
     unidadeMedida?: XOR<UnidadeMedidaScalarRelationFilter, UnidadeMedidaWhereInput>
-    operacaoEstoqueDetalhe?: XOR<OperacaoEstoqueDetalheNullableScalarRelationFilter, OperacaoEstoqueDetalheWhereInput> | null
+    imagens?: ImagemProdutoListRelationFilter
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemListRelationFilter
   }, "id">
 
   export type ProdutoModelOrderByWithAggregationInput = {
@@ -7237,7 +9721,7 @@ export namespace Prisma {
     hora?: DateTimeFilter<"OperacaoEstoque"> | Date | string
     motivo?: StringFilter<"OperacaoEstoque"> | string
     entradasaida?: StringFilter<"OperacaoEstoque"> | string
-    operacaoestoquedetalhes?: OperacaoEstoqueDetalheListRelationFilter
+    operacaoEstoqueDetalhe?: XOR<OperacaoEstoqueDetalheNullableScalarRelationFilter, OperacaoEstoqueDetalheWhereInput> | null
   }
 
   export type OperacaoEstoqueOrderByWithRelationInput = {
@@ -7245,7 +9729,7 @@ export namespace Prisma {
     hora?: SortOrder
     motivo?: SortOrder
     entradasaida?: SortOrder
-    operacaoestoquedetalhes?: OperacaoEstoqueDetalheOrderByRelationAggregateInput
+    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheOrderByWithRelationInput
   }
 
   export type OperacaoEstoqueWhereUniqueInput = Prisma.AtLeast<{
@@ -7256,7 +9740,7 @@ export namespace Prisma {
     hora?: DateTimeFilter<"OperacaoEstoque"> | Date | string
     motivo?: StringFilter<"OperacaoEstoque"> | string
     entradasaida?: StringFilter<"OperacaoEstoque"> | string
-    operacaoestoquedetalhes?: OperacaoEstoqueDetalheListRelationFilter
+    operacaoEstoqueDetalhe?: XOR<OperacaoEstoqueDetalheNullableScalarRelationFilter, OperacaoEstoqueDetalheWhereInput> | null
   }, "id">
 
   export type OperacaoEstoqueOrderByWithAggregationInput = {
@@ -7286,43 +9770,31 @@ export namespace Prisma {
     OR?: OperacaoEstoqueDetalheWhereInput[]
     NOT?: OperacaoEstoqueDetalheWhereInput | OperacaoEstoqueDetalheWhereInput[]
     id?: IntFilter<"OperacaoEstoqueDetalhe"> | number
-    quantidade?: IntFilter<"OperacaoEstoqueDetalhe"> | number
-    precoCusto?: FloatFilter<"OperacaoEstoqueDetalhe"> | number
     operacaoEstoqueId?: IntFilter<"OperacaoEstoqueDetalhe"> | number
-    produtoId?: IntFilter<"OperacaoEstoqueDetalhe"> | number
     operacaoEstoque?: XOR<OperacaoEstoqueScalarRelationFilter, OperacaoEstoqueWhereInput>
-    produto?: XOR<ProdutoModelScalarRelationFilter, ProdutoModelWhereInput>
+    itens?: OperacaoEstoqueDetalheItemListRelationFilter
   }
 
   export type OperacaoEstoqueDetalheOrderByWithRelationInput = {
     id?: SortOrder
-    quantidade?: SortOrder
-    precoCusto?: SortOrder
     operacaoEstoqueId?: SortOrder
-    produtoId?: SortOrder
     operacaoEstoque?: OperacaoEstoqueOrderByWithRelationInput
-    produto?: ProdutoModelOrderByWithRelationInput
+    itens?: OperacaoEstoqueDetalheItemOrderByRelationAggregateInput
   }
 
   export type OperacaoEstoqueDetalheWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    produtoId?: number
+    operacaoEstoqueId?: number
     AND?: OperacaoEstoqueDetalheWhereInput | OperacaoEstoqueDetalheWhereInput[]
     OR?: OperacaoEstoqueDetalheWhereInput[]
     NOT?: OperacaoEstoqueDetalheWhereInput | OperacaoEstoqueDetalheWhereInput[]
-    quantidade?: IntFilter<"OperacaoEstoqueDetalhe"> | number
-    precoCusto?: FloatFilter<"OperacaoEstoqueDetalhe"> | number
-    operacaoEstoqueId?: IntFilter<"OperacaoEstoqueDetalhe"> | number
     operacaoEstoque?: XOR<OperacaoEstoqueScalarRelationFilter, OperacaoEstoqueWhereInput>
-    produto?: XOR<ProdutoModelScalarRelationFilter, ProdutoModelWhereInput>
-  }, "id" | "produtoId">
+    itens?: OperacaoEstoqueDetalheItemListRelationFilter
+  }, "id" | "operacaoEstoqueId">
 
   export type OperacaoEstoqueDetalheOrderByWithAggregationInput = {
     id?: SortOrder
-    quantidade?: SortOrder
-    precoCusto?: SortOrder
     operacaoEstoqueId?: SortOrder
-    produtoId?: SortOrder
     _count?: OperacaoEstoqueDetalheCountOrderByAggregateInput
     _avg?: OperacaoEstoqueDetalheAvgOrderByAggregateInput
     _max?: OperacaoEstoqueDetalheMaxOrderByAggregateInput
@@ -7335,10 +9807,106 @@ export namespace Prisma {
     OR?: OperacaoEstoqueDetalheScalarWhereWithAggregatesInput[]
     NOT?: OperacaoEstoqueDetalheScalarWhereWithAggregatesInput | OperacaoEstoqueDetalheScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"OperacaoEstoqueDetalhe"> | number
-    quantidade?: IntWithAggregatesFilter<"OperacaoEstoqueDetalhe"> | number
-    precoCusto?: FloatWithAggregatesFilter<"OperacaoEstoqueDetalhe"> | number
     operacaoEstoqueId?: IntWithAggregatesFilter<"OperacaoEstoqueDetalhe"> | number
-    produtoId?: IntWithAggregatesFilter<"OperacaoEstoqueDetalhe"> | number
+  }
+
+  export type OperacaoEstoqueDetalheItemWhereInput = {
+    AND?: OperacaoEstoqueDetalheItemWhereInput | OperacaoEstoqueDetalheItemWhereInput[]
+    OR?: OperacaoEstoqueDetalheItemWhereInput[]
+    NOT?: OperacaoEstoqueDetalheItemWhereInput | OperacaoEstoqueDetalheItemWhereInput[]
+    id?: IntFilter<"OperacaoEstoqueDetalheItem"> | number
+    quantidade?: IntFilter<"OperacaoEstoqueDetalheItem"> | number
+    precoCusto?: FloatFilter<"OperacaoEstoqueDetalheItem"> | number
+    operacaoEstoqueDetalheId?: IntFilter<"OperacaoEstoqueDetalheItem"> | number
+    produtoId?: IntFilter<"OperacaoEstoqueDetalheItem"> | number
+    operacaoEstoqueDetalhe?: XOR<OperacaoEstoqueDetalheScalarRelationFilter, OperacaoEstoqueDetalheWhereInput>
+    produto?: XOR<ProdutoModelScalarRelationFilter, ProdutoModelWhereInput>
+  }
+
+  export type OperacaoEstoqueDetalheItemOrderByWithRelationInput = {
+    id?: SortOrder
+    quantidade?: SortOrder
+    precoCusto?: SortOrder
+    operacaoEstoqueDetalheId?: SortOrder
+    produtoId?: SortOrder
+    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheOrderByWithRelationInput
+    produto?: ProdutoModelOrderByWithRelationInput
+  }
+
+  export type OperacaoEstoqueDetalheItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    operacaoEstoqueDetalheId_produtoId?: OperacaoEstoqueDetalheItemOperacaoEstoqueDetalheIdProdutoIdCompoundUniqueInput
+    AND?: OperacaoEstoqueDetalheItemWhereInput | OperacaoEstoqueDetalheItemWhereInput[]
+    OR?: OperacaoEstoqueDetalheItemWhereInput[]
+    NOT?: OperacaoEstoqueDetalheItemWhereInput | OperacaoEstoqueDetalheItemWhereInput[]
+    quantidade?: IntFilter<"OperacaoEstoqueDetalheItem"> | number
+    precoCusto?: FloatFilter<"OperacaoEstoqueDetalheItem"> | number
+    operacaoEstoqueDetalheId?: IntFilter<"OperacaoEstoqueDetalheItem"> | number
+    produtoId?: IntFilter<"OperacaoEstoqueDetalheItem"> | number
+    operacaoEstoqueDetalhe?: XOR<OperacaoEstoqueDetalheScalarRelationFilter, OperacaoEstoqueDetalheWhereInput>
+    produto?: XOR<ProdutoModelScalarRelationFilter, ProdutoModelWhereInput>
+  }, "id" | "operacaoEstoqueDetalheId_produtoId">
+
+  export type OperacaoEstoqueDetalheItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    quantidade?: SortOrder
+    precoCusto?: SortOrder
+    operacaoEstoqueDetalheId?: SortOrder
+    produtoId?: SortOrder
+    _count?: OperacaoEstoqueDetalheItemCountOrderByAggregateInput
+    _avg?: OperacaoEstoqueDetalheItemAvgOrderByAggregateInput
+    _max?: OperacaoEstoqueDetalheItemMaxOrderByAggregateInput
+    _min?: OperacaoEstoqueDetalheItemMinOrderByAggregateInput
+    _sum?: OperacaoEstoqueDetalheItemSumOrderByAggregateInput
+  }
+
+  export type OperacaoEstoqueDetalheItemScalarWhereWithAggregatesInput = {
+    AND?: OperacaoEstoqueDetalheItemScalarWhereWithAggregatesInput | OperacaoEstoqueDetalheItemScalarWhereWithAggregatesInput[]
+    OR?: OperacaoEstoqueDetalheItemScalarWhereWithAggregatesInput[]
+    NOT?: OperacaoEstoqueDetalheItemScalarWhereWithAggregatesInput | OperacaoEstoqueDetalheItemScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"OperacaoEstoqueDetalheItem"> | number
+    quantidade?: IntWithAggregatesFilter<"OperacaoEstoqueDetalheItem"> | number
+    precoCusto?: FloatWithAggregatesFilter<"OperacaoEstoqueDetalheItem"> | number
+    operacaoEstoqueDetalheId?: IntWithAggregatesFilter<"OperacaoEstoqueDetalheItem"> | number
+    produtoId?: IntWithAggregatesFilter<"OperacaoEstoqueDetalheItem"> | number
+  }
+
+  export type ImagemProdutoCreateInput = {
+    url: string
+    produto: ProdutoModelCreateNestedOneWithoutImagensInput
+  }
+
+  export type ImagemProdutoUncheckedCreateInput = {
+    id?: number
+    url: string
+    produtoId: number
+  }
+
+  export type ImagemProdutoUpdateInput = {
+    url?: StringFieldUpdateOperationsInput | string
+    produto?: ProdutoModelUpdateOneRequiredWithoutImagensNestedInput
+  }
+
+  export type ImagemProdutoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+    produtoId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ImagemProdutoCreateManyInput = {
+    id?: number
+    url: string
+    produtoId: number
+  }
+
+  export type ImagemProdutoUpdateManyMutationInput = {
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ImagemProdutoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+    produtoId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProdutoModelCreateInput = {
@@ -7349,7 +9917,8 @@ export namespace Prisma {
     quantidadeAtual?: number
     categoria: CategoriaProdutoCreateNestedOneWithoutProdutosInput
     unidadeMedida: UnidadeMedidaCreateNestedOneWithoutProdutosInput
-    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheCreateNestedOneWithoutProdutoInput
+    imagens?: ImagemProdutoCreateNestedManyWithoutProdutoInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemCreateNestedManyWithoutProdutoInput
   }
 
   export type ProdutoModelUncheckedCreateInput = {
@@ -7361,7 +9930,8 @@ export namespace Prisma {
     quantidadeAtual?: number
     categoriaId: number
     unidadeMedidaId: number
-    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUncheckedCreateNestedOneWithoutProdutoInput
+    imagens?: ImagemProdutoUncheckedCreateNestedManyWithoutProdutoInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemUncheckedCreateNestedManyWithoutProdutoInput
   }
 
   export type ProdutoModelUpdateInput = {
@@ -7372,7 +9942,8 @@ export namespace Prisma {
     quantidadeAtual?: IntFieldUpdateOperationsInput | number
     categoria?: CategoriaProdutoUpdateOneRequiredWithoutProdutosNestedInput
     unidadeMedida?: UnidadeMedidaUpdateOneRequiredWithoutProdutosNestedInput
-    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUpdateOneWithoutProdutoNestedInput
+    imagens?: ImagemProdutoUpdateManyWithoutProdutoNestedInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemUpdateManyWithoutProdutoNestedInput
   }
 
   export type ProdutoModelUncheckedUpdateInput = {
@@ -7384,7 +9955,8 @@ export namespace Prisma {
     quantidadeAtual?: IntFieldUpdateOperationsInput | number
     categoriaId?: IntFieldUpdateOperationsInput | number
     unidadeMedidaId?: IntFieldUpdateOperationsInput | number
-    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUncheckedUpdateOneWithoutProdutoNestedInput
+    imagens?: ImagemProdutoUncheckedUpdateManyWithoutProdutoNestedInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemUncheckedUpdateManyWithoutProdutoNestedInput
   }
 
   export type ProdutoModelCreateManyInput = {
@@ -7514,7 +10086,7 @@ export namespace Prisma {
     hora?: Date | string
     motivo: string
     entradasaida: string
-    operacaoestoquedetalhes?: OperacaoEstoqueDetalheCreateNestedManyWithoutOperacaoEstoqueInput
+    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheCreateNestedOneWithoutOperacaoEstoqueInput
   }
 
   export type OperacaoEstoqueUncheckedCreateInput = {
@@ -7522,14 +10094,14 @@ export namespace Prisma {
     hora?: Date | string
     motivo: string
     entradasaida: string
-    operacaoestoquedetalhes?: OperacaoEstoqueDetalheUncheckedCreateNestedManyWithoutOperacaoEstoqueInput
+    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUncheckedCreateNestedOneWithoutOperacaoEstoqueInput
   }
 
   export type OperacaoEstoqueUpdateInput = {
     hora?: DateTimeFieldUpdateOperationsInput | Date | string
     motivo?: StringFieldUpdateOperationsInput | string
     entradasaida?: StringFieldUpdateOperationsInput | string
-    operacaoestoquedetalhes?: OperacaoEstoqueDetalheUpdateManyWithoutOperacaoEstoqueNestedInput
+    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUpdateOneWithoutOperacaoEstoqueNestedInput
   }
 
   export type OperacaoEstoqueUncheckedUpdateInput = {
@@ -7537,7 +10109,7 @@ export namespace Prisma {
     hora?: DateTimeFieldUpdateOperationsInput | Date | string
     motivo?: StringFieldUpdateOperationsInput | string
     entradasaida?: StringFieldUpdateOperationsInput | string
-    operacaoestoquedetalhes?: OperacaoEstoqueDetalheUncheckedUpdateManyWithoutOperacaoEstoqueNestedInput
+    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUncheckedUpdateOneWithoutOperacaoEstoqueNestedInput
   }
 
   export type OperacaoEstoqueCreateManyInput = {
@@ -7561,53 +10133,89 @@ export namespace Prisma {
   }
 
   export type OperacaoEstoqueDetalheCreateInput = {
-    quantidade: number
-    precoCusto: number
-    operacaoEstoque: OperacaoEstoqueCreateNestedOneWithoutOperacaoestoquedetalhesInput
-    produto: ProdutoModelCreateNestedOneWithoutOperacaoEstoqueDetalheInput
+    operacaoEstoque: OperacaoEstoqueCreateNestedOneWithoutOperacaoEstoqueDetalheInput
+    itens?: OperacaoEstoqueDetalheItemCreateNestedManyWithoutOperacaoEstoqueDetalheInput
   }
 
   export type OperacaoEstoqueDetalheUncheckedCreateInput = {
     id?: number
-    quantidade: number
-    precoCusto: number
     operacaoEstoqueId: number
-    produtoId: number
+    itens?: OperacaoEstoqueDetalheItemUncheckedCreateNestedManyWithoutOperacaoEstoqueDetalheInput
   }
 
   export type OperacaoEstoqueDetalheUpdateInput = {
-    quantidade?: IntFieldUpdateOperationsInput | number
-    precoCusto?: FloatFieldUpdateOperationsInput | number
-    operacaoEstoque?: OperacaoEstoqueUpdateOneRequiredWithoutOperacaoestoquedetalhesNestedInput
-    produto?: ProdutoModelUpdateOneRequiredWithoutOperacaoEstoqueDetalheNestedInput
+    operacaoEstoque?: OperacaoEstoqueUpdateOneRequiredWithoutOperacaoEstoqueDetalheNestedInput
+    itens?: OperacaoEstoqueDetalheItemUpdateManyWithoutOperacaoEstoqueDetalheNestedInput
   }
 
   export type OperacaoEstoqueDetalheUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    quantidade?: IntFieldUpdateOperationsInput | number
-    precoCusto?: FloatFieldUpdateOperationsInput | number
     operacaoEstoqueId?: IntFieldUpdateOperationsInput | number
-    produtoId?: IntFieldUpdateOperationsInput | number
+    itens?: OperacaoEstoqueDetalheItemUncheckedUpdateManyWithoutOperacaoEstoqueDetalheNestedInput
   }
 
   export type OperacaoEstoqueDetalheCreateManyInput = {
     id?: number
-    quantidade: number
-    precoCusto: number
     operacaoEstoqueId: number
-    produtoId: number
   }
 
   export type OperacaoEstoqueDetalheUpdateManyMutationInput = {
-    quantidade?: IntFieldUpdateOperationsInput | number
-    precoCusto?: FloatFieldUpdateOperationsInput | number
+
   }
 
   export type OperacaoEstoqueDetalheUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    operacaoEstoqueId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type OperacaoEstoqueDetalheItemCreateInput = {
+    quantidade: number
+    precoCusto: number
+    operacaoEstoqueDetalhe: OperacaoEstoqueDetalheCreateNestedOneWithoutItensInput
+    produto: ProdutoModelCreateNestedOneWithoutOperacaoEstoqueDetalhesInput
+  }
+
+  export type OperacaoEstoqueDetalheItemUncheckedCreateInput = {
+    id?: number
+    quantidade: number
+    precoCusto: number
+    operacaoEstoqueDetalheId: number
+    produtoId: number
+  }
+
+  export type OperacaoEstoqueDetalheItemUpdateInput = {
     quantidade?: IntFieldUpdateOperationsInput | number
     precoCusto?: FloatFieldUpdateOperationsInput | number
-    operacaoEstoqueId?: IntFieldUpdateOperationsInput | number
+    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUpdateOneRequiredWithoutItensNestedInput
+    produto?: ProdutoModelUpdateOneRequiredWithoutOperacaoEstoqueDetalhesNestedInput
+  }
+
+  export type OperacaoEstoqueDetalheItemUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    quantidade?: IntFieldUpdateOperationsInput | number
+    precoCusto?: FloatFieldUpdateOperationsInput | number
+    operacaoEstoqueDetalheId?: IntFieldUpdateOperationsInput | number
+    produtoId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type OperacaoEstoqueDetalheItemCreateManyInput = {
+    id?: number
+    quantidade: number
+    precoCusto: number
+    operacaoEstoqueDetalheId: number
+    produtoId: number
+  }
+
+  export type OperacaoEstoqueDetalheItemUpdateManyMutationInput = {
+    quantidade?: IntFieldUpdateOperationsInput | number
+    precoCusto?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type OperacaoEstoqueDetalheItemUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    quantidade?: IntFieldUpdateOperationsInput | number
+    precoCusto?: FloatFieldUpdateOperationsInput | number
+    operacaoEstoqueDetalheId?: IntFieldUpdateOperationsInput | number
     produtoId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -7637,6 +10245,73 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type ProdutoModelScalarRelationFilter = {
+    is?: ProdutoModelWhereInput
+    isNot?: ProdutoModelWhereInput
+  }
+
+  export type ImagemProdutoCountOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    produtoId?: SortOrder
+  }
+
+  export type ImagemProdutoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    produtoId?: SortOrder
+  }
+
+  export type ImagemProdutoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    produtoId?: SortOrder
+  }
+
+  export type ImagemProdutoMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    produtoId?: SortOrder
+  }
+
+  export type ImagemProdutoSumOrderByAggregateInput = {
+    id?: SortOrder
+    produtoId?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -7652,9 +10327,24 @@ export namespace Prisma {
     isNot?: UnidadeMedidaWhereInput
   }
 
-  export type OperacaoEstoqueDetalheNullableScalarRelationFilter = {
-    is?: OperacaoEstoqueDetalheWhereInput | null
-    isNot?: OperacaoEstoqueDetalheWhereInput | null
+  export type ImagemProdutoListRelationFilter = {
+    every?: ImagemProdutoWhereInput
+    some?: ImagemProdutoWhereInput
+    none?: ImagemProdutoWhereInput
+  }
+
+  export type OperacaoEstoqueDetalheItemListRelationFilter = {
+    every?: OperacaoEstoqueDetalheItemWhereInput
+    some?: OperacaoEstoqueDetalheItemWhereInput
+    none?: OperacaoEstoqueDetalheItemWhereInput
+  }
+
+  export type ImagemProdutoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type OperacaoEstoqueDetalheItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type ProdutoModelCountOrderByAggregateInput = {
@@ -7702,40 +10392,6 @@ export namespace Prisma {
     quantidadeAtual?: SortOrder
     categoriaId?: SortOrder
     unidadeMedidaId?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -7822,14 +10478,9 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type OperacaoEstoqueDetalheListRelationFilter = {
-    every?: OperacaoEstoqueDetalheWhereInput
-    some?: OperacaoEstoqueDetalheWhereInput
-    none?: OperacaoEstoqueDetalheWhereInput
-  }
-
-  export type OperacaoEstoqueDetalheOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type OperacaoEstoqueDetalheNullableScalarRelationFilter = {
+    is?: OperacaoEstoqueDetalheWhereInput | null
+    isNot?: OperacaoEstoqueDetalheWhereInput | null
   }
 
   export type OperacaoEstoqueCountOrderByAggregateInput = {
@@ -7875,6 +10526,36 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type OperacaoEstoqueScalarRelationFilter = {
+    is?: OperacaoEstoqueWhereInput
+    isNot?: OperacaoEstoqueWhereInput
+  }
+
+  export type OperacaoEstoqueDetalheCountOrderByAggregateInput = {
+    id?: SortOrder
+    operacaoEstoqueId?: SortOrder
+  }
+
+  export type OperacaoEstoqueDetalheAvgOrderByAggregateInput = {
+    id?: SortOrder
+    operacaoEstoqueId?: SortOrder
+  }
+
+  export type OperacaoEstoqueDetalheMaxOrderByAggregateInput = {
+    id?: SortOrder
+    operacaoEstoqueId?: SortOrder
+  }
+
+  export type OperacaoEstoqueDetalheMinOrderByAggregateInput = {
+    id?: SortOrder
+    operacaoEstoqueId?: SortOrder
+  }
+
+  export type OperacaoEstoqueDetalheSumOrderByAggregateInput = {
+    id?: SortOrder
+    operacaoEstoqueId?: SortOrder
+  }
+
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -7886,53 +10567,53 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type OperacaoEstoqueScalarRelationFilter = {
-    is?: OperacaoEstoqueWhereInput
-    isNot?: OperacaoEstoqueWhereInput
+  export type OperacaoEstoqueDetalheScalarRelationFilter = {
+    is?: OperacaoEstoqueDetalheWhereInput
+    isNot?: OperacaoEstoqueDetalheWhereInput
   }
 
-  export type ProdutoModelScalarRelationFilter = {
-    is?: ProdutoModelWhereInput
-    isNot?: ProdutoModelWhereInput
+  export type OperacaoEstoqueDetalheItemOperacaoEstoqueDetalheIdProdutoIdCompoundUniqueInput = {
+    operacaoEstoqueDetalheId: number
+    produtoId: number
   }
 
-  export type OperacaoEstoqueDetalheCountOrderByAggregateInput = {
+  export type OperacaoEstoqueDetalheItemCountOrderByAggregateInput = {
     id?: SortOrder
     quantidade?: SortOrder
     precoCusto?: SortOrder
-    operacaoEstoqueId?: SortOrder
+    operacaoEstoqueDetalheId?: SortOrder
     produtoId?: SortOrder
   }
 
-  export type OperacaoEstoqueDetalheAvgOrderByAggregateInput = {
+  export type OperacaoEstoqueDetalheItemAvgOrderByAggregateInput = {
     id?: SortOrder
     quantidade?: SortOrder
     precoCusto?: SortOrder
-    operacaoEstoqueId?: SortOrder
+    operacaoEstoqueDetalheId?: SortOrder
     produtoId?: SortOrder
   }
 
-  export type OperacaoEstoqueDetalheMaxOrderByAggregateInput = {
+  export type OperacaoEstoqueDetalheItemMaxOrderByAggregateInput = {
     id?: SortOrder
     quantidade?: SortOrder
     precoCusto?: SortOrder
-    operacaoEstoqueId?: SortOrder
+    operacaoEstoqueDetalheId?: SortOrder
     produtoId?: SortOrder
   }
 
-  export type OperacaoEstoqueDetalheMinOrderByAggregateInput = {
+  export type OperacaoEstoqueDetalheItemMinOrderByAggregateInput = {
     id?: SortOrder
     quantidade?: SortOrder
     precoCusto?: SortOrder
-    operacaoEstoqueId?: SortOrder
+    operacaoEstoqueDetalheId?: SortOrder
     produtoId?: SortOrder
   }
 
-  export type OperacaoEstoqueDetalheSumOrderByAggregateInput = {
+  export type OperacaoEstoqueDetalheItemSumOrderByAggregateInput = {
     id?: SortOrder
     quantidade?: SortOrder
     precoCusto?: SortOrder
-    operacaoEstoqueId?: SortOrder
+    operacaoEstoqueDetalheId?: SortOrder
     produtoId?: SortOrder
   }
 
@@ -7952,6 +10633,32 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type ProdutoModelCreateNestedOneWithoutImagensInput = {
+    create?: XOR<ProdutoModelCreateWithoutImagensInput, ProdutoModelUncheckedCreateWithoutImagensInput>
+    connectOrCreate?: ProdutoModelCreateOrConnectWithoutImagensInput
+    connect?: ProdutoModelWhereUniqueInput
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type ProdutoModelUpdateOneRequiredWithoutImagensNestedInput = {
+    create?: XOR<ProdutoModelCreateWithoutImagensInput, ProdutoModelUncheckedCreateWithoutImagensInput>
+    connectOrCreate?: ProdutoModelCreateOrConnectWithoutImagensInput
+    upsert?: ProdutoModelUpsertWithoutImagensInput
+    connect?: ProdutoModelWhereUniqueInput
+    update?: XOR<XOR<ProdutoModelUpdateToOneWithWhereWithoutImagensInput, ProdutoModelUpdateWithoutImagensInput>, ProdutoModelUncheckedUpdateWithoutImagensInput>
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type CategoriaProdutoCreateNestedOneWithoutProdutosInput = {
     create?: XOR<CategoriaProdutoCreateWithoutProdutosInput, CategoriaProdutoUncheckedCreateWithoutProdutosInput>
     connectOrCreate?: CategoriaProdutoCreateOrConnectWithoutProdutosInput
@@ -7964,32 +10671,36 @@ export namespace Prisma {
     connect?: UnidadeMedidaWhereUniqueInput
   }
 
-  export type OperacaoEstoqueDetalheCreateNestedOneWithoutProdutoInput = {
-    create?: XOR<OperacaoEstoqueDetalheCreateWithoutProdutoInput, OperacaoEstoqueDetalheUncheckedCreateWithoutProdutoInput>
-    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutProdutoInput
-    connect?: OperacaoEstoqueDetalheWhereUniqueInput
+  export type ImagemProdutoCreateNestedManyWithoutProdutoInput = {
+    create?: XOR<ImagemProdutoCreateWithoutProdutoInput, ImagemProdutoUncheckedCreateWithoutProdutoInput> | ImagemProdutoCreateWithoutProdutoInput[] | ImagemProdutoUncheckedCreateWithoutProdutoInput[]
+    connectOrCreate?: ImagemProdutoCreateOrConnectWithoutProdutoInput | ImagemProdutoCreateOrConnectWithoutProdutoInput[]
+    createMany?: ImagemProdutoCreateManyProdutoInputEnvelope
+    connect?: ImagemProdutoWhereUniqueInput | ImagemProdutoWhereUniqueInput[]
   }
 
-  export type OperacaoEstoqueDetalheUncheckedCreateNestedOneWithoutProdutoInput = {
-    create?: XOR<OperacaoEstoqueDetalheCreateWithoutProdutoInput, OperacaoEstoqueDetalheUncheckedCreateWithoutProdutoInput>
-    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutProdutoInput
-    connect?: OperacaoEstoqueDetalheWhereUniqueInput
+  export type OperacaoEstoqueDetalheItemCreateNestedManyWithoutProdutoInput = {
+    create?: XOR<OperacaoEstoqueDetalheItemCreateWithoutProdutoInput, OperacaoEstoqueDetalheItemUncheckedCreateWithoutProdutoInput> | OperacaoEstoqueDetalheItemCreateWithoutProdutoInput[] | OperacaoEstoqueDetalheItemUncheckedCreateWithoutProdutoInput[]
+    connectOrCreate?: OperacaoEstoqueDetalheItemCreateOrConnectWithoutProdutoInput | OperacaoEstoqueDetalheItemCreateOrConnectWithoutProdutoInput[]
+    createMany?: OperacaoEstoqueDetalheItemCreateManyProdutoInputEnvelope
+    connect?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
+  export type ImagemProdutoUncheckedCreateNestedManyWithoutProdutoInput = {
+    create?: XOR<ImagemProdutoCreateWithoutProdutoInput, ImagemProdutoUncheckedCreateWithoutProdutoInput> | ImagemProdutoCreateWithoutProdutoInput[] | ImagemProdutoUncheckedCreateWithoutProdutoInput[]
+    connectOrCreate?: ImagemProdutoCreateOrConnectWithoutProdutoInput | ImagemProdutoCreateOrConnectWithoutProdutoInput[]
+    createMany?: ImagemProdutoCreateManyProdutoInputEnvelope
+    connect?: ImagemProdutoWhereUniqueInput | ImagemProdutoWhereUniqueInput[]
+  }
+
+  export type OperacaoEstoqueDetalheItemUncheckedCreateNestedManyWithoutProdutoInput = {
+    create?: XOR<OperacaoEstoqueDetalheItemCreateWithoutProdutoInput, OperacaoEstoqueDetalheItemUncheckedCreateWithoutProdutoInput> | OperacaoEstoqueDetalheItemCreateWithoutProdutoInput[] | OperacaoEstoqueDetalheItemUncheckedCreateWithoutProdutoInput[]
+    connectOrCreate?: OperacaoEstoqueDetalheItemCreateOrConnectWithoutProdutoInput | OperacaoEstoqueDetalheItemCreateOrConnectWithoutProdutoInput[]
+    createMany?: OperacaoEstoqueDetalheItemCreateManyProdutoInputEnvelope
+    connect?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
   }
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type CategoriaProdutoUpdateOneRequiredWithoutProdutosNestedInput = {
@@ -8008,24 +10719,60 @@ export namespace Prisma {
     update?: XOR<XOR<UnidadeMedidaUpdateToOneWithWhereWithoutProdutosInput, UnidadeMedidaUpdateWithoutProdutosInput>, UnidadeMedidaUncheckedUpdateWithoutProdutosInput>
   }
 
-  export type OperacaoEstoqueDetalheUpdateOneWithoutProdutoNestedInput = {
-    create?: XOR<OperacaoEstoqueDetalheCreateWithoutProdutoInput, OperacaoEstoqueDetalheUncheckedCreateWithoutProdutoInput>
-    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutProdutoInput
-    upsert?: OperacaoEstoqueDetalheUpsertWithoutProdutoInput
-    disconnect?: OperacaoEstoqueDetalheWhereInput | boolean
-    delete?: OperacaoEstoqueDetalheWhereInput | boolean
-    connect?: OperacaoEstoqueDetalheWhereUniqueInput
-    update?: XOR<XOR<OperacaoEstoqueDetalheUpdateToOneWithWhereWithoutProdutoInput, OperacaoEstoqueDetalheUpdateWithoutProdutoInput>, OperacaoEstoqueDetalheUncheckedUpdateWithoutProdutoInput>
+  export type ImagemProdutoUpdateManyWithoutProdutoNestedInput = {
+    create?: XOR<ImagemProdutoCreateWithoutProdutoInput, ImagemProdutoUncheckedCreateWithoutProdutoInput> | ImagemProdutoCreateWithoutProdutoInput[] | ImagemProdutoUncheckedCreateWithoutProdutoInput[]
+    connectOrCreate?: ImagemProdutoCreateOrConnectWithoutProdutoInput | ImagemProdutoCreateOrConnectWithoutProdutoInput[]
+    upsert?: ImagemProdutoUpsertWithWhereUniqueWithoutProdutoInput | ImagemProdutoUpsertWithWhereUniqueWithoutProdutoInput[]
+    createMany?: ImagemProdutoCreateManyProdutoInputEnvelope
+    set?: ImagemProdutoWhereUniqueInput | ImagemProdutoWhereUniqueInput[]
+    disconnect?: ImagemProdutoWhereUniqueInput | ImagemProdutoWhereUniqueInput[]
+    delete?: ImagemProdutoWhereUniqueInput | ImagemProdutoWhereUniqueInput[]
+    connect?: ImagemProdutoWhereUniqueInput | ImagemProdutoWhereUniqueInput[]
+    update?: ImagemProdutoUpdateWithWhereUniqueWithoutProdutoInput | ImagemProdutoUpdateWithWhereUniqueWithoutProdutoInput[]
+    updateMany?: ImagemProdutoUpdateManyWithWhereWithoutProdutoInput | ImagemProdutoUpdateManyWithWhereWithoutProdutoInput[]
+    deleteMany?: ImagemProdutoScalarWhereInput | ImagemProdutoScalarWhereInput[]
   }
 
-  export type OperacaoEstoqueDetalheUncheckedUpdateOneWithoutProdutoNestedInput = {
-    create?: XOR<OperacaoEstoqueDetalheCreateWithoutProdutoInput, OperacaoEstoqueDetalheUncheckedCreateWithoutProdutoInput>
-    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutProdutoInput
-    upsert?: OperacaoEstoqueDetalheUpsertWithoutProdutoInput
-    disconnect?: OperacaoEstoqueDetalheWhereInput | boolean
-    delete?: OperacaoEstoqueDetalheWhereInput | boolean
-    connect?: OperacaoEstoqueDetalheWhereUniqueInput
-    update?: XOR<XOR<OperacaoEstoqueDetalheUpdateToOneWithWhereWithoutProdutoInput, OperacaoEstoqueDetalheUpdateWithoutProdutoInput>, OperacaoEstoqueDetalheUncheckedUpdateWithoutProdutoInput>
+  export type OperacaoEstoqueDetalheItemUpdateManyWithoutProdutoNestedInput = {
+    create?: XOR<OperacaoEstoqueDetalheItemCreateWithoutProdutoInput, OperacaoEstoqueDetalheItemUncheckedCreateWithoutProdutoInput> | OperacaoEstoqueDetalheItemCreateWithoutProdutoInput[] | OperacaoEstoqueDetalheItemUncheckedCreateWithoutProdutoInput[]
+    connectOrCreate?: OperacaoEstoqueDetalheItemCreateOrConnectWithoutProdutoInput | OperacaoEstoqueDetalheItemCreateOrConnectWithoutProdutoInput[]
+    upsert?: OperacaoEstoqueDetalheItemUpsertWithWhereUniqueWithoutProdutoInput | OperacaoEstoqueDetalheItemUpsertWithWhereUniqueWithoutProdutoInput[]
+    createMany?: OperacaoEstoqueDetalheItemCreateManyProdutoInputEnvelope
+    set?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    disconnect?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    delete?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    connect?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    update?: OperacaoEstoqueDetalheItemUpdateWithWhereUniqueWithoutProdutoInput | OperacaoEstoqueDetalheItemUpdateWithWhereUniqueWithoutProdutoInput[]
+    updateMany?: OperacaoEstoqueDetalheItemUpdateManyWithWhereWithoutProdutoInput | OperacaoEstoqueDetalheItemUpdateManyWithWhereWithoutProdutoInput[]
+    deleteMany?: OperacaoEstoqueDetalheItemScalarWhereInput | OperacaoEstoqueDetalheItemScalarWhereInput[]
+  }
+
+  export type ImagemProdutoUncheckedUpdateManyWithoutProdutoNestedInput = {
+    create?: XOR<ImagemProdutoCreateWithoutProdutoInput, ImagemProdutoUncheckedCreateWithoutProdutoInput> | ImagemProdutoCreateWithoutProdutoInput[] | ImagemProdutoUncheckedCreateWithoutProdutoInput[]
+    connectOrCreate?: ImagemProdutoCreateOrConnectWithoutProdutoInput | ImagemProdutoCreateOrConnectWithoutProdutoInput[]
+    upsert?: ImagemProdutoUpsertWithWhereUniqueWithoutProdutoInput | ImagemProdutoUpsertWithWhereUniqueWithoutProdutoInput[]
+    createMany?: ImagemProdutoCreateManyProdutoInputEnvelope
+    set?: ImagemProdutoWhereUniqueInput | ImagemProdutoWhereUniqueInput[]
+    disconnect?: ImagemProdutoWhereUniqueInput | ImagemProdutoWhereUniqueInput[]
+    delete?: ImagemProdutoWhereUniqueInput | ImagemProdutoWhereUniqueInput[]
+    connect?: ImagemProdutoWhereUniqueInput | ImagemProdutoWhereUniqueInput[]
+    update?: ImagemProdutoUpdateWithWhereUniqueWithoutProdutoInput | ImagemProdutoUpdateWithWhereUniqueWithoutProdutoInput[]
+    updateMany?: ImagemProdutoUpdateManyWithWhereWithoutProdutoInput | ImagemProdutoUpdateManyWithWhereWithoutProdutoInput[]
+    deleteMany?: ImagemProdutoScalarWhereInput | ImagemProdutoScalarWhereInput[]
+  }
+
+  export type OperacaoEstoqueDetalheItemUncheckedUpdateManyWithoutProdutoNestedInput = {
+    create?: XOR<OperacaoEstoqueDetalheItemCreateWithoutProdutoInput, OperacaoEstoqueDetalheItemUncheckedCreateWithoutProdutoInput> | OperacaoEstoqueDetalheItemCreateWithoutProdutoInput[] | OperacaoEstoqueDetalheItemUncheckedCreateWithoutProdutoInput[]
+    connectOrCreate?: OperacaoEstoqueDetalheItemCreateOrConnectWithoutProdutoInput | OperacaoEstoqueDetalheItemCreateOrConnectWithoutProdutoInput[]
+    upsert?: OperacaoEstoqueDetalheItemUpsertWithWhereUniqueWithoutProdutoInput | OperacaoEstoqueDetalheItemUpsertWithWhereUniqueWithoutProdutoInput[]
+    createMany?: OperacaoEstoqueDetalheItemCreateManyProdutoInputEnvelope
+    set?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    disconnect?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    delete?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    connect?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    update?: OperacaoEstoqueDetalheItemUpdateWithWhereUniqueWithoutProdutoInput | OperacaoEstoqueDetalheItemUpdateWithWhereUniqueWithoutProdutoInput[]
+    updateMany?: OperacaoEstoqueDetalheItemUpdateManyWithWhereWithoutProdutoInput | OperacaoEstoqueDetalheItemUpdateManyWithWhereWithoutProdutoInput[]
+    deleteMany?: OperacaoEstoqueDetalheItemScalarWhereInput | OperacaoEstoqueDetalheItemScalarWhereInput[]
   }
 
   export type ProdutoModelCreateNestedManyWithoutCategoriaInput = {
@@ -8112,61 +10859,107 @@ export namespace Prisma {
     deleteMany?: ProdutoModelScalarWhereInput | ProdutoModelScalarWhereInput[]
   }
 
-  export type OperacaoEstoqueDetalheCreateNestedManyWithoutOperacaoEstoqueInput = {
-    create?: XOR<OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput> | OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput[] | OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput[]
-    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutOperacaoEstoqueInput | OperacaoEstoqueDetalheCreateOrConnectWithoutOperacaoEstoqueInput[]
-    createMany?: OperacaoEstoqueDetalheCreateManyOperacaoEstoqueInputEnvelope
-    connect?: OperacaoEstoqueDetalheWhereUniqueInput | OperacaoEstoqueDetalheWhereUniqueInput[]
+  export type OperacaoEstoqueDetalheCreateNestedOneWithoutOperacaoEstoqueInput = {
+    create?: XOR<OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput>
+    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutOperacaoEstoqueInput
+    connect?: OperacaoEstoqueDetalheWhereUniqueInput
   }
 
-  export type OperacaoEstoqueDetalheUncheckedCreateNestedManyWithoutOperacaoEstoqueInput = {
-    create?: XOR<OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput> | OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput[] | OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput[]
-    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutOperacaoEstoqueInput | OperacaoEstoqueDetalheCreateOrConnectWithoutOperacaoEstoqueInput[]
-    createMany?: OperacaoEstoqueDetalheCreateManyOperacaoEstoqueInputEnvelope
-    connect?: OperacaoEstoqueDetalheWhereUniqueInput | OperacaoEstoqueDetalheWhereUniqueInput[]
+  export type OperacaoEstoqueDetalheUncheckedCreateNestedOneWithoutOperacaoEstoqueInput = {
+    create?: XOR<OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput>
+    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutOperacaoEstoqueInput
+    connect?: OperacaoEstoqueDetalheWhereUniqueInput
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
 
-  export type OperacaoEstoqueDetalheUpdateManyWithoutOperacaoEstoqueNestedInput = {
-    create?: XOR<OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput> | OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput[] | OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput[]
-    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutOperacaoEstoqueInput | OperacaoEstoqueDetalheCreateOrConnectWithoutOperacaoEstoqueInput[]
-    upsert?: OperacaoEstoqueDetalheUpsertWithWhereUniqueWithoutOperacaoEstoqueInput | OperacaoEstoqueDetalheUpsertWithWhereUniqueWithoutOperacaoEstoqueInput[]
-    createMany?: OperacaoEstoqueDetalheCreateManyOperacaoEstoqueInputEnvelope
-    set?: OperacaoEstoqueDetalheWhereUniqueInput | OperacaoEstoqueDetalheWhereUniqueInput[]
-    disconnect?: OperacaoEstoqueDetalheWhereUniqueInput | OperacaoEstoqueDetalheWhereUniqueInput[]
-    delete?: OperacaoEstoqueDetalheWhereUniqueInput | OperacaoEstoqueDetalheWhereUniqueInput[]
-    connect?: OperacaoEstoqueDetalheWhereUniqueInput | OperacaoEstoqueDetalheWhereUniqueInput[]
-    update?: OperacaoEstoqueDetalheUpdateWithWhereUniqueWithoutOperacaoEstoqueInput | OperacaoEstoqueDetalheUpdateWithWhereUniqueWithoutOperacaoEstoqueInput[]
-    updateMany?: OperacaoEstoqueDetalheUpdateManyWithWhereWithoutOperacaoEstoqueInput | OperacaoEstoqueDetalheUpdateManyWithWhereWithoutOperacaoEstoqueInput[]
-    deleteMany?: OperacaoEstoqueDetalheScalarWhereInput | OperacaoEstoqueDetalheScalarWhereInput[]
+  export type OperacaoEstoqueDetalheUpdateOneWithoutOperacaoEstoqueNestedInput = {
+    create?: XOR<OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput>
+    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutOperacaoEstoqueInput
+    upsert?: OperacaoEstoqueDetalheUpsertWithoutOperacaoEstoqueInput
+    disconnect?: OperacaoEstoqueDetalheWhereInput | boolean
+    delete?: OperacaoEstoqueDetalheWhereInput | boolean
+    connect?: OperacaoEstoqueDetalheWhereUniqueInput
+    update?: XOR<XOR<OperacaoEstoqueDetalheUpdateToOneWithWhereWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUpdateWithoutOperacaoEstoqueInput>, OperacaoEstoqueDetalheUncheckedUpdateWithoutOperacaoEstoqueInput>
   }
 
-  export type OperacaoEstoqueDetalheUncheckedUpdateManyWithoutOperacaoEstoqueNestedInput = {
-    create?: XOR<OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput> | OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput[] | OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput[]
-    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutOperacaoEstoqueInput | OperacaoEstoqueDetalheCreateOrConnectWithoutOperacaoEstoqueInput[]
-    upsert?: OperacaoEstoqueDetalheUpsertWithWhereUniqueWithoutOperacaoEstoqueInput | OperacaoEstoqueDetalheUpsertWithWhereUniqueWithoutOperacaoEstoqueInput[]
-    createMany?: OperacaoEstoqueDetalheCreateManyOperacaoEstoqueInputEnvelope
-    set?: OperacaoEstoqueDetalheWhereUniqueInput | OperacaoEstoqueDetalheWhereUniqueInput[]
-    disconnect?: OperacaoEstoqueDetalheWhereUniqueInput | OperacaoEstoqueDetalheWhereUniqueInput[]
-    delete?: OperacaoEstoqueDetalheWhereUniqueInput | OperacaoEstoqueDetalheWhereUniqueInput[]
-    connect?: OperacaoEstoqueDetalheWhereUniqueInput | OperacaoEstoqueDetalheWhereUniqueInput[]
-    update?: OperacaoEstoqueDetalheUpdateWithWhereUniqueWithoutOperacaoEstoqueInput | OperacaoEstoqueDetalheUpdateWithWhereUniqueWithoutOperacaoEstoqueInput[]
-    updateMany?: OperacaoEstoqueDetalheUpdateManyWithWhereWithoutOperacaoEstoqueInput | OperacaoEstoqueDetalheUpdateManyWithWhereWithoutOperacaoEstoqueInput[]
-    deleteMany?: OperacaoEstoqueDetalheScalarWhereInput | OperacaoEstoqueDetalheScalarWhereInput[]
+  export type OperacaoEstoqueDetalheUncheckedUpdateOneWithoutOperacaoEstoqueNestedInput = {
+    create?: XOR<OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput>
+    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutOperacaoEstoqueInput
+    upsert?: OperacaoEstoqueDetalheUpsertWithoutOperacaoEstoqueInput
+    disconnect?: OperacaoEstoqueDetalheWhereInput | boolean
+    delete?: OperacaoEstoqueDetalheWhereInput | boolean
+    connect?: OperacaoEstoqueDetalheWhereUniqueInput
+    update?: XOR<XOR<OperacaoEstoqueDetalheUpdateToOneWithWhereWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUpdateWithoutOperacaoEstoqueInput>, OperacaoEstoqueDetalheUncheckedUpdateWithoutOperacaoEstoqueInput>
   }
 
-  export type OperacaoEstoqueCreateNestedOneWithoutOperacaoestoquedetalhesInput = {
-    create?: XOR<OperacaoEstoqueCreateWithoutOperacaoestoquedetalhesInput, OperacaoEstoqueUncheckedCreateWithoutOperacaoestoquedetalhesInput>
-    connectOrCreate?: OperacaoEstoqueCreateOrConnectWithoutOperacaoestoquedetalhesInput
+  export type OperacaoEstoqueCreateNestedOneWithoutOperacaoEstoqueDetalheInput = {
+    create?: XOR<OperacaoEstoqueCreateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueUncheckedCreateWithoutOperacaoEstoqueDetalheInput>
+    connectOrCreate?: OperacaoEstoqueCreateOrConnectWithoutOperacaoEstoqueDetalheInput
     connect?: OperacaoEstoqueWhereUniqueInput
   }
 
-  export type ProdutoModelCreateNestedOneWithoutOperacaoEstoqueDetalheInput = {
-    create?: XOR<ProdutoModelCreateWithoutOperacaoEstoqueDetalheInput, ProdutoModelUncheckedCreateWithoutOperacaoEstoqueDetalheInput>
-    connectOrCreate?: ProdutoModelCreateOrConnectWithoutOperacaoEstoqueDetalheInput
+  export type OperacaoEstoqueDetalheItemCreateNestedManyWithoutOperacaoEstoqueDetalheInput = {
+    create?: XOR<OperacaoEstoqueDetalheItemCreateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueDetalheItemUncheckedCreateWithoutOperacaoEstoqueDetalheInput> | OperacaoEstoqueDetalheItemCreateWithoutOperacaoEstoqueDetalheInput[] | OperacaoEstoqueDetalheItemUncheckedCreateWithoutOperacaoEstoqueDetalheInput[]
+    connectOrCreate?: OperacaoEstoqueDetalheItemCreateOrConnectWithoutOperacaoEstoqueDetalheInput | OperacaoEstoqueDetalheItemCreateOrConnectWithoutOperacaoEstoqueDetalheInput[]
+    createMany?: OperacaoEstoqueDetalheItemCreateManyOperacaoEstoqueDetalheInputEnvelope
+    connect?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+  }
+
+  export type OperacaoEstoqueDetalheItemUncheckedCreateNestedManyWithoutOperacaoEstoqueDetalheInput = {
+    create?: XOR<OperacaoEstoqueDetalheItemCreateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueDetalheItemUncheckedCreateWithoutOperacaoEstoqueDetalheInput> | OperacaoEstoqueDetalheItemCreateWithoutOperacaoEstoqueDetalheInput[] | OperacaoEstoqueDetalheItemUncheckedCreateWithoutOperacaoEstoqueDetalheInput[]
+    connectOrCreate?: OperacaoEstoqueDetalheItemCreateOrConnectWithoutOperacaoEstoqueDetalheInput | OperacaoEstoqueDetalheItemCreateOrConnectWithoutOperacaoEstoqueDetalheInput[]
+    createMany?: OperacaoEstoqueDetalheItemCreateManyOperacaoEstoqueDetalheInputEnvelope
+    connect?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+  }
+
+  export type OperacaoEstoqueUpdateOneRequiredWithoutOperacaoEstoqueDetalheNestedInput = {
+    create?: XOR<OperacaoEstoqueCreateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueUncheckedCreateWithoutOperacaoEstoqueDetalheInput>
+    connectOrCreate?: OperacaoEstoqueCreateOrConnectWithoutOperacaoEstoqueDetalheInput
+    upsert?: OperacaoEstoqueUpsertWithoutOperacaoEstoqueDetalheInput
+    connect?: OperacaoEstoqueWhereUniqueInput
+    update?: XOR<XOR<OperacaoEstoqueUpdateToOneWithWhereWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueUpdateWithoutOperacaoEstoqueDetalheInput>, OperacaoEstoqueUncheckedUpdateWithoutOperacaoEstoqueDetalheInput>
+  }
+
+  export type OperacaoEstoqueDetalheItemUpdateManyWithoutOperacaoEstoqueDetalheNestedInput = {
+    create?: XOR<OperacaoEstoqueDetalheItemCreateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueDetalheItemUncheckedCreateWithoutOperacaoEstoqueDetalheInput> | OperacaoEstoqueDetalheItemCreateWithoutOperacaoEstoqueDetalheInput[] | OperacaoEstoqueDetalheItemUncheckedCreateWithoutOperacaoEstoqueDetalheInput[]
+    connectOrCreate?: OperacaoEstoqueDetalheItemCreateOrConnectWithoutOperacaoEstoqueDetalheInput | OperacaoEstoqueDetalheItemCreateOrConnectWithoutOperacaoEstoqueDetalheInput[]
+    upsert?: OperacaoEstoqueDetalheItemUpsertWithWhereUniqueWithoutOperacaoEstoqueDetalheInput | OperacaoEstoqueDetalheItemUpsertWithWhereUniqueWithoutOperacaoEstoqueDetalheInput[]
+    createMany?: OperacaoEstoqueDetalheItemCreateManyOperacaoEstoqueDetalheInputEnvelope
+    set?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    disconnect?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    delete?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    connect?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    update?: OperacaoEstoqueDetalheItemUpdateWithWhereUniqueWithoutOperacaoEstoqueDetalheInput | OperacaoEstoqueDetalheItemUpdateWithWhereUniqueWithoutOperacaoEstoqueDetalheInput[]
+    updateMany?: OperacaoEstoqueDetalheItemUpdateManyWithWhereWithoutOperacaoEstoqueDetalheInput | OperacaoEstoqueDetalheItemUpdateManyWithWhereWithoutOperacaoEstoqueDetalheInput[]
+    deleteMany?: OperacaoEstoqueDetalheItemScalarWhereInput | OperacaoEstoqueDetalheItemScalarWhereInput[]
+  }
+
+  export type OperacaoEstoqueDetalheItemUncheckedUpdateManyWithoutOperacaoEstoqueDetalheNestedInput = {
+    create?: XOR<OperacaoEstoqueDetalheItemCreateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueDetalheItemUncheckedCreateWithoutOperacaoEstoqueDetalheInput> | OperacaoEstoqueDetalheItemCreateWithoutOperacaoEstoqueDetalheInput[] | OperacaoEstoqueDetalheItemUncheckedCreateWithoutOperacaoEstoqueDetalheInput[]
+    connectOrCreate?: OperacaoEstoqueDetalheItemCreateOrConnectWithoutOperacaoEstoqueDetalheInput | OperacaoEstoqueDetalheItemCreateOrConnectWithoutOperacaoEstoqueDetalheInput[]
+    upsert?: OperacaoEstoqueDetalheItemUpsertWithWhereUniqueWithoutOperacaoEstoqueDetalheInput | OperacaoEstoqueDetalheItemUpsertWithWhereUniqueWithoutOperacaoEstoqueDetalheInput[]
+    createMany?: OperacaoEstoqueDetalheItemCreateManyOperacaoEstoqueDetalheInputEnvelope
+    set?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    disconnect?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    delete?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    connect?: OperacaoEstoqueDetalheItemWhereUniqueInput | OperacaoEstoqueDetalheItemWhereUniqueInput[]
+    update?: OperacaoEstoqueDetalheItemUpdateWithWhereUniqueWithoutOperacaoEstoqueDetalheInput | OperacaoEstoqueDetalheItemUpdateWithWhereUniqueWithoutOperacaoEstoqueDetalheInput[]
+    updateMany?: OperacaoEstoqueDetalheItemUpdateManyWithWhereWithoutOperacaoEstoqueDetalheInput | OperacaoEstoqueDetalheItemUpdateManyWithWhereWithoutOperacaoEstoqueDetalheInput[]
+    deleteMany?: OperacaoEstoqueDetalheItemScalarWhereInput | OperacaoEstoqueDetalheItemScalarWhereInput[]
+  }
+
+  export type OperacaoEstoqueDetalheCreateNestedOneWithoutItensInput = {
+    create?: XOR<OperacaoEstoqueDetalheCreateWithoutItensInput, OperacaoEstoqueDetalheUncheckedCreateWithoutItensInput>
+    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutItensInput
+    connect?: OperacaoEstoqueDetalheWhereUniqueInput
+  }
+
+  export type ProdutoModelCreateNestedOneWithoutOperacaoEstoqueDetalhesInput = {
+    create?: XOR<ProdutoModelCreateWithoutOperacaoEstoqueDetalhesInput, ProdutoModelUncheckedCreateWithoutOperacaoEstoqueDetalhesInput>
+    connectOrCreate?: ProdutoModelCreateOrConnectWithoutOperacaoEstoqueDetalhesInput
     connect?: ProdutoModelWhereUniqueInput
   }
 
@@ -8178,20 +10971,20 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type OperacaoEstoqueUpdateOneRequiredWithoutOperacaoestoquedetalhesNestedInput = {
-    create?: XOR<OperacaoEstoqueCreateWithoutOperacaoestoquedetalhesInput, OperacaoEstoqueUncheckedCreateWithoutOperacaoestoquedetalhesInput>
-    connectOrCreate?: OperacaoEstoqueCreateOrConnectWithoutOperacaoestoquedetalhesInput
-    upsert?: OperacaoEstoqueUpsertWithoutOperacaoestoquedetalhesInput
-    connect?: OperacaoEstoqueWhereUniqueInput
-    update?: XOR<XOR<OperacaoEstoqueUpdateToOneWithWhereWithoutOperacaoestoquedetalhesInput, OperacaoEstoqueUpdateWithoutOperacaoestoquedetalhesInput>, OperacaoEstoqueUncheckedUpdateWithoutOperacaoestoquedetalhesInput>
+  export type OperacaoEstoqueDetalheUpdateOneRequiredWithoutItensNestedInput = {
+    create?: XOR<OperacaoEstoqueDetalheCreateWithoutItensInput, OperacaoEstoqueDetalheUncheckedCreateWithoutItensInput>
+    connectOrCreate?: OperacaoEstoqueDetalheCreateOrConnectWithoutItensInput
+    upsert?: OperacaoEstoqueDetalheUpsertWithoutItensInput
+    connect?: OperacaoEstoqueDetalheWhereUniqueInput
+    update?: XOR<XOR<OperacaoEstoqueDetalheUpdateToOneWithWhereWithoutItensInput, OperacaoEstoqueDetalheUpdateWithoutItensInput>, OperacaoEstoqueDetalheUncheckedUpdateWithoutItensInput>
   }
 
-  export type ProdutoModelUpdateOneRequiredWithoutOperacaoEstoqueDetalheNestedInput = {
-    create?: XOR<ProdutoModelCreateWithoutOperacaoEstoqueDetalheInput, ProdutoModelUncheckedCreateWithoutOperacaoEstoqueDetalheInput>
-    connectOrCreate?: ProdutoModelCreateOrConnectWithoutOperacaoEstoqueDetalheInput
-    upsert?: ProdutoModelUpsertWithoutOperacaoEstoqueDetalheInput
+  export type ProdutoModelUpdateOneRequiredWithoutOperacaoEstoqueDetalhesNestedInput = {
+    create?: XOR<ProdutoModelCreateWithoutOperacaoEstoqueDetalhesInput, ProdutoModelUncheckedCreateWithoutOperacaoEstoqueDetalhesInput>
+    connectOrCreate?: ProdutoModelCreateOrConnectWithoutOperacaoEstoqueDetalhesInput
+    upsert?: ProdutoModelUpsertWithoutOperacaoEstoqueDetalhesInput
     connect?: ProdutoModelWhereUniqueInput
-    update?: XOR<XOR<ProdutoModelUpdateToOneWithWhereWithoutOperacaoEstoqueDetalheInput, ProdutoModelUpdateWithoutOperacaoEstoqueDetalheInput>, ProdutoModelUncheckedUpdateWithoutOperacaoEstoqueDetalheInput>
+    update?: XOR<XOR<ProdutoModelUpdateToOneWithWhereWithoutOperacaoEstoqueDetalhesInput, ProdutoModelUpdateWithoutOperacaoEstoqueDetalhesInput>, ProdutoModelUncheckedUpdateWithoutOperacaoEstoqueDetalhesInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -8217,11 +11010,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -8266,6 +11054,11 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -8317,6 +11110,68 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type ProdutoModelCreateWithoutImagensInput = {
+    nome: string
+    habilitado?: boolean
+    nomearquivofoto: string
+    descricao: string
+    quantidadeAtual?: number
+    categoria: CategoriaProdutoCreateNestedOneWithoutProdutosInput
+    unidadeMedida: UnidadeMedidaCreateNestedOneWithoutProdutosInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemCreateNestedManyWithoutProdutoInput
+  }
+
+  export type ProdutoModelUncheckedCreateWithoutImagensInput = {
+    id?: number
+    nome: string
+    habilitado?: boolean
+    nomearquivofoto: string
+    descricao: string
+    quantidadeAtual?: number
+    categoriaId: number
+    unidadeMedidaId: number
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemUncheckedCreateNestedManyWithoutProdutoInput
+  }
+
+  export type ProdutoModelCreateOrConnectWithoutImagensInput = {
+    where: ProdutoModelWhereUniqueInput
+    create: XOR<ProdutoModelCreateWithoutImagensInput, ProdutoModelUncheckedCreateWithoutImagensInput>
+  }
+
+  export type ProdutoModelUpsertWithoutImagensInput = {
+    update: XOR<ProdutoModelUpdateWithoutImagensInput, ProdutoModelUncheckedUpdateWithoutImagensInput>
+    create: XOR<ProdutoModelCreateWithoutImagensInput, ProdutoModelUncheckedCreateWithoutImagensInput>
+    where?: ProdutoModelWhereInput
+  }
+
+  export type ProdutoModelUpdateToOneWithWhereWithoutImagensInput = {
+    where?: ProdutoModelWhereInput
+    data: XOR<ProdutoModelUpdateWithoutImagensInput, ProdutoModelUncheckedUpdateWithoutImagensInput>
+  }
+
+  export type ProdutoModelUpdateWithoutImagensInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    habilitado?: BoolFieldUpdateOperationsInput | boolean
+    nomearquivofoto?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
+    quantidadeAtual?: IntFieldUpdateOperationsInput | number
+    categoria?: CategoriaProdutoUpdateOneRequiredWithoutProdutosNestedInput
+    unidadeMedida?: UnidadeMedidaUpdateOneRequiredWithoutProdutosNestedInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemUpdateManyWithoutProdutoNestedInput
+  }
+
+  export type ProdutoModelUncheckedUpdateWithoutImagensInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    habilitado?: BoolFieldUpdateOperationsInput | boolean
+    nomearquivofoto?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
+    quantidadeAtual?: IntFieldUpdateOperationsInput | number
+    categoriaId?: IntFieldUpdateOperationsInput | number
+    unidadeMedidaId?: IntFieldUpdateOperationsInput | number
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemUncheckedUpdateManyWithoutProdutoNestedInput
+  }
+
   export type CategoriaProdutoCreateWithoutProdutosInput = {
     nome: string
     descricao: string
@@ -8351,22 +11206,46 @@ export namespace Prisma {
     create: XOR<UnidadeMedidaCreateWithoutProdutosInput, UnidadeMedidaUncheckedCreateWithoutProdutosInput>
   }
 
-  export type OperacaoEstoqueDetalheCreateWithoutProdutoInput = {
-    quantidade: number
-    precoCusto: number
-    operacaoEstoque: OperacaoEstoqueCreateNestedOneWithoutOperacaoestoquedetalhesInput
+  export type ImagemProdutoCreateWithoutProdutoInput = {
+    url: string
   }
 
-  export type OperacaoEstoqueDetalheUncheckedCreateWithoutProdutoInput = {
+  export type ImagemProdutoUncheckedCreateWithoutProdutoInput = {
+    id?: number
+    url: string
+  }
+
+  export type ImagemProdutoCreateOrConnectWithoutProdutoInput = {
+    where: ImagemProdutoWhereUniqueInput
+    create: XOR<ImagemProdutoCreateWithoutProdutoInput, ImagemProdutoUncheckedCreateWithoutProdutoInput>
+  }
+
+  export type ImagemProdutoCreateManyProdutoInputEnvelope = {
+    data: ImagemProdutoCreateManyProdutoInput | ImagemProdutoCreateManyProdutoInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type OperacaoEstoqueDetalheItemCreateWithoutProdutoInput = {
+    quantidade: number
+    precoCusto: number
+    operacaoEstoqueDetalhe: OperacaoEstoqueDetalheCreateNestedOneWithoutItensInput
+  }
+
+  export type OperacaoEstoqueDetalheItemUncheckedCreateWithoutProdutoInput = {
     id?: number
     quantidade: number
     precoCusto: number
-    operacaoEstoqueId: number
+    operacaoEstoqueDetalheId: number
   }
 
-  export type OperacaoEstoqueDetalheCreateOrConnectWithoutProdutoInput = {
-    where: OperacaoEstoqueDetalheWhereUniqueInput
-    create: XOR<OperacaoEstoqueDetalheCreateWithoutProdutoInput, OperacaoEstoqueDetalheUncheckedCreateWithoutProdutoInput>
+  export type OperacaoEstoqueDetalheItemCreateOrConnectWithoutProdutoInput = {
+    where: OperacaoEstoqueDetalheItemWhereUniqueInput
+    create: XOR<OperacaoEstoqueDetalheItemCreateWithoutProdutoInput, OperacaoEstoqueDetalheItemUncheckedCreateWithoutProdutoInput>
+  }
+
+  export type OperacaoEstoqueDetalheItemCreateManyProdutoInputEnvelope = {
+    data: OperacaoEstoqueDetalheItemCreateManyProdutoInput | OperacaoEstoqueDetalheItemCreateManyProdutoInput[]
+    skipDuplicates?: boolean
   }
 
   export type CategoriaProdutoUpsertWithoutProdutosInput = {
@@ -8415,28 +11294,56 @@ export namespace Prisma {
     fracionavel?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type OperacaoEstoqueDetalheUpsertWithoutProdutoInput = {
-    update: XOR<OperacaoEstoqueDetalheUpdateWithoutProdutoInput, OperacaoEstoqueDetalheUncheckedUpdateWithoutProdutoInput>
-    create: XOR<OperacaoEstoqueDetalheCreateWithoutProdutoInput, OperacaoEstoqueDetalheUncheckedCreateWithoutProdutoInput>
-    where?: OperacaoEstoqueDetalheWhereInput
+  export type ImagemProdutoUpsertWithWhereUniqueWithoutProdutoInput = {
+    where: ImagemProdutoWhereUniqueInput
+    update: XOR<ImagemProdutoUpdateWithoutProdutoInput, ImagemProdutoUncheckedUpdateWithoutProdutoInput>
+    create: XOR<ImagemProdutoCreateWithoutProdutoInput, ImagemProdutoUncheckedCreateWithoutProdutoInput>
   }
 
-  export type OperacaoEstoqueDetalheUpdateToOneWithWhereWithoutProdutoInput = {
-    where?: OperacaoEstoqueDetalheWhereInput
-    data: XOR<OperacaoEstoqueDetalheUpdateWithoutProdutoInput, OperacaoEstoqueDetalheUncheckedUpdateWithoutProdutoInput>
+  export type ImagemProdutoUpdateWithWhereUniqueWithoutProdutoInput = {
+    where: ImagemProdutoWhereUniqueInput
+    data: XOR<ImagemProdutoUpdateWithoutProdutoInput, ImagemProdutoUncheckedUpdateWithoutProdutoInput>
   }
 
-  export type OperacaoEstoqueDetalheUpdateWithoutProdutoInput = {
-    quantidade?: IntFieldUpdateOperationsInput | number
-    precoCusto?: FloatFieldUpdateOperationsInput | number
-    operacaoEstoque?: OperacaoEstoqueUpdateOneRequiredWithoutOperacaoestoquedetalhesNestedInput
+  export type ImagemProdutoUpdateManyWithWhereWithoutProdutoInput = {
+    where: ImagemProdutoScalarWhereInput
+    data: XOR<ImagemProdutoUpdateManyMutationInput, ImagemProdutoUncheckedUpdateManyWithoutProdutoInput>
   }
 
-  export type OperacaoEstoqueDetalheUncheckedUpdateWithoutProdutoInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    quantidade?: IntFieldUpdateOperationsInput | number
-    precoCusto?: FloatFieldUpdateOperationsInput | number
-    operacaoEstoqueId?: IntFieldUpdateOperationsInput | number
+  export type ImagemProdutoScalarWhereInput = {
+    AND?: ImagemProdutoScalarWhereInput | ImagemProdutoScalarWhereInput[]
+    OR?: ImagemProdutoScalarWhereInput[]
+    NOT?: ImagemProdutoScalarWhereInput | ImagemProdutoScalarWhereInput[]
+    id?: IntFilter<"ImagemProduto"> | number
+    url?: StringFilter<"ImagemProduto"> | string
+    produtoId?: IntFilter<"ImagemProduto"> | number
+  }
+
+  export type OperacaoEstoqueDetalheItemUpsertWithWhereUniqueWithoutProdutoInput = {
+    where: OperacaoEstoqueDetalheItemWhereUniqueInput
+    update: XOR<OperacaoEstoqueDetalheItemUpdateWithoutProdutoInput, OperacaoEstoqueDetalheItemUncheckedUpdateWithoutProdutoInput>
+    create: XOR<OperacaoEstoqueDetalheItemCreateWithoutProdutoInput, OperacaoEstoqueDetalheItemUncheckedCreateWithoutProdutoInput>
+  }
+
+  export type OperacaoEstoqueDetalheItemUpdateWithWhereUniqueWithoutProdutoInput = {
+    where: OperacaoEstoqueDetalheItemWhereUniqueInput
+    data: XOR<OperacaoEstoqueDetalheItemUpdateWithoutProdutoInput, OperacaoEstoqueDetalheItemUncheckedUpdateWithoutProdutoInput>
+  }
+
+  export type OperacaoEstoqueDetalheItemUpdateManyWithWhereWithoutProdutoInput = {
+    where: OperacaoEstoqueDetalheItemScalarWhereInput
+    data: XOR<OperacaoEstoqueDetalheItemUpdateManyMutationInput, OperacaoEstoqueDetalheItemUncheckedUpdateManyWithoutProdutoInput>
+  }
+
+  export type OperacaoEstoqueDetalheItemScalarWhereInput = {
+    AND?: OperacaoEstoqueDetalheItemScalarWhereInput | OperacaoEstoqueDetalheItemScalarWhereInput[]
+    OR?: OperacaoEstoqueDetalheItemScalarWhereInput[]
+    NOT?: OperacaoEstoqueDetalheItemScalarWhereInput | OperacaoEstoqueDetalheItemScalarWhereInput[]
+    id?: IntFilter<"OperacaoEstoqueDetalheItem"> | number
+    quantidade?: IntFilter<"OperacaoEstoqueDetalheItem"> | number
+    precoCusto?: FloatFilter<"OperacaoEstoqueDetalheItem"> | number
+    operacaoEstoqueDetalheId?: IntFilter<"OperacaoEstoqueDetalheItem"> | number
+    produtoId?: IntFilter<"OperacaoEstoqueDetalheItem"> | number
   }
 
   export type ProdutoModelCreateWithoutCategoriaInput = {
@@ -8446,7 +11353,8 @@ export namespace Prisma {
     descricao: string
     quantidadeAtual?: number
     unidadeMedida: UnidadeMedidaCreateNestedOneWithoutProdutosInput
-    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheCreateNestedOneWithoutProdutoInput
+    imagens?: ImagemProdutoCreateNestedManyWithoutProdutoInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemCreateNestedManyWithoutProdutoInput
   }
 
   export type ProdutoModelUncheckedCreateWithoutCategoriaInput = {
@@ -8457,7 +11365,8 @@ export namespace Prisma {
     descricao: string
     quantidadeAtual?: number
     unidadeMedidaId: number
-    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUncheckedCreateNestedOneWithoutProdutoInput
+    imagens?: ImagemProdutoUncheckedCreateNestedManyWithoutProdutoInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemUncheckedCreateNestedManyWithoutProdutoInput
   }
 
   export type ProdutoModelCreateOrConnectWithoutCategoriaInput = {
@@ -8507,7 +11416,8 @@ export namespace Prisma {
     descricao: string
     quantidadeAtual?: number
     categoria: CategoriaProdutoCreateNestedOneWithoutProdutosInput
-    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheCreateNestedOneWithoutProdutoInput
+    imagens?: ImagemProdutoCreateNestedManyWithoutProdutoInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemCreateNestedManyWithoutProdutoInput
   }
 
   export type ProdutoModelUncheckedCreateWithoutUnidadeMedidaInput = {
@@ -8518,7 +11428,8 @@ export namespace Prisma {
     descricao: string
     quantidadeAtual?: number
     categoriaId: number
-    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUncheckedCreateNestedOneWithoutProdutoInput
+    imagens?: ImagemProdutoUncheckedCreateNestedManyWithoutProdutoInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemUncheckedCreateNestedManyWithoutProdutoInput
   }
 
   export type ProdutoModelCreateOrConnectWithoutUnidadeMedidaInput = {
@@ -8548,16 +11459,12 @@ export namespace Prisma {
   }
 
   export type OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput = {
-    quantidade: number
-    precoCusto: number
-    produto: ProdutoModelCreateNestedOneWithoutOperacaoEstoqueDetalheInput
+    itens?: OperacaoEstoqueDetalheItemCreateNestedManyWithoutOperacaoEstoqueDetalheInput
   }
 
   export type OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput = {
     id?: number
-    quantidade: number
-    precoCusto: number
-    produtoId: number
+    itens?: OperacaoEstoqueDetalheItemUncheckedCreateNestedManyWithoutOperacaoEstoqueDetalheInput
   }
 
   export type OperacaoEstoqueDetalheCreateOrConnectWithoutOperacaoEstoqueInput = {
@@ -8565,57 +11472,122 @@ export namespace Prisma {
     create: XOR<OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput>
   }
 
-  export type OperacaoEstoqueDetalheCreateManyOperacaoEstoqueInputEnvelope = {
-    data: OperacaoEstoqueDetalheCreateManyOperacaoEstoqueInput | OperacaoEstoqueDetalheCreateManyOperacaoEstoqueInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type OperacaoEstoqueDetalheUpsertWithWhereUniqueWithoutOperacaoEstoqueInput = {
-    where: OperacaoEstoqueDetalheWhereUniqueInput
+  export type OperacaoEstoqueDetalheUpsertWithoutOperacaoEstoqueInput = {
     update: XOR<OperacaoEstoqueDetalheUpdateWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUncheckedUpdateWithoutOperacaoEstoqueInput>
     create: XOR<OperacaoEstoqueDetalheCreateWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUncheckedCreateWithoutOperacaoEstoqueInput>
+    where?: OperacaoEstoqueDetalheWhereInput
   }
 
-  export type OperacaoEstoqueDetalheUpdateWithWhereUniqueWithoutOperacaoEstoqueInput = {
-    where: OperacaoEstoqueDetalheWhereUniqueInput
+  export type OperacaoEstoqueDetalheUpdateToOneWithWhereWithoutOperacaoEstoqueInput = {
+    where?: OperacaoEstoqueDetalheWhereInput
     data: XOR<OperacaoEstoqueDetalheUpdateWithoutOperacaoEstoqueInput, OperacaoEstoqueDetalheUncheckedUpdateWithoutOperacaoEstoqueInput>
   }
 
-  export type OperacaoEstoqueDetalheUpdateManyWithWhereWithoutOperacaoEstoqueInput = {
-    where: OperacaoEstoqueDetalheScalarWhereInput
-    data: XOR<OperacaoEstoqueDetalheUpdateManyMutationInput, OperacaoEstoqueDetalheUncheckedUpdateManyWithoutOperacaoEstoqueInput>
+  export type OperacaoEstoqueDetalheUpdateWithoutOperacaoEstoqueInput = {
+    itens?: OperacaoEstoqueDetalheItemUpdateManyWithoutOperacaoEstoqueDetalheNestedInput
   }
 
-  export type OperacaoEstoqueDetalheScalarWhereInput = {
-    AND?: OperacaoEstoqueDetalheScalarWhereInput | OperacaoEstoqueDetalheScalarWhereInput[]
-    OR?: OperacaoEstoqueDetalheScalarWhereInput[]
-    NOT?: OperacaoEstoqueDetalheScalarWhereInput | OperacaoEstoqueDetalheScalarWhereInput[]
-    id?: IntFilter<"OperacaoEstoqueDetalhe"> | number
-    quantidade?: IntFilter<"OperacaoEstoqueDetalhe"> | number
-    precoCusto?: FloatFilter<"OperacaoEstoqueDetalhe"> | number
-    operacaoEstoqueId?: IntFilter<"OperacaoEstoqueDetalhe"> | number
-    produtoId?: IntFilter<"OperacaoEstoqueDetalhe"> | number
+  export type OperacaoEstoqueDetalheUncheckedUpdateWithoutOperacaoEstoqueInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    itens?: OperacaoEstoqueDetalheItemUncheckedUpdateManyWithoutOperacaoEstoqueDetalheNestedInput
   }
 
-  export type OperacaoEstoqueCreateWithoutOperacaoestoquedetalhesInput = {
+  export type OperacaoEstoqueCreateWithoutOperacaoEstoqueDetalheInput = {
     hora?: Date | string
     motivo: string
     entradasaida: string
   }
 
-  export type OperacaoEstoqueUncheckedCreateWithoutOperacaoestoquedetalhesInput = {
+  export type OperacaoEstoqueUncheckedCreateWithoutOperacaoEstoqueDetalheInput = {
     id?: number
     hora?: Date | string
     motivo: string
     entradasaida: string
   }
 
-  export type OperacaoEstoqueCreateOrConnectWithoutOperacaoestoquedetalhesInput = {
+  export type OperacaoEstoqueCreateOrConnectWithoutOperacaoEstoqueDetalheInput = {
     where: OperacaoEstoqueWhereUniqueInput
-    create: XOR<OperacaoEstoqueCreateWithoutOperacaoestoquedetalhesInput, OperacaoEstoqueUncheckedCreateWithoutOperacaoestoquedetalhesInput>
+    create: XOR<OperacaoEstoqueCreateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueUncheckedCreateWithoutOperacaoEstoqueDetalheInput>
   }
 
-  export type ProdutoModelCreateWithoutOperacaoEstoqueDetalheInput = {
+  export type OperacaoEstoqueDetalheItemCreateWithoutOperacaoEstoqueDetalheInput = {
+    quantidade: number
+    precoCusto: number
+    produto: ProdutoModelCreateNestedOneWithoutOperacaoEstoqueDetalhesInput
+  }
+
+  export type OperacaoEstoqueDetalheItemUncheckedCreateWithoutOperacaoEstoqueDetalheInput = {
+    id?: number
+    quantidade: number
+    precoCusto: number
+    produtoId: number
+  }
+
+  export type OperacaoEstoqueDetalheItemCreateOrConnectWithoutOperacaoEstoqueDetalheInput = {
+    where: OperacaoEstoqueDetalheItemWhereUniqueInput
+    create: XOR<OperacaoEstoqueDetalheItemCreateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueDetalheItemUncheckedCreateWithoutOperacaoEstoqueDetalheInput>
+  }
+
+  export type OperacaoEstoqueDetalheItemCreateManyOperacaoEstoqueDetalheInputEnvelope = {
+    data: OperacaoEstoqueDetalheItemCreateManyOperacaoEstoqueDetalheInput | OperacaoEstoqueDetalheItemCreateManyOperacaoEstoqueDetalheInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type OperacaoEstoqueUpsertWithoutOperacaoEstoqueDetalheInput = {
+    update: XOR<OperacaoEstoqueUpdateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueUncheckedUpdateWithoutOperacaoEstoqueDetalheInput>
+    create: XOR<OperacaoEstoqueCreateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueUncheckedCreateWithoutOperacaoEstoqueDetalheInput>
+    where?: OperacaoEstoqueWhereInput
+  }
+
+  export type OperacaoEstoqueUpdateToOneWithWhereWithoutOperacaoEstoqueDetalheInput = {
+    where?: OperacaoEstoqueWhereInput
+    data: XOR<OperacaoEstoqueUpdateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueUncheckedUpdateWithoutOperacaoEstoqueDetalheInput>
+  }
+
+  export type OperacaoEstoqueUpdateWithoutOperacaoEstoqueDetalheInput = {
+    hora?: DateTimeFieldUpdateOperationsInput | Date | string
+    motivo?: StringFieldUpdateOperationsInput | string
+    entradasaida?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OperacaoEstoqueUncheckedUpdateWithoutOperacaoEstoqueDetalheInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    hora?: DateTimeFieldUpdateOperationsInput | Date | string
+    motivo?: StringFieldUpdateOperationsInput | string
+    entradasaida?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OperacaoEstoqueDetalheItemUpsertWithWhereUniqueWithoutOperacaoEstoqueDetalheInput = {
+    where: OperacaoEstoqueDetalheItemWhereUniqueInput
+    update: XOR<OperacaoEstoqueDetalheItemUpdateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueDetalheItemUncheckedUpdateWithoutOperacaoEstoqueDetalheInput>
+    create: XOR<OperacaoEstoqueDetalheItemCreateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueDetalheItemUncheckedCreateWithoutOperacaoEstoqueDetalheInput>
+  }
+
+  export type OperacaoEstoqueDetalheItemUpdateWithWhereUniqueWithoutOperacaoEstoqueDetalheInput = {
+    where: OperacaoEstoqueDetalheItemWhereUniqueInput
+    data: XOR<OperacaoEstoqueDetalheItemUpdateWithoutOperacaoEstoqueDetalheInput, OperacaoEstoqueDetalheItemUncheckedUpdateWithoutOperacaoEstoqueDetalheInput>
+  }
+
+  export type OperacaoEstoqueDetalheItemUpdateManyWithWhereWithoutOperacaoEstoqueDetalheInput = {
+    where: OperacaoEstoqueDetalheItemScalarWhereInput
+    data: XOR<OperacaoEstoqueDetalheItemUpdateManyMutationInput, OperacaoEstoqueDetalheItemUncheckedUpdateManyWithoutOperacaoEstoqueDetalheInput>
+  }
+
+  export type OperacaoEstoqueDetalheCreateWithoutItensInput = {
+    operacaoEstoque: OperacaoEstoqueCreateNestedOneWithoutOperacaoEstoqueDetalheInput
+  }
+
+  export type OperacaoEstoqueDetalheUncheckedCreateWithoutItensInput = {
+    id?: number
+    operacaoEstoqueId: number
+  }
+
+  export type OperacaoEstoqueDetalheCreateOrConnectWithoutItensInput = {
+    where: OperacaoEstoqueDetalheWhereUniqueInput
+    create: XOR<OperacaoEstoqueDetalheCreateWithoutItensInput, OperacaoEstoqueDetalheUncheckedCreateWithoutItensInput>
+  }
+
+  export type ProdutoModelCreateWithoutOperacaoEstoqueDetalhesInput = {
     nome: string
     habilitado?: boolean
     nomearquivofoto: string
@@ -8623,9 +11595,10 @@ export namespace Prisma {
     quantidadeAtual?: number
     categoria: CategoriaProdutoCreateNestedOneWithoutProdutosInput
     unidadeMedida: UnidadeMedidaCreateNestedOneWithoutProdutosInput
+    imagens?: ImagemProdutoCreateNestedManyWithoutProdutoInput
   }
 
-  export type ProdutoModelUncheckedCreateWithoutOperacaoEstoqueDetalheInput = {
+  export type ProdutoModelUncheckedCreateWithoutOperacaoEstoqueDetalhesInput = {
     id?: number
     nome: string
     habilitado?: boolean
@@ -8634,49 +11607,46 @@ export namespace Prisma {
     quantidadeAtual?: number
     categoriaId: number
     unidadeMedidaId: number
+    imagens?: ImagemProdutoUncheckedCreateNestedManyWithoutProdutoInput
   }
 
-  export type ProdutoModelCreateOrConnectWithoutOperacaoEstoqueDetalheInput = {
+  export type ProdutoModelCreateOrConnectWithoutOperacaoEstoqueDetalhesInput = {
     where: ProdutoModelWhereUniqueInput
-    create: XOR<ProdutoModelCreateWithoutOperacaoEstoqueDetalheInput, ProdutoModelUncheckedCreateWithoutOperacaoEstoqueDetalheInput>
+    create: XOR<ProdutoModelCreateWithoutOperacaoEstoqueDetalhesInput, ProdutoModelUncheckedCreateWithoutOperacaoEstoqueDetalhesInput>
   }
 
-  export type OperacaoEstoqueUpsertWithoutOperacaoestoquedetalhesInput = {
-    update: XOR<OperacaoEstoqueUpdateWithoutOperacaoestoquedetalhesInput, OperacaoEstoqueUncheckedUpdateWithoutOperacaoestoquedetalhesInput>
-    create: XOR<OperacaoEstoqueCreateWithoutOperacaoestoquedetalhesInput, OperacaoEstoqueUncheckedCreateWithoutOperacaoestoquedetalhesInput>
-    where?: OperacaoEstoqueWhereInput
+  export type OperacaoEstoqueDetalheUpsertWithoutItensInput = {
+    update: XOR<OperacaoEstoqueDetalheUpdateWithoutItensInput, OperacaoEstoqueDetalheUncheckedUpdateWithoutItensInput>
+    create: XOR<OperacaoEstoqueDetalheCreateWithoutItensInput, OperacaoEstoqueDetalheUncheckedCreateWithoutItensInput>
+    where?: OperacaoEstoqueDetalheWhereInput
   }
 
-  export type OperacaoEstoqueUpdateToOneWithWhereWithoutOperacaoestoquedetalhesInput = {
-    where?: OperacaoEstoqueWhereInput
-    data: XOR<OperacaoEstoqueUpdateWithoutOperacaoestoquedetalhesInput, OperacaoEstoqueUncheckedUpdateWithoutOperacaoestoquedetalhesInput>
+  export type OperacaoEstoqueDetalheUpdateToOneWithWhereWithoutItensInput = {
+    where?: OperacaoEstoqueDetalheWhereInput
+    data: XOR<OperacaoEstoqueDetalheUpdateWithoutItensInput, OperacaoEstoqueDetalheUncheckedUpdateWithoutItensInput>
   }
 
-  export type OperacaoEstoqueUpdateWithoutOperacaoestoquedetalhesInput = {
-    hora?: DateTimeFieldUpdateOperationsInput | Date | string
-    motivo?: StringFieldUpdateOperationsInput | string
-    entradasaida?: StringFieldUpdateOperationsInput | string
+  export type OperacaoEstoqueDetalheUpdateWithoutItensInput = {
+    operacaoEstoque?: OperacaoEstoqueUpdateOneRequiredWithoutOperacaoEstoqueDetalheNestedInput
   }
 
-  export type OperacaoEstoqueUncheckedUpdateWithoutOperacaoestoquedetalhesInput = {
+  export type OperacaoEstoqueDetalheUncheckedUpdateWithoutItensInput = {
     id?: IntFieldUpdateOperationsInput | number
-    hora?: DateTimeFieldUpdateOperationsInput | Date | string
-    motivo?: StringFieldUpdateOperationsInput | string
-    entradasaida?: StringFieldUpdateOperationsInput | string
+    operacaoEstoqueId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type ProdutoModelUpsertWithoutOperacaoEstoqueDetalheInput = {
-    update: XOR<ProdutoModelUpdateWithoutOperacaoEstoqueDetalheInput, ProdutoModelUncheckedUpdateWithoutOperacaoEstoqueDetalheInput>
-    create: XOR<ProdutoModelCreateWithoutOperacaoEstoqueDetalheInput, ProdutoModelUncheckedCreateWithoutOperacaoEstoqueDetalheInput>
+  export type ProdutoModelUpsertWithoutOperacaoEstoqueDetalhesInput = {
+    update: XOR<ProdutoModelUpdateWithoutOperacaoEstoqueDetalhesInput, ProdutoModelUncheckedUpdateWithoutOperacaoEstoqueDetalhesInput>
+    create: XOR<ProdutoModelCreateWithoutOperacaoEstoqueDetalhesInput, ProdutoModelUncheckedCreateWithoutOperacaoEstoqueDetalhesInput>
     where?: ProdutoModelWhereInput
   }
 
-  export type ProdutoModelUpdateToOneWithWhereWithoutOperacaoEstoqueDetalheInput = {
+  export type ProdutoModelUpdateToOneWithWhereWithoutOperacaoEstoqueDetalhesInput = {
     where?: ProdutoModelWhereInput
-    data: XOR<ProdutoModelUpdateWithoutOperacaoEstoqueDetalheInput, ProdutoModelUncheckedUpdateWithoutOperacaoEstoqueDetalheInput>
+    data: XOR<ProdutoModelUpdateWithoutOperacaoEstoqueDetalhesInput, ProdutoModelUncheckedUpdateWithoutOperacaoEstoqueDetalhesInput>
   }
 
-  export type ProdutoModelUpdateWithoutOperacaoEstoqueDetalheInput = {
+  export type ProdutoModelUpdateWithoutOperacaoEstoqueDetalhesInput = {
     nome?: StringFieldUpdateOperationsInput | string
     habilitado?: BoolFieldUpdateOperationsInput | boolean
     nomearquivofoto?: StringFieldUpdateOperationsInput | string
@@ -8684,9 +11654,10 @@ export namespace Prisma {
     quantidadeAtual?: IntFieldUpdateOperationsInput | number
     categoria?: CategoriaProdutoUpdateOneRequiredWithoutProdutosNestedInput
     unidadeMedida?: UnidadeMedidaUpdateOneRequiredWithoutProdutosNestedInput
+    imagens?: ImagemProdutoUpdateManyWithoutProdutoNestedInput
   }
 
-  export type ProdutoModelUncheckedUpdateWithoutOperacaoEstoqueDetalheInput = {
+  export type ProdutoModelUncheckedUpdateWithoutOperacaoEstoqueDetalhesInput = {
     id?: IntFieldUpdateOperationsInput | number
     nome?: StringFieldUpdateOperationsInput | string
     habilitado?: BoolFieldUpdateOperationsInput | boolean
@@ -8695,6 +11666,53 @@ export namespace Prisma {
     quantidadeAtual?: IntFieldUpdateOperationsInput | number
     categoriaId?: IntFieldUpdateOperationsInput | number
     unidadeMedidaId?: IntFieldUpdateOperationsInput | number
+    imagens?: ImagemProdutoUncheckedUpdateManyWithoutProdutoNestedInput
+  }
+
+  export type ImagemProdutoCreateManyProdutoInput = {
+    id?: number
+    url: string
+  }
+
+  export type OperacaoEstoqueDetalheItemCreateManyProdutoInput = {
+    id?: number
+    quantidade: number
+    precoCusto: number
+    operacaoEstoqueDetalheId: number
+  }
+
+  export type ImagemProdutoUpdateWithoutProdutoInput = {
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ImagemProdutoUncheckedUpdateWithoutProdutoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ImagemProdutoUncheckedUpdateManyWithoutProdutoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OperacaoEstoqueDetalheItemUpdateWithoutProdutoInput = {
+    quantidade?: IntFieldUpdateOperationsInput | number
+    precoCusto?: FloatFieldUpdateOperationsInput | number
+    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUpdateOneRequiredWithoutItensNestedInput
+  }
+
+  export type OperacaoEstoqueDetalheItemUncheckedUpdateWithoutProdutoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    quantidade?: IntFieldUpdateOperationsInput | number
+    precoCusto?: FloatFieldUpdateOperationsInput | number
+    operacaoEstoqueDetalheId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type OperacaoEstoqueDetalheItemUncheckedUpdateManyWithoutProdutoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    quantidade?: IntFieldUpdateOperationsInput | number
+    precoCusto?: FloatFieldUpdateOperationsInput | number
+    operacaoEstoqueDetalheId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProdutoModelCreateManyCategoriaInput = {
@@ -8714,7 +11732,8 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     quantidadeAtual?: IntFieldUpdateOperationsInput | number
     unidadeMedida?: UnidadeMedidaUpdateOneRequiredWithoutProdutosNestedInput
-    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUpdateOneWithoutProdutoNestedInput
+    imagens?: ImagemProdutoUpdateManyWithoutProdutoNestedInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemUpdateManyWithoutProdutoNestedInput
   }
 
   export type ProdutoModelUncheckedUpdateWithoutCategoriaInput = {
@@ -8725,7 +11744,8 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     quantidadeAtual?: IntFieldUpdateOperationsInput | number
     unidadeMedidaId?: IntFieldUpdateOperationsInput | number
-    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUncheckedUpdateOneWithoutProdutoNestedInput
+    imagens?: ImagemProdutoUncheckedUpdateManyWithoutProdutoNestedInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemUncheckedUpdateManyWithoutProdutoNestedInput
   }
 
   export type ProdutoModelUncheckedUpdateManyWithoutCategoriaInput = {
@@ -8755,7 +11775,8 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     quantidadeAtual?: IntFieldUpdateOperationsInput | number
     categoria?: CategoriaProdutoUpdateOneRequiredWithoutProdutosNestedInput
-    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUpdateOneWithoutProdutoNestedInput
+    imagens?: ImagemProdutoUpdateManyWithoutProdutoNestedInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemUpdateManyWithoutProdutoNestedInput
   }
 
   export type ProdutoModelUncheckedUpdateWithoutUnidadeMedidaInput = {
@@ -8766,7 +11787,8 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     quantidadeAtual?: IntFieldUpdateOperationsInput | number
     categoriaId?: IntFieldUpdateOperationsInput | number
-    operacaoEstoqueDetalhe?: OperacaoEstoqueDetalheUncheckedUpdateOneWithoutProdutoNestedInput
+    imagens?: ImagemProdutoUncheckedUpdateManyWithoutProdutoNestedInput
+    operacaoEstoqueDetalhes?: OperacaoEstoqueDetalheItemUncheckedUpdateManyWithoutProdutoNestedInput
   }
 
   export type ProdutoModelUncheckedUpdateManyWithoutUnidadeMedidaInput = {
@@ -8779,27 +11801,27 @@ export namespace Prisma {
     categoriaId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type OperacaoEstoqueDetalheCreateManyOperacaoEstoqueInput = {
+  export type OperacaoEstoqueDetalheItemCreateManyOperacaoEstoqueDetalheInput = {
     id?: number
     quantidade: number
     precoCusto: number
     produtoId: number
   }
 
-  export type OperacaoEstoqueDetalheUpdateWithoutOperacaoEstoqueInput = {
+  export type OperacaoEstoqueDetalheItemUpdateWithoutOperacaoEstoqueDetalheInput = {
     quantidade?: IntFieldUpdateOperationsInput | number
     precoCusto?: FloatFieldUpdateOperationsInput | number
-    produto?: ProdutoModelUpdateOneRequiredWithoutOperacaoEstoqueDetalheNestedInput
+    produto?: ProdutoModelUpdateOneRequiredWithoutOperacaoEstoqueDetalhesNestedInput
   }
 
-  export type OperacaoEstoqueDetalheUncheckedUpdateWithoutOperacaoEstoqueInput = {
+  export type OperacaoEstoqueDetalheItemUncheckedUpdateWithoutOperacaoEstoqueDetalheInput = {
     id?: IntFieldUpdateOperationsInput | number
     quantidade?: IntFieldUpdateOperationsInput | number
     precoCusto?: FloatFieldUpdateOperationsInput | number
     produtoId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type OperacaoEstoqueDetalheUncheckedUpdateManyWithoutOperacaoEstoqueInput = {
+  export type OperacaoEstoqueDetalheItemUncheckedUpdateManyWithoutOperacaoEstoqueDetalheInput = {
     id?: IntFieldUpdateOperationsInput | number
     quantidade?: IntFieldUpdateOperationsInput | number
     precoCusto?: FloatFieldUpdateOperationsInput | number
