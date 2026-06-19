@@ -4,7 +4,8 @@
   "description": "Sistema Postgres e express",
   "main": "index.js",
   "scripts": {
-    "test": "Test",
+    "test": "vitest",
+    "test:ui":"vitest --ui",
     "start": "start",
     "dev": "tsx watch /app.ts"
   },
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
-    "@types/multer": "^2.1.0"
+    "@types/multer": "^2.1.0",
+    "vitest": "^4.1.9"
   }
 }
