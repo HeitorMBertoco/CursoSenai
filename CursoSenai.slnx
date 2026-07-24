@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Semestre 4/" />
+  <Folder Name="/Semestre 4/Testes/" />
+  <Folder Name="/Semestre 4/Testes/Primeiro Teste/">
+    <Project Path="Semestre 4/Testes/Primeiro Teste/TestesMs/TestesMs.csproj" />
+  </Folder>
+  <Folder Name="/Semestre 4/Testes/Primeiro Teste/ATestar/">
+    <Project Path="Semestre 4/Testes/Primeiro Teste/ATestar/Testes.csproj" />
+  </Folder>
+  <Folder Name="/Semestre 4/Testes/Zoologico/">
+    <Project Path="Semestre 4/Testes/Zoologico/ClasseTestar/ClasseTestar.csproj" />
+  </Folder>
+</Solution>
