@@ -1,6 +1,12 @@
 <Solution>
   <Folder Name="/Semestre 4/" />
   <Folder Name="/Semestre 4/Testes/" />
+  <Folder Name="/Semestre 4/Testes/Exceptions/">
+    <Project Path="Semestre 4/Testes/Exceptions/ProjetoTesteEscolaExceptions/ProjetoTesteEscolaExceptions.csproj" />
+  </Folder>
+  <Folder Name="/Semestre 4/Testes/Exceptions/EscolaException/">
+    <Project Path="Semestre 4/Testes/Exceptions/EscolaException/Exceptions.csproj" />
+  </Folder>
   <Folder Name="/Semestre 4/Testes/Primeiro Teste/">
     <Project Path="Semestre 4/Testes/Primeiro Teste/TestesMs/TestesMs.csproj" />
   </Folder>
