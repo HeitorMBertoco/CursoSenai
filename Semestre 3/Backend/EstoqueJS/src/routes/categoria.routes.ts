@@ -10,4 +10,6 @@ router.post("/", CriarCategoria)
 router.patch("/", AlterarCategoria)
 
 router.delete("/", DeletarCategoria)
+
+
 export default router;

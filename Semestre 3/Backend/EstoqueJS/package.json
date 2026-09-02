@@ -7,7 +7,7 @@
     "test": "vitest",
     "test:ui":"vitest --ui",
     "start": "start",
-    "dev": "tsx watch /app.ts"
+    "dev": "tsx watch ./src/app.ts"
   },
   "author": "",
   "license": "ISC",
