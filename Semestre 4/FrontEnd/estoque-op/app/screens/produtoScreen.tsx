@@ -1,12 +1,14 @@
 import { View, Text, ImageBackground, StyleSheet } from "react-native";
-import { white } from "react-native-paper/lib/typescript/styles/themes/v2/colors";
+import Banner from "@/components/banner";
 
 
 export default function ProdutoScreen(){
 return(
 <View style={styles.container}>
     <ImageBackground style={styles.fundo} source={require("../../assets/images/fundo.jpg")} resizeMode='cover'>
-    <Text style={styles.texto}>Tela de produtos</Text>
+    <Banner Text="Tela de produtos" CorTexto="#fff" CorBg="rgba(0,0,0,0.7)" />
+    <Banner Text="SAIDA " CorTexto="#fff" CorBg="#ff0000" />
+    <Banner Text="Entrada" CorTexto="#fff" CorBg="#00ff00" />
     </ImageBackground>
 </View>
 );
