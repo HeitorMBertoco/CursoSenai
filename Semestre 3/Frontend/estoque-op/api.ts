@@ -1,8 +1,5 @@
-import { IProduto, ICategoriaProduto, IUnidadeMedida } from "./interfaces";
+import { IProduto, ICategoriaProduto, IUnidadeMedida, IOperacao } from "./interfaces";
 
-/* =========================
-   API GENÉRICA (FETCH)
-========================= */
 
 function api<T>(endpoint: string) {
   return {

@@ -1,15 +1,15 @@
-// src/interfaces/IProduto.ts
+
 
 export interface IProduto {
-    id: string;
+  id: string;
 
 
-    nome: string;
-    descricao: string;
+  nome: string;
+  descricao: string;
 
-    quantidadeAtual: number;
+  quantidadeAtual: number;
 }
-// src/interfaces/ICategoriaProduto.ts
+
 
 export interface ICategoriaProduto {
   id: string;
@@ -20,7 +20,7 @@ export interface ICategoriaProduto {
 }
 
 
-// src/interfaces/IUnidadeMedida.ts
+
 
 export interface IUnidadeMedida {
   id: string;
@@ -29,5 +29,5 @@ export interface IUnidadeMedida {
 
   descricao: string;
 
-  
+
 }
