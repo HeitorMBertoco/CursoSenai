@@ -1,34 +1,51 @@
-'use client'
-import { useRouter } from "next/navigation"
+"use client";
+
+import { useRouter } from "next/navigation";
 
 interface IButtonProps {
-    type?: "dark" | "white",
-    size?: "s" | "m" | "l",
-    onClick?: string,
-    text: string
+    type?: "dark" | "white";
+    size?: "s" | "m" | "l";
+    onClick?: string;
+    text: string;
 }
 
 const sizeStyles = {
-    s : "w-[200px] m-0.5 p-2",
-    m : "w-[350px] m-0.5 p-2.5",
-    l : "w-[500px] m-0.5 p-3",
-}
+    s: "w-full p-2",
+    m: "w-full p-2.5",
+    l: "w-full p-3",
+};
 
-const typeStyles = { 
-    dark : "bg-zinc-950 text-white ",
-    white: "bg-white text-black ",
-}
+const typeStyles = {
+    dark: "bg-zinc-950 text-white hover:bg-zinc-800",
+    white: "bg-white text-zinc-800 border border-zinc-200 hover:bg-zinc-50",
+};
 
-export default function Button({ type = "white", size = "m", onClick, text }: IButtonProps) {
-    const router = useRouter()
-    
+export default function Button({
+    type = "white",
+    size = "m",
+    onClick,
+    text,
+}: IButtonProps) {
+    const router = useRouter();
+
     return (
-        <div 
-            className={`cursor-pointer flex items-center text-center justify-center rounded ${typeStyles[type]} ${sizeStyles[size]}`} 
-            
+        <div
+            className={`
+                cursor-pointer
+                flex
+                items-center
+                justify-center
+                rounded-lg
+                font-medium
+                text-sm
+                transition-colors
+                active:scale-[0.99]
+                ${typeStyles[type]}
+                ${sizeStyles[size]}
+            `}
             onClick={() => onClick && router.push(onClick)}
         >
             {text}
         </div>
-    )
+    );
 }

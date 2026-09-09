@@ -1,14 +1,13 @@
-
-
 export interface IProduto {
-  id: string;
-
-
-  nome: string;
-  descricao: string;
-
-  quantidadeAtual: number;
+    id: string;
+    nome: string;
+    descricao: string;
+    quantidadeAtual: number;
+    categoriaId: number;
+    unidadeMedidaId: number;
+    nomeaquivofoto:string;
 }
+
 
 
 export interface ICategoriaProduto {

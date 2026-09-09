@@ -1,4 +1,5 @@
 import { IProduto, ICategoriaProduto, IUnidadeMedida, IOperacao } from "./interfaces";
+
 const url = "http://localhost:3000/";
 
 export function api<T>(endpoint: "produtos" | "unidades" | "operacoes" | "categorias") {
@@ -43,7 +44,7 @@ export function api<T>(endpoint: "produtos" | "unidades" | "operacoes" | "catego
         },
 
         delete: async (id: number | string): Promise<void> => {
-            const res = await fetch(`${url}${endpoint}/${id}`, {
+            const res = await fetch(`${url}${endpoint}?id=${id}`, {
                 method: "DELETE"
             });
 
