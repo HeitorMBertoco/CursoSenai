@@ -61,3 +61,11 @@ export interface IOperacaoEstoqueDetalheComItens extends IOperacaoEstoqueDetalhe
 export interface IOperacaoEstoqueDetalheItemComProduto extends IOperacaoEstoqueDetalheItem {
   produto?: any; 
 }
+export interface IOperacaoEstoquePayload {
+  motivo: string;
+  entradasaida: 'E' | 'S';
+  itens: Array<{
+    produtoId: number | string;
+    quantidade: number;
+    precoCusto: number;
+  }>}

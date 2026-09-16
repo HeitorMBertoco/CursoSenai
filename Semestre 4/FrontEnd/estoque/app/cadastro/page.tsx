@@ -4,12 +4,23 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import Button from "@/components/ui/button";
-import { api } from "@/api";
+import { api} from "@/api";
 
 import {
     ICategoriaProduto,
     IUnidadeMedida,
+    IProduto,
+    IOperacaoEstoquePayload,
+    IOperacao,
 } from "@/interfaces";
+
+interface ItemOperacao {
+  id: string;
+  produtoId: string | number;
+  quantidade: number;
+  precoCusto: number;
+  produto?: IProduto;
+}
 
 type AllowedEndpoints =
     | "produtos"
@@ -20,7 +31,7 @@ type AllowedEndpoints =
 const titles: Record<AllowedEndpoints, string> = {
     produtos: "Cadastrar Produto",
     unidades: "Cadastrar Unidade de Medida",
-    operacoes: "Cadastrar Operação",
+    operacoes: "Registrar Operação de Estoque",
     categorias: "Cadastrar Categoria",
 };
 
@@ -34,6 +45,13 @@ export default function CadastroPage() {
 
     const [categorias, setCategorias] = useState<ICategoriaProduto[]>([]);
     const [unidades, setUnidades] = useState<IUnidadeMedida[]>([]);
+    const [produtos, setProdutos] = useState<IProduto[]>([]);
+
+    const [itensOperacao, setItensOperacao] = useState<ItemOperacao[]>([]);
+    const [itemAtual, setItemAtual] = useState<Partial<ItemOperacao>>({
+        quantidade: 1,
+        precoCusto: 0,
+    });
 
     const [loading, setLoading] = useState(false);
     const [loadingRelacionamentos, setLoadingRelacionamentos] =
@@ -43,23 +61,30 @@ export default function CadastroPage() {
     const [sucesso, setSucesso] = useState(false);
 
     useEffect(() => {
-        if (pageParams !== "produtos") return;
+        if (pageParams !== "produtos" && pageParams !== "operacoes") return;
 
         const buscarRelacionamentos = async () => {
             setLoadingRelacionamentos(true);
 
             try {
-                const [categoriasResult, unidadesResult] = await Promise.all([
-                    api<ICategoriaProduto>("categorias").get(),
-                    api<IUnidadeMedida>("unidades").get(),
-                ]);
+                if (pageParams === "produtos") {
+                    const [categoriasResult, unidadesResult] = await Promise.all([
+                        api<ICategoriaProduto>("categorias").get(),
+                        api<IUnidadeMedida>("unidades").get(),
+                    ]);
 
-                setCategorias(categoriasResult);
-                setUnidades(unidadesResult);
+                    setCategorias(categoriasResult);
+                    setUnidades(unidadesResult);
+                }
+
+                if (pageParams === "operacoes") {
+                    const produtosResult = await api<IProduto>("produtos").get();
+                    setProdutos(produtosResult);
+                }
             } catch (err: any) {
                 setErro(
                     err.message ||
-                    "Erro ao carregar categorias e unidades."
+                    "Erro ao carregar dados relacionados."
                 );
             } finally {
                 setLoadingRelacionamentos(false);
@@ -80,6 +105,55 @@ export default function CadastroPage() {
             ...prev,
             [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
         }));
+    };
+
+    const handleItemChange = (
+        field: keyof ItemOperacao,
+        value: any
+    ) => {
+        setItemAtual((prev) => ({
+            ...prev,
+            [field]: field === "quantidade" || field === "precoCusto" 
+                ? Number(value) 
+                : value,
+        }));
+    };
+
+    const adicionarItem = () => {
+        if (!itemAtual.produtoId) {
+            setErro("Selecione um produto");
+            return;
+        }
+
+        if (!itemAtual.quantidade || itemAtual.quantidade <= 0) {
+            setErro("Quantidade deve ser maior que 0");
+            return;
+        }
+
+        if (itemAtual.precoCusto === undefined || itemAtual.precoCusto < 0) {
+            setErro("Preço de custo não pode ser negativo");
+            return;
+        }
+
+        const produtoSelecionado = produtos.find(
+            (p) => p.id === itemAtual.produtoId
+        );
+
+        const novoItem: ItemOperacao = {
+            id: Date.now().toString(),
+            produtoId: itemAtual.produtoId,
+            quantidade: itemAtual.quantidade,
+            precoCusto: itemAtual.precoCusto,
+            produto: produtoSelecionado,
+        };
+
+        setItensOperacao((prev) => [...prev, novoItem]);
+        setItemAtual({ quantidade: 1, precoCusto: 0 });
+        setErro(null);
+    };
+
+    const removerItem = (id: string) => {
+        setItensOperacao((prev) => prev.filter((item) => item.id !== id));
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -105,6 +179,8 @@ export default function CadastroPage() {
                     unidadeMedidaId: Number(form.unidadeMedidaId),
                     nomearquivofoto: String(form.nomearquivofoto || ""),
                 };
+
+                await api<any>(pageParams).post(dados);
             }
 
             if (pageParams === "categorias") {
@@ -112,6 +188,8 @@ export default function CadastroPage() {
                     nome: form.nome,
                     descricao: form.descricao,
                 };
+
+                await api<any>(pageParams).post(dados);
             }
 
             if (pageParams === "unidades") {
@@ -120,19 +198,34 @@ export default function CadastroPage() {
                     fracionavel: form.fracionavel === "true" || form.fracionavel === true,
                     descricao: form.descricao,
                 };
+
+                await api<any>(pageParams).post(dados);
             }
 
             if (pageParams === "operacoes") {
-                dados = {
+                if (itensOperacao.length === 0) {
+                    setErro("Adicione pelo menos um produto à operação");
+                    setLoading(false);
+                    return;
+                }
+
+                const payload: IOperacaoEstoquePayload = {
                     motivo: form.motivo,
                     entradasaida: form.entradasaida,
+                    itens: itensOperacao.map((item) => ({
+                        produtoId: item.produtoId,
+                        quantidade: item.quantidade,
+                        precoCusto: item.precoCusto,
+                    })),
                 };
-            }
 
-            await api<any>(pageParams).post(dados);
+                await api<IOperacaoEstoquePayload>("operacoes").post(payload);
+            }
 
             setSucesso(true);
             setForm({});
+            setItensOperacao([]);
+            setItemAtual({ quantidade: 1, precoCusto: 0 });
 
             setTimeout(() => {
                 router.push(`/crudpage?pg=${pageParams}`);
@@ -373,11 +466,19 @@ export default function CadastroPage() {
                 );
 
             case "operacoes":
+                if (loadingRelacionamentos) {
+                    return (
+                        <div className="py-6 text-center text-sm text-zinc-500">
+                            Carregando produtos...
+                        </div>
+                    );
+                }
+
                 return (
                     <>
                         <div>
                             <label className="mb-1.5 block text-sm font-medium text-zinc-700">
-                                Motivo
+                                Motivo da operação
                             </label>
 
                             <input
@@ -385,7 +486,7 @@ export default function CadastroPage() {
                                 name="motivo"
                                 value={form.motivo || ""}
                                 onChange={handleChange}
-                                placeholder="Ex: Compra de mercadoria"
+                                placeholder="Ex: Compra de mercadoria, Ajuste de estoque"
                                 required
                                 className="w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-sm text-zinc-900 placeholder-gray outline-none transition focus:border-zinc-500 focus:ring-2 focus:ring-zinc-100"
                             />
@@ -408,14 +509,163 @@ export default function CadastroPage() {
                                 </option>
 
                                 <option value="E">
-                                    Entrada (E)
+                                     Entrada (E) - Recebimento de produtos
                                 </option>
 
                                 <option value="S">
-                                    Saída (S)
+                                     Saída (S) - Retirada de produtos
                                 </option>
                             </select>
                         </div>
+
+                       
+                        <div className="rounded-lg bg-zinc-50 p-4">
+                            <h3 className="mb-4 font-medium text-zinc-900">
+                                Adicionar produtos à operação
+                            </h3>
+
+                            <div className="space-y-3">
+                                <div>
+                                    <label className="mb-1.5 block text-sm font-medium text-zinc-700">
+                                        Produto
+                                    </label>
+
+                                    <select
+                                        value={itemAtual.produtoId || ""}
+                                        onChange={(e) =>
+                                            handleItemChange(
+                                                "produtoId",
+                                                e.target.value
+                                            )
+                                        }
+                                        className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-zinc-500 focus:ring-2 focus:ring-zinc-100"
+                                    >
+                                        <option value="">
+                                            Selecione um produto
+                                        </option>
+
+                                        {produtos.map((produto) => (
+                                            <option
+                                                key={produto.id}
+                                                value={produto.id}
+                                            >
+                                                {produto.nome}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label className="mb-1.5 block text-sm font-medium text-zinc-700">
+                                            Quantidade
+                                        </label>
+
+                                        <input
+                                            type="number"
+                                            value={itemAtual.quantidade ?? ""}
+                                            onChange={(e) =>
+                                                handleItemChange(
+                                                    "quantidade",
+                                                    e.target.value
+                                                )
+                                            }
+                                            placeholder="0"
+                                            min="1"
+                                            className="w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-sm text-zinc-900 placeholder-gray outline-none transition focus:border-zinc-500 focus:ring-2 focus:ring-zinc-100"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="mb-1.5 block text-sm font-medium text-zinc-700">
+                                            Preço de custo
+                                        </label>
+
+                                        <input
+                                            type="number"
+                                            value={itemAtual.precoCusto ?? ""}
+                                            onChange={(e) =>
+                                                handleItemChange(
+                                                    "precoCusto",
+                                                    e.target.value
+                                                )
+                                            }
+                                            placeholder="0.00"
+                                            min="0"
+                                            step="0.01"
+                                            className="w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-sm text-zinc-900 placeholder-gray outline-none transition focus:border-zinc-500 focus:ring-2 focus:ring-zinc-100"
+                                        />
+                                    </div>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    onClick={adicionarItem}
+                                    className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-50"
+                                >
+                                    + Adicionar produto
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Lista de itens adicionados */}
+                        {itensOperacao.length > 0 && (
+                            <div className="rounded-lg border border-zinc-200 bg-white">
+                                <div className="divide-y divide-zinc-200">
+                                    {itensOperacao.map((item) => (
+                                        <div
+                                            key={item.id}
+                                            className="flex items-center justify-between p-4"
+                                        >
+                                            <div className="flex-1">
+                                                <p className="font-medium text-zinc-900">
+                                                    {item.produto?.nome ||
+                                                        `Produto ${item.produtoId}`}
+                                                </p>
+
+                                                <p className="text-sm text-zinc-500">
+                                                    Qtd: {item.quantidade} |
+                                                    Custo: R${" "}
+                                                    {item.precoCusto.toFixed(2)}
+                                                    | Total: R${" "}
+                                                    {(item.quantidade *
+                                                        item.precoCusto).toFixed(
+                                                        2
+                                                    )}
+                                                </p>
+                                            </div>
+
+                                            <button
+                                                type="button"
+                                                onClick={() =>
+                                                    removerItem(item.id)
+                                                }
+                                                className="ml-2 rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-600 transition hover:bg-red-100"
+                                            >
+                                                Remover
+                                            </button>
+                                        </div>
+                                    ))}
+
+                                    <div className="flex items-center justify-between bg-zinc-50 p-4 font-medium">
+                                        <span>Total:</span>
+
+                                        <span className="text-lg text-zinc-900">
+                                            R${" "}
+                                            {itensOperacao
+                                                .reduce(
+                                                    (acc, item) =>
+                                                        acc +
+                                                        item.quantidade *
+                                                            item.precoCusto,
+                                                    0
+                                                )
+                                                .toFixed(2)}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </>
                 );
 
