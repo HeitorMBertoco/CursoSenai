@@ -1,19 +1,18 @@
-
 import React from 'react';
-import { Text, StyleSheet, TextStyle } from 'react-native';
+import { Text, StyleSheet, TextProps } from 'react-native';
 
 type TextVariant = 'default' | 'button' | 'title';
 
-interface CustomTextProps {
+interface CustomTextProps extends TextProps {
   children: React.ReactNode;
-  style?: TextStyle;
   variant?: TextVariant;
 }
 
 const Texto: React.FC<CustomTextProps> = ({ 
   children, 
   style,
-  variant = 'default'
+  variant = 'default',
+  ...rest
 }) => {
   const styles = StyleSheet.create({
     default: {
@@ -36,7 +35,7 @@ const Texto: React.FC<CustomTextProps> = ({
   });
 
   return (
-    <Text style={[styles[variant], style]}>
+    <Text style={[styles[variant], style]} {...rest}>
       {children}
     </Text>
   );

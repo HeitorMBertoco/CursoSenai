@@ -37,7 +37,7 @@ export const CriarDetalheComItem = async function (req: Request, res: Response):
          console.log("Body recebido:", req.body);
         const { operacaoEstoqueId, quantidade, precoCusto, produtoId } = req.body;
 
-        if (!operacaoEstoqueId || !quantidade || !precoCusto || !produtoId) {
+        if (!operacaoEstoqueId || !quantidade || precoCusto === undefined || precoCusto === null || !produtoId) {
             console.log("Validação falhou!");
             res.status(400).json({ error: "Campos obrigatórios ausentes" });
             return;
@@ -76,7 +76,7 @@ export const AdicionarProdutoAoDetalhe = async function (req: Request, res: Resp
     try {
         const { operacaoEstoqueDetalheId, quantidade, precoCusto, produtoId } = req.body;
 
-        if (!operacaoEstoqueDetalheId || !quantidade || !precoCusto || !produtoId) {
+        if (!operacaoEstoqueDetalheId || !quantidade || precoCusto === undefined || precoCusto === null || !produtoId) {
             res.status(400).json({ error: "Campos obrigatórios ausentes" });
             return;
         }

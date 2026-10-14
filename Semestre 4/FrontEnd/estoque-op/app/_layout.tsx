@@ -37,7 +37,7 @@ export default function RootLayout() {
             <Stack.Screen
                 name="screens/produtoScreen"
                 options={{
-                    title: 'Entrada de Produtos',
+                    title: 'Operações de Estoque',
                 }}
             />
 

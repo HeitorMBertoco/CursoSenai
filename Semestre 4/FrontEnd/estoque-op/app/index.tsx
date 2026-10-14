@@ -1,6 +1,5 @@
 import { useRouter } from 'expo-router';
 import {
-    ImageBackground,
     StyleSheet,
     View,
 } from 'react-native';
@@ -13,45 +12,50 @@ export default function Index() {
     return (
         <SafeAreaProvider>
             <View style={styles.container}>
-                
-                 
-                    <View style={styles.overlay} />
+                <View style={styles.overlay} />
 
-                    <View style={styles.conteudo}>
-                        <View style={styles.botoes}>
-                            <Ronaldo
-                                label="Procurar Produtos"
-                                buttonColor="#2C2C2E"
-                                onPress={() =>
-                                    router.push('/screens/produtoPesquisaScreen')
-                                }
-                            />
+                <View style={styles.conteudo}>
+                    <View style={styles.botoes}>
+                        <Ronaldo
+                            label="Procurar Produtos"
+                            buttonColor="#2C2C2E"
+                            onPress={() =>
+                                router.push('/screens/produtoPesquisaScreen')
+                            }
+                        />
 
-                            <Ronaldo
-                                label="Entrada de Produtos"
-                                buttonColor="#176B3A"
-                                onPress={() =>
-                                    router.push('/screens/produtoScreen')
-                                }
-                            />
+                        <Ronaldo
+                            label="Entrada de Produtos"
+                            buttonColor="#176B3A"
+                            onPress={() =>
+                                router.push({
+                                    pathname: '/screens/produtoScreen',
+                                    params: { tipo: 'E' },
+                                })
+                            }
+                        />
 
-                            <Ronaldo
-                                label="Saída de Produtos"
-                                buttonColor="#A83232"
-                                onPress={() => console.log('Saída clicada')}
-                            />
+                        <Ronaldo
+                            label="Saída de Produtos"
+                            buttonColor="#A83232"
+                            onPress={() =>
+                                router.push({
+                                    pathname: '/screens/produtoScreen',
+                                    params: { tipo: 'S' },
+                                })
+                            }
+                        />
 
-                            <Ronaldo
-                                label="Sobre este App"
-                                buttonColor="#F5F5F5"
-                                textColor="#222222"
-                                onPress={() =>
-                                    router.push('/screens/sobreScreen')
-                                }
-                            />
-                        </View>
+                        <Ronaldo
+                            label="Sobre este App"
+                            buttonColor="#F5F5F5"
+                            textColor="#222222"
+                            onPress={() =>
+                                router.push('/screens/sobreScreen')
+                            }
+                        />
                     </View>
-                
+                </View>
             </View>
         </SafeAreaProvider>
     );

@@ -75,7 +75,7 @@ export const AlterarProduto = async function (
             data: {
                 ...(nome && { nome }),
                 ...(nomearquivofoto && { nomearquivofoto }),
-                ...(quantidadeAtual && { quantidadeAtual: Number(quantidadeAtual) }),
+                ...(quantidadeAtual !== undefined && { quantidadeAtual: Number(quantidadeAtual) }),
                 ...(descricao && { descricao }),
             },
         });
