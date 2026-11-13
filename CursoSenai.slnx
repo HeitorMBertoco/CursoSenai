@@ -7,6 +7,9 @@
   <Folder Name="/Semestre 4/Testes/Exceptions/EscolaException/">
     <Project Path="Semestre 4/Testes/Exceptions/EscolaException/Exceptions.csproj" />
   </Folder>
+  <Folder Name="/Semestre 4/Testes/Loggin/">
+    <Project Path="Semestre 4/Testes/Loggin/loggin.csproj" />
+  </Folder>
   <Folder Name="/Semestre 4/Testes/Primeiro Teste/">
     <Project Path="Semestre 4/Testes/Primeiro Teste/TestesMs/TestesMs.csproj" />
   </Folder>
